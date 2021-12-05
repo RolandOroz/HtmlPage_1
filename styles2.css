@@ -1,0 +1,42 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.radioTabs {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 25px;
+}
+
+.radioTabs input[type="radio"] {
+    display: none;
+    color: #ffb249;
+}
+
+.radioTabs label {
+    padding: 20px;
+
+    font-weight: bold;
+}
+
+.radioTabs .tab {
+    width: 100%;
+    padding: 20px;
+    background: #eeeeee;
+    display: none;
+    order: 1;
+}
+
+.radioTabs .tab h1 {
+    font-size: 3em;
+}
+
+.radioTabs input[type="radio"]:checked + label + .tab {
+    display: block;
+}
+
+.radioTabs input[type="radio"]:checked + label {
+    background: lightgray;
+}

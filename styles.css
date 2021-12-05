@@ -2,6 +2,15 @@
     margin:0;
     padding: 0;
 }
+.containerHome {
+    display: flex;
+    background-color: #ffb249;
+    color: #5567aa;
+    padding: 40px 12px 20px 12px;
+    width: 100%;
+
+}
+
 .sideTopBarLeftHome {
     display: flex;
     flex-direction: column;
@@ -50,6 +59,6 @@ article {
 }
 
 .page3Article {
-    font-family: "Lucida Calligraphy"
+    font-family: "Lucida Calligraphy";
     background-color: peachpuff;
 }
