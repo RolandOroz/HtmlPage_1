@@ -1,0 +1,55 @@
+* {
+    margin:0;
+    padding: 0;
+}
+.sideTopBarLeftHome {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffb249;
+    height: 100%;
+}
+.ulLeftHome {
+    list-style-type: none;
+    width: max-content;
+    background-color: #5567aa;
+    position: center;
+    height: 100%;
+    overflow: auto;
+}
+.ulLeftHome a {
+    color: #ffb249;
+    display: block;
+    padding: 4px 8px 8px 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.ulLeftHome li a:hover, a:active {
+    background-color: #ffb249;
+    color:#5567aa;
+}
+
+img {
+    width: 620px;
+    padding: 40px 12px 20px 1px;
+}
+
+article {
+    width: 620px;
+    padding: 40px 12px 20px 12px;
+}
+
+.page1Article {
+    font-family: Bahnschrift;
+    background-color: beige;
+}
+
+.page2Article {
+    font-family: "Book Antiqua";
+    background-color: khaki;
+}
+
+.page3Article {
+    font-family: "Lucida Calligraphy"
+    background-color: peachpuff;
+}
