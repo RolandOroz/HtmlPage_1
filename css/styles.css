@@ -49,16 +49,16 @@ article {
 }
 
 .page1Article {
-    font-family: Bahnschrift;
+    font-family: Bahnschrift, sans-serif;
     background-color: beige;
 }
 
 .page2Article {
-    font-family: "Book Antiqua";
+    font-family: "Book Antiqua", sans-serif;
     background-color: khaki;
 }
 
 .page3Article {
-    font-family: "Lucida Calligraphy";
+    font-family: "Lucida Calligraphy", sans-serif;
     background-color: peachpuff;
 }
