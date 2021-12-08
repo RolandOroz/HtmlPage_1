@@ -10,8 +10,16 @@
     width: 100%;
 }
 
-.blink {
-    color: white;
+.colorBlue {
+    color: blue;
+}
+
+.colorRed {
+    color: darkred;
+}
+
+.p3 {
+    color: aqua;
 }
 
 .sideTopBarLeftHome {
