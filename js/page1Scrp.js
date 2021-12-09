@@ -1,8 +1,3 @@
-function colorChange(el,hexColorOnlyNumber) {
-  //console.log(arguments);
-      el.style.color = "#" + hexColorOnlyNumber;
-}
-
 //change by css class
 function colorChangeByClass(id, classN) {
   document.getElementById(id).className = classN;
@@ -13,17 +8,6 @@ function changeAttrib(id, atrib, className ) {
     console.log(arguments);
    document.getElementById(id).setAttribute(atrib, className);
 }
-
-//changing tag positions
-function showContent(tagN) {
-  console.log(arguments);
-  tagN = document.getElementsByTagName(tagN);
-    for(let i = 0; i < tagN.length; i++) {
-    console.log(tagN[i].innerText);
-    console.log(arguments);
-  }
-}
-
 //swaping nodes
 function swapContent(id1) {
 let lastNode = document.getElementById(id1).lastChild;

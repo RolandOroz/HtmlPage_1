@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Page_3 </title>
-    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/stylesPage3.css"/>
+    <script src="js/formPage3.js"></script>
 </head>
+<!--firstName
+lastName
+sex (male OR female) < radio
+age group (KID, ADULT,  ELDER) << dropdown field
+adress
+post
+city
+country
+descrption (text area)
+button STORE
+Pod formo nared nek html element in ko klikneš na store gumb v tem elementu izpišeš JSON objekt vseh vrednosti
+{
+fieldName: fieldValue
+}-->
 <body>
 <article class="page3Article">
     <div>
@@ -14,15 +29,45 @@
             </ul>
         </nav>
     </div>
-    </br>
-    </br>
-    <header>
-        <h1>Something on Page 3</h1>
+
+    <header class="headerForm">
+        <h2 id="titleForm">Some Form</h2>
     </header>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-    <figure>
-        <img src="https://blog.webix.com/wp-content/uploads/2021/07/12.jpg" alt="some image"/>
-    </figure>
+
+    <div class="wrapperForm">
+        <form class="userForm" method="post" action="#">
+            <label>First Name:</label>
+            <div class="fieldContainer"><input type="text" id="fname"/></div>
+            <label>Last Name:</label>
+            <div class="fieldContainer"><input type="text" id="lname"/></div>
+            <div class="fieldContainer">
+                <label>Female:</label>
+                <input type="radio" id="female" name="sex" value="female"/>
+                <label>Male:</label>
+                <input type="radio" id="male" name="sex" value="male"/>
+            </div>
+            <div class="fieldContainer">
+                <select  id="4" name="ageGroup">
+                    <option value="kid">KID</option>
+                    <option value="adult">ADULT</option>
+                    <option value="elder">ELDER</option>
+                </select>
+            </div>
+
+            <!--TODO do the fields in form: adress post city country descrption (text area) button STORE
+Pod formo nared nek html element in ko klikneš na store gumb v tem elementu izpišeš JSON objekt vseh vrednosti
+{
+fieldName: fieldValue
+}-->
+            <div class="fieldContainer"><input type="text" id="5"/></div>
+            <div class="fieldContainer"><input type="text" id="6"/></div>
+            <div class="fieldContainer"><input type="text" id="7"/></div>
+            <div class="fieldContainer"><input type="text" id="8"/></div>
+            <div class="fieldContainer"><input type="" id="9"/></div>
+        </form>
+        <button>Button</button>
+    </div>
+
 </article>
 
 </body>
