@@ -24,20 +24,11 @@ function showContent(tagN) {
   }
 }
 
-function swapContent(id1, id2) {
-  //const link = document.getElementById(id);
-  /*console.log(link.childElementCount);
-  let tagFirst = link.getElementsByTagName('p')[0].innerText);
-  let firstC = link.firstElementChild.innerHTML;
-  let lastC = link.lastElementChild.innerHTML;
-*/
-/*  console.log(firstC);
-  console.log(lastC);*/
-  let tagFirst = document.getElementById(id1).lastChild;
-  document.getElementById(id2).appendChild(tagFirst);
-  console.log(tagFirst);
-  let tagLast = document.getElementById(id2).firstChild;
-  document.getElementById(id1).appendChild(tagLast);
+//swaping nodes
+function swapContent(id1) {
+let lastNode = document.getElementById(id1).lastChild;
+let  allNodes= document.getElementById(id1);
+let swap = allNodes.insertBefore(lastNode, allNodes.childNodes[0]);
 }
 
 //resets atribute
