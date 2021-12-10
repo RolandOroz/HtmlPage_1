@@ -11,8 +11,8 @@ function changeAttrib(id, atrib, className ) {
 //swaping nodes
 function swapContent(id1) {
 let lastNode = document.getElementById(id1).lastChild;
-let  allNodes= document.getElementById(id1);
-let swap = allNodes.insertBefore(lastNode, allNodes.childNodes[0]);
+let  elId= document.getElementById(id1);
+let swap = elId.insertBefore(lastNode, elId.childNodes[0]);
 }
 
 //resets atribute

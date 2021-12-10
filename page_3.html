@@ -35,37 +35,55 @@ fieldName: fieldValue
     </header>
 
     <div class="wrapperForm">
-        <form class="userForm" method="post" action="#">
-            <label>First Name:</label>
-            <div class="fieldContainer"><input type="text" id="fname"/></div>
-            <label>Last Name:</label>
-            <div class="fieldContainer"><input type="text" id="lname"/></div>
+        <form id="formUser" class="userForm" method="post" action="#">
+            <fieldset>
             <div class="fieldContainer">
-                <label>Female:</label>
-                <input type="radio" id="female" name="sex" value="female"/>
-                <label>Male:</label>
-                <input type="radio" id="male" name="sex" value="male"/>
+                <label>First Name:</label>
+                <input class ="formUsr" type="text" id="fname" name="firstname"/></div>
+
+            <div class="fieldContainer">
+                <label>Last Name:</label>
+                <input class ="formUsr" type="text" id="lname" name="lastname"/></div>
+            <div id="sex" class="fieldContainer">
+                <label>Sex:</label>
+                <label>Female</label>
+                <input class ="formUsr" type="radio" class="sex" id="female" name="sex" value="female"/>
+                <label>Male</label>
+                <input class ="formUsr" type="radio" class="sex"id="male" name="sex" value="male" />
             </div>
             <div class="fieldContainer">
-                <select  id="4" name="ageGroup">
-                    <option value="kid">KID</option>
-                    <option value="adult">ADULT</option>
-                    <option value="elder">ELDER</option>
+                <label for="ageGroup">Age Group:</label>
+                <select class="formUsr" id="ageGroup" name="ageGroup" autofocus>
+                    <option class ="formUsr" value="kid">KID</option>
+                    <option class ="formUsr" value="adult">ADULT</option>
+                    <option class ="formUsr" value="elder">ELDER</option>
                 </select>
             </div>
+            <div class="fieldContainer">
+                <label>Adress:</label>
+                <input class ="formUsr" type="text" id="adress" name="adress"/></div>
+            <div class="fieldContainer">
+                <label>ZIP:</label>
+                <input class ="formUsr" type="text" id="zip" name="ZIP"/></div>
+            <div class="fieldContainer">
+                <label>Country:</label>
+                <input class ="formUsr" type="text" id="country" name="country"/></div>
+            <div class="fieldContainer">
+                <label>Description:</label>
+                <textarea class ="formUsr" form="formUser" id="formTxtArea" name="description" rows="4" cols="15" defaultValue="">
 
-            <!--TODO do the fields in form: adress post city country descrption (text area) button STORE
-Pod formo nared nek html element in ko klikneš na store gumb v tem elementu izpišeš JSON objekt vseh vrednosti
-{
-fieldName: fieldValue
-}-->
-            <div class="fieldContainer"><input type="text" id="5"/></div>
-            <div class="fieldContainer"><input type="text" id="6"/></div>
-            <div class="fieldContainer"><input type="text" id="7"/></div>
-            <div class="fieldContainer"><input type="text" id="8"/></div>
-            <div class="fieldContainer"><input type="" id="9"/></div>
+                </textarea>
+            </div>
+            <div class="fieldContainer">
+                <button onclick="getFieldName('formUser')" class="submit" type="submit" id="formBtn">Store</button>
+            </div>
+            </fieldset>
         </form>
-        <button>Button</button>
+    </div>
+
+    <div class="fieldContainer2">
+        <label>Preview</label>
+        <h3 id="showText" name="preview" maxlenght="512" ></h3>
     </div>
 
 </article>
