@@ -106,22 +106,17 @@ function Data(nameF) {
  //this.ageGroupF = document.forms[nameF]['ageGroup'].value;
   /*console.log(ageGroupF);
  console.log(radioF);*/
+let namesF = document.forms[nameF].elements[0].name;
+let valuesF = document.forms[nameF].elements[0].value;
+let formObj = {};
 
-  this.form = document.forms[nameF];
-  let i;
-  let us1 = form.name;
-  let values;
+for(let key in Object) {
+  formObj.key= namesF[key];
 
-  for(i = 0; i < form.elements.length; i++) {
-    us1 = us1 + form.elements[i].name;
-    values = us1 + form.elements[i].value;
-  }
-  let us = Object.keys(us1);
+  console.log(formObj.key);
+}
 
-
-
- console.log(form.elements.adress.value);
- console.log(us1);
+//console.log(names + ": " + values);
 }
 
 
