@@ -10,7 +10,7 @@ function formInputToJson(id) {
 }*/
 
 function formInputToJson() {
-  let btnPrevent = document.getElementById('formBtn').addEventListener("click",function(event){
+  let btnPrevent = document.getElementById('formBtn').addEventListener("click", function (event) {
     event.preventDefault()
   });
 
@@ -22,14 +22,14 @@ function formInputToJson() {
   let zip = document.getElementById('zip').value;
   let country = document.getElementById('country').value;
   let formTxtArea = document.getElementById('formTxtArea').value;
-  console.log(document.getElementById('showText').outerHTML=fname+" "+lname+" "+ageGroup+" "+adress+" "+zip+" "+country+" "+formTxtArea);
+  console.log(document.getElementById('showText').outerHTML = fname + " " + lname + " " + ageGroup + " " + adress + " " + zip + " " + country + " " + formTxtArea);
 }
 
 function myFunction(id) {
   let elId = document.getElementById(id);
   let text = "";
   let i;
-  for (i = 0; i < elId.length ;i++) {
+  for (i = 0; i < elId.length; i++) {
     text += elId.elements[i].value + "\n";
   }
   const listForm = document.getElementById("showText").innerHTML = text;
@@ -43,16 +43,17 @@ function getFieldName(selectors) {
 
   /*let selectFieldName = document.querySelectorAll('')*/
   let fieldName = document.querySelectorAll(selectors);
-  for (i =0; i < fieldName.length; i++) {
+  for (i = 0; i < fieldName.length; i++) {
     let name = fieldName[i].name;
 
     let value = fieldName[i].value;
-    let selectName= document.getElementById('ageGroup').options;
+    let selectName = document.getElementById('ageGroup').options;
 
 
-    console.log(JSON.stringify(name) + ":" + "\"" +(value)+ "\"" );
+    console.log(JSON.stringify(name) + ":" + "\"" + (value) + "\"");
 
-  }};
+  }
+};
 
 function fieldN(id) {
   let inputF = document.getElementById(id);
@@ -70,7 +71,7 @@ function fieldN(id) {
 
     console.log(JSON.stringify(namesInp) + (val));
   }
-  for(let j = 0; j < selectOpt.length; j++) {
+  for (let j = 0; j < selectOpt.length; j++) {
     let namesOpt = selectOpt[j].value;
     console.log(JSON.stringify(namesOpt));
   }
@@ -87,9 +88,9 @@ function radioValue(name) {
   let names;
   let values;
   let dataS = new data();
-  for(i = 0; i < form.elements.length; i++) {
-   names = names + form.elements[i].name;
-   values = values + form.elements[i].value;
+  for (i = 0; i < form.elements.length; i++) {
+    names = names + form.elements[i].name;
+    values = values + form.elements[i].value;
   }
 
 
@@ -102,19 +103,19 @@ function radioValue(name) {
 }
 
 function Data(nameF) {
- //this.radioF = document.forms[nameF]['sex'].value;
- //this.ageGroupF = document.forms[nameF]['ageGroup'].value;
+  //this.radioF = document.forms[nameF]['sex'].value;
+  //this.ageGroupF = document.forms[nameF]['ageGroup'].value;
   /*console.log(ageGroupF);
  console.log(radioF);*/
-let namesF = document.forms[nameF].elements[0].name;
-let valuesF = document.forms[nameF].elements[0].value;
-let formObj = {};
+  let namesF = document.forms[nameF].elements[0].name;
+  let valuesF = document.forms[nameF].elements[0].value;
+  let formObj = {};
 
-for(let key in Object) {
-  formObj.key= namesF[key];
+  for (let key in Object) {
+    formObj.key = namesF[key];
 
-  console.log(formObj.key);
-}
+    console.log(formObj.key);
+  }
 
 //console.log(names + ": " + values);
 }
