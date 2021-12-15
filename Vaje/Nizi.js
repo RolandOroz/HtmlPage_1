@@ -8,25 +8,30 @@ for (let i = 0; i <= counterASCII; i++) {
     decASCIITable[i] = i;
     // console.log(decAtoZUpper[i]);
 }
-//function
+//function for slicing array
 function sliceASCII(fromArray, start, end) {
     fromArray = decASCIITable.slice(start, end);
     return fromArray;
 }
+//made two arrays one for A-Z & other for a-z ASCII dec value
 let decAtoZUpper = sliceASCII(decASCIITable, 65, 91);   //97-122 ASCII
 let decAtoZLower = sliceASCII(decASCIITable, 97, 124);  //65-90  ASCII
 
-//****************************************************
+//joining two arrays in to one array of ASCII dec values from A-Z to a-z
+const combinedAaZzArray = decAtoZUpper.concat(decAtoZLower);
+
+//****************** Code checking ***************************************************
 // console.log(RandomCreator(arrayN, 26, 1, 102));
 console.log("\na-z slice values= " + sliceASCII(decAtoZLower, 97, 124));
 console.log("A-Z slice values= " + sliceASCII(decAtoZUpper, 65, 91));
 
 console.log("\nASCII Table dec array --> " + decASCIITable);
-console.log("\nA-Z array--> " + decAtoZUpper)
-console.log("a-z array--> " + decAtoZLower)
+console.log("\nA-Z array--> " + decAtoZUpper);
+console.log("a-z array--> " + decAtoZLower);
+console.log("\nCombined arrray --> " + combinedAaZzArray);
 
-
-/*//RANDOM FUNCTION example for later use
+//******************* ideas to implement for later ************************************
+/* //RANDOM FUNCTION EXMPL
 function RandomCreator( limit,min, max) {
     for (let i = 0; i < limit; i++) {
         random = Math.floor(Math.random() * (max)+min);
