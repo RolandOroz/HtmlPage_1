@@ -1,6 +1,5 @@
-const decASCIITable = []; //0-127 ASCII dec values  //1.naloga
-
-let x;
+const randomValues = [];   //1.naloga
+const decASCIITable = []; //0-127 ASCII dec values
 let counterASCII = 127;
 
 //for loop to populate array indexes with num 0-127
@@ -8,7 +7,7 @@ for (let i = 0; i <= counterASCII; i++) {
     decASCIITable[i] = i;
     // console.log(decAtoZUpper[i]);
 }
-//function for slicing array
+//FUNCTION for slicing array
 function sliceASCII(fromArray, start, end) {
     fromArray = decASCIITable.slice(start, end);
     return fromArray;
@@ -39,4 +38,27 @@ function RandomCreator( limit,min, max) {
         console.log(arrayRandN[i] + " " + i);
     }
 }
+/* primer padajočega izpisa v C#
+public static void Izpis(int[] tab)
+{
+    for (int i = 0; i < tab.Length; i++)
+    {
+        if(i % 10 == 0)
+        {
+            Console.WriteLine();
+        }
+        Console.Write(tab[i] + " ");
+    }
+}
+int[] tabStevil = new int[counter];
+for (int i = 0; i < counter; i++)
+{
+    tabStevil[i] += counter - i;
+}*/
+/*
 console.log(RandomCreator( 26, 1, 100));*/
+
+//********************** side notes *******************************
+// TODO --> random value selector from combined array with pick limiter
+// TODO --> populate randomValues Array with (for) loop
+// TODO --> converter from dec to char
