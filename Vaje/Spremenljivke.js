@@ -13,8 +13,3 @@
     throw "not an integer";
   }
   console.log(multiply(x, y));
-
-/*
-Napolni zgoraj deklariran niz s 25 naključnimi
-ASCII znaki od [a-z in A-Z]. Poglej metode objekta String
-ki iz številk naredi znake. Uporabi for zanke za polnjenje niza.*/
