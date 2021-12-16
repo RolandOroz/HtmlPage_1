@@ -28,7 +28,8 @@ function randomCreator(array) {
   random = array[Math.floor(Math.random() * limit)]
 }
 
-//for loop to populat random items in ahttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operatorrray
+//for loop to populat random items in to an array
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operatorrray
 for (let i = 0; i < limit; i++) {
   randomValues[i] = combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)];
   // randomValues.push(combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)]); isti kurac
@@ -57,10 +58,10 @@ console.log("\nCombined arrray --> " + combinedAaZzArray);
 //console.log(random)
 console.log("new array of random numbers --> " + randomValues)
 
-//print converted dec values from random numbers to char --backwards
+//print converted dec values from random numbers to char --backwards  3. naloga
 //for (let n = 0; n < randomValues.length; n++) {  //-- forward looping
-for(let n = randomValues.length - 1; n >= 0; n-- ) {  //--backwards looping
-  randomValuesToChar[n]=String.fromCharCode(randomValues[n]);
+for (let n = randomValues.length - 1; n >= 0; n--) {  //--backwards looping
+  randomValuesToChar[n] = String.fromCharCode(randomValues[n]);
 }
 
 console.log("converted dec values from random numbers to char --> " + randomValuesToChar)
@@ -93,6 +94,6 @@ for (int i = 0; i < counter; i++)
 /*
 console.log(RandomCreator( 26, 1, 100));*/
 
-//********************** side notes *******************************
+//********************** side notes & TODO list *******************************
 
-// TODO --> converter from dec to char
+
