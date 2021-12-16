@@ -56,7 +56,7 @@ console.log("a-z array--> " + decAtoZLower);
 console.log("\nCombined arrray --> " + combinedAaZzArray);
 //console.log(randomCreator(combinedAaZzArray));
 //console.log(random)
-console.log("new array of random numbers --> " + randomValues)
+console.log("new array of random numbers --> " + randomValues);
 
 //print converted dec values from random numbers to char --backwards  3. naloga
 //for (let n = 0; n < randomValues.length; n++) {  //-- forward looping
@@ -65,6 +65,7 @@ for (let n = randomValues.length - 1; n >= 0; n--) {  //--backwards looping
 }
 
 console.log("converted dec values from random numbers to char --> " + randomValuesToChar)
+console.log(randomValuesToChar.indexOf(String.fromCharCode(64)))
 
 //******************* ideas to implement for later ************************************
 
@@ -72,7 +73,7 @@ console.log("converted dec values from random numbers to char --> " + randomValu
 function randomArr(array) {
 
   randomD = array[Date.now() % array.length];
-}// TODO --> populate randomValues Array with (for) loop
+}
 
 /* primer padajočega izpisa v C#
 public static void Izpis(int[] tab)
@@ -95,5 +96,10 @@ for (int i = 0; i < counter; i++)
 console.log(RandomCreator( 26, 1, 100));*/
 
 //********************** side notes & TODO list *******************************
-
+//TODO
+// 4. Izpiši vse pozicije A R g T f znakov na ekran. Če znaka ni v nizu izpiši vrednost -1.
+// Izpis naj bo naslednji:
+//   znak: A pozicije: 2, 6, 8
+// znak: B pozicije: 1, 8, 11
+// Izpis naj se izvrši na koncu in ne sproti med procesiranjem niza !
 
