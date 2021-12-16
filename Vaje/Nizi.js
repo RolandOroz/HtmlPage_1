@@ -4,18 +4,21 @@ let counterASCII = 127;
 let random;
 let randomD;
 let limit = 25; //random counter limit
+let randomValuesToChar = [];
 
 //for loop to populate array indexes with num 0-127
 for (let i = 0; i <= counterASCII; i++) {
   decASCIITable[i] = i;
 }
+
 //FUNCTION for slicing array
 function sliceASCII(fromArray, start, end) {
   return fromArray.slice(start, end);
 }
+
 //made two arrays one for A-Z & other for a-z ASCII dec value
-let decAtoZUpper = sliceASCII(decASCIITable, 65, 91);   //97-122 ASCII
-let decAtoZLower = sliceASCII(decASCIITable, 97, 124);  //65-90  ASCII
+let decAtoZUpper = sliceASCII(decASCIITable, 65, 91);   //65-90  ASCII
+let decAtoZLower = sliceASCII(decASCIITable, 97, 123);  //97-122 ASCII
 
 //joining two arrays in to one array of ASCII dec values from A-Z to a-z
 const combinedAaZzArray = decAtoZUpper.concat(decAtoZLower);
@@ -24,11 +27,19 @@ const combinedAaZzArray = decAtoZUpper.concat(decAtoZLower);
 function randomCreator(array) {
   random = array[Math.floor(Math.random() * limit)]
 }
+
 //for loop to populat random items in ahttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operatorrray
 for (let i = 0; i < limit; i++) {
-  randomValues[i] = combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)] ;
+  randomValues[i] = combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)];
   // randomValues.push(combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)]); isti kurac
 }
+
+/*
+function convertDecToChar() {
+
+}*/
+
+
 //TIP**********
 //start learning conditional (ternary) operator
 // (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
@@ -46,7 +57,12 @@ console.log("\nCombined arrray --> " + combinedAaZzArray);
 //console.log(random)
 console.log("new array of random numbers --> " + randomValues)
 
+//print converted dec values from random numbers to char --backwards
+for (let n = 0; n < randomValues.length; n++) {
+  randomValuesToChar[n]=String.fromCharCode(randomValues[n]);
+}
 
+console.log("converted dec values from random numbers to char --> " + randomValuesToChar)
 
 //******************* ideas to implement for later ************************************
 
