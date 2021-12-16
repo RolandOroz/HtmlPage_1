@@ -58,7 +58,8 @@ console.log("\nCombined arrray --> " + combinedAaZzArray);
 console.log("new array of random numbers --> " + randomValues)
 
 //print converted dec values from random numbers to char --backwards
-for (let n = 0; n < randomValues.length; n++) {
+//for (let n = 0; n < randomValues.length; n++) {  //-- forward looping
+for(let n = randomValues.length - 1; n >= 0; n-- ) {  //--backwards looping
   randomValuesToChar[n]=String.fromCharCode(randomValues[n]);
 }
 
