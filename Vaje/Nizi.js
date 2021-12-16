@@ -63,9 +63,13 @@ console.log("new array of random numbers --> " + randomValues);
 for (let n = randomValues.length - 1; n >= 0; n--) {  //--backwards looping
   randomValuesToChar[n] = String.fromCharCode(randomValues[n]);
 }
-
 console.log("converted dec values from random numbers to char --> " + randomValuesToChar)
-console.log(randomValuesToChar.indexOf(String.fromCharCode(64)))
+console.log(randomValuesToChar.indexOf(String.fromCharCode(68)))
+
+//**!!
+let charF = randomValuesToChar[0]
+let charFASCII = charF.charCodeAt(0)
+console.log(charFASCII)
 
 //******************* ideas to implement for later ************************************
 
