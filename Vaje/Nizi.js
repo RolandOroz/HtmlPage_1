@@ -35,12 +35,6 @@ for (let i = 0; i < limit; i++) {
   // randomValues.push(combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)]); isti kurac
 }
 
-/*
-function convertDecToChar() {
-
-}*/
-
-
 //TIP**********
 //start learning conditional (ternary) operator
 // (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
@@ -65,38 +59,54 @@ for (let n = randomValues.length - 1; n >= 0; n--) {  //--backwards looping
 }
 console.log("converted dec values from random numbers to char --> " + randomValuesToChar);
 
-
-//console.log(randomValuesToChar.indexOf(String.fromCharCode(65)));
-//**!!  today from here
-/*let charF = randomValuesToChar[0];
-let charFASCII = charF.charCodeAt(0);*/
-
-let searchTerm = 'a';
+/*let searchTerm = 'a';
 const indexOfFirst = randomValuesToChar.indexOf(searchTerm);
-console.log("occurences1 for index is -1 -> " + (indexOfFirst+1));
-console.log("occurences2 is index num " + randomValuesToChar.indexOf(searchTerm, (indexOfFirst+1)));
-let f = randomValuesToChar.toString();
-let c= randomValuesToChar.filter(el => el === 'a');
+console.log("occurences1 is index num -> " + (indexOfFirst));
+console.log("occurences2 is index num ->" + randomValuesToChar.indexOf(searchTerm, (indexOfFirst+1)));
+console.log("occurences3 is index num ->" + randomValuesToChar.indexOf(searchTerm, (indexOfFirst+1)));
+let f = randomValuesToChar.toString();*/
 
-for (let i=0; i < randomValuesToChar.length; i++) {
+// function to find ALL occurrences of a searching element
+function findIndexOfAllOccur(array) {
+  let indices = [];
+   array = array;
+  let element = 'a';
+  let idx = array.indexOf(element);
+  if(idx == -1){indices.push(idx);}  //push -1 to array
+  while (idx != -1) {
+    indices.push(idx);
+    idx = array.indexOf(element, idx + 1);
+  }
+  console.log(indices);
+}
+console.log(findIndexOfAllOccur(randomValuesToChar))
+
+
+//let c= randomValuesToChar.filter(el => el === 'a');
+
+/*for (let i=0; i < randomValuesToChar.length; i++) {
 let d;
   if(randomValuesToChar.indexOf('a') !== -1){
-    let d = randomValuesToChar[i] + i;
-    console.log(randomValuesToChar[i] + " " +d.indexOf('a'));
+    let d = randomValuesToChar[i];
+    console.log(d);
   }
-}
+}*/
 
-const str = '' //TODO convert array to string
-let count = 0
-let position = randomValuesToChar.indexOf('a')
+/*const str = randomValuesToChar.toString();
+let count = 0;
+let position = str.indexOf('a');
 
+//counter of occurrences
 while (position !== -1) {
-  count++
-  position = randomValuesToChar.indexOf('a', position + 1)
+  count++;
+  position = str.indexOf('a', position + 1);
 }
-console.log(c);
-console.log(f);
-console.log("count " + count)
+console.log(str);
+console.log("count " + count);*/
+
+
+
+
 
 //******************* ideas to implement for later ************************************
 
