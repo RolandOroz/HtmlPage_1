@@ -40,17 +40,16 @@ for (let i = 0; i < limit; i++) {
 // (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 
 //****************** Code checking ***************************************************
-// console.log(RandomCreator(arrayN, 26,https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator 1, 102));
-console.log("\na-z slice values= " + sliceASCII(decAtoZLower, 97, 124));
-console.log("A-Z slice values= " + sliceASCII(decAtoZUpper, 65, 91));
 
-console.log("\nASCII Table dec array --> " + decASCIITable);
-console.log("\nA-Z array--> " + decAtoZUpper);
-console.log("a-z array--> " + decAtoZLower);
-console.log("\nCombined arrray --> " + combinedAaZzArray);
-//console.log(randomCreator(combinedAaZzArray));
-//console.log(random)
-console.log("new array of random numbers --> " + randomValues);
+// console.log("\na-z slice values= " + sliceASCII(decAtoZLower, 97, 124));
+// console.log("A-Z slice values= " + sliceASCII(decAtoZUpper, 65, 91));
+// console.log("\nASCII Table dec array --> " + decASCIITable);
+// console.log("\nA-Z array--> " + decAtoZUpper);
+// console.log("a-z array--> " + decAtoZLower);
+// console.log("\nCombined arrray --> " + combinedAaZzArray);
+// console.log(randomCreator(combinedAaZzArray));
+// console.log(random)
+ console.log("new array of random numbers --> " + randomValues);
 
 //print converted dec values from random numbers to char --backwards  3. naloga
 //for (let n = 0; n < randomValues.length; n++) {  //-- forward looping
@@ -67,19 +66,28 @@ console.log("occurences3 is index num ->" + randomValuesToChar.indexOf(searchTer
 let f = randomValuesToChar.toString();*/
 
 // function to find ALL occurrences of a searching element
-function findIndexOfAllOccur(array) {
+function findIndexOfAllOccur(array,searchingElement) {
   let indices = [];
-   array = array;
-  let element = 'a';
-  let idx = array.indexOf(element);
+  tempArray = array;
+  let element = searchingElement;
+  let idx = tempArray.indexOf(element);
   if(idx == -1){indices.push(idx);}  //push -1 to array
+
+  // loops through whole index
   while (idx != -1) {
     indices.push(idx);
-    idx = array.indexOf(element, idx + 1);
+    idx = tempArray.indexOf(element, idx + 1);
   }
-  console.log(indices);
+  function searchedElemAndIndexPos() {
+    return console.log("element: '" + element + "' index position: " + indices);
+  }
+  console.log(searchedElemAndIndexPos());
 }
-console.log(findIndexOfAllOccur(randomValuesToChar))
+console.log(findIndexOfAllOccur(randomValuesToChar,'A'))
+console.log(findIndexOfAllOccur(randomValuesToChar,'R'))
+console.log(findIndexOfAllOccur(randomValuesToChar,'g'))
+console.log(findIndexOfAllOccur(randomValuesToChar,'T'))
+console.log(findIndexOfAllOccur(randomValuesToChar,'f'))
 
 
 //let c= randomValuesToChar.filter(el => el === 'a');
