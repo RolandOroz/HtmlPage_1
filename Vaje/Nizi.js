@@ -63,21 +63,48 @@ console.log("new array of random numbers --> " + randomValues);
 for (let n = randomValues.length - 1; n >= 0; n--) {  //--backwards looping
   randomValuesToChar[n] = String.fromCharCode(randomValues[n]);
 }
-console.log("converted dec values from random numbers to char --> " + randomValuesToChar)
-console.log(randomValuesToChar.indexOf(String.fromCharCode(68)))
+console.log("converted dec values from random numbers to char --> " + randomValuesToChar);
 
-//**!!
-let charF = randomValuesToChar[0]
-let charFASCII = charF.charCodeAt(0)
-console.log(charFASCII)
+
+//console.log(randomValuesToChar.indexOf(String.fromCharCode(65)));
+//**!!  today from here
+/*let charF = randomValuesToChar[0];
+let charFASCII = charF.charCodeAt(0);*/
+
+let searchTerm = 'a';
+const indexOfFirst = randomValuesToChar.indexOf(searchTerm);
+console.log("occurences1 for index is -1 -> " + (indexOfFirst+1));
+console.log("occurences2 is index num " + randomValuesToChar.indexOf(searchTerm, (indexOfFirst+1)));
+let f = randomValuesToChar.toString();
+let c= randomValuesToChar.filter(el => el === 'a');
+
+for (let i=0; i < randomValuesToChar.length; i++) {
+let d;
+  if(randomValuesToChar.indexOf('a') !== -1){
+    let d = randomValuesToChar[i] + i;
+    console.log(randomValuesToChar[i] + " " +d.indexOf('a'));
+  }
+}
+
+const str = '' //TODO convert array to string
+let count = 0
+let position = randomValuesToChar.indexOf('a')
+
+while (position !== -1) {
+  count++
+  position = randomValuesToChar.indexOf('a', position + 1)
+}
+console.log(c);
+console.log(f);
+console.log("count " + count)
 
 //******************* ideas to implement for later ************************************
 
-//RANDOM FUNCTION EXMPL with Date.now
+/*//RANDOM FUNCTION EXMPL with Date.now  //TODO try out this method later
 function randomArr(array) {
 
   randomD = array[Date.now() % array.length];
-}
+}*/
 
 /* primer padajočega izpisa v C#
 public static void Izpis(int[] tab)
