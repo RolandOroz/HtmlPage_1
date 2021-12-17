@@ -1,8 +1,8 @@
 let randomValues = [];   //1.naloga
 const decASCIITable = []; //0-127 ASCII dec values
 let counterASCII = 127;
-let random;
-let randomD;
+
+
 let limit = 25; //random counter limit
 let randomValuesToChar = [];
 
@@ -23,10 +23,10 @@ let decAtoZLower = sliceASCII(decASCIITable, 97, 123);  //97-122 ASCII
 //joining two arrays in to one array of ASCII dec values from A-Z to a-z
 const combinedAaZzArray = decAtoZUpper.concat(decAtoZLower);
 
-//RANDOM FUNCTION EXMPL with Math.random
+/*//RANDOM FUNCTION EXMPL with Math.random
 function randomCreator(array) {
   random = array[Math.floor(Math.random() * limit)]
-}
+}*/
 
 //for loop to populat random items in to an array
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operatorrray
@@ -68,7 +68,7 @@ let f = randomValuesToChar.toString();*/
 // function to find ALL occurrences of a searching element
 function findIndexOfAllOccur(array,searchingElement) {
   let indices = [];
-  tempArray = array;
+  let tempArray = array;
   let element = searchingElement;
   let idx = tempArray.indexOf(element);
   if(idx == -1){indices.push(idx);}  //push -1 to array
@@ -78,16 +78,15 @@ function findIndexOfAllOccur(array,searchingElement) {
     indices.push(idx);
     idx = tempArray.indexOf(element, idx + 1);
   }
-  function searchedElemAndIndexPos() {
     return console.log("element: '" + element + "' index position: " + indices);
-  }
-  console.log(searchedElemAndIndexPos());
 }
+
 console.log(findIndexOfAllOccur(randomValuesToChar,'A'))
 console.log(findIndexOfAllOccur(randomValuesToChar,'R'))
 console.log(findIndexOfAllOccur(randomValuesToChar,'g'))
 console.log(findIndexOfAllOccur(randomValuesToChar,'T'))
 console.log(findIndexOfAllOccur(randomValuesToChar,'f'))
+console.log(findIndexOfAllOccur(randomValuesToChar,'l'))
 
 
 //let c= randomValuesToChar.filter(el => el === 'a');
