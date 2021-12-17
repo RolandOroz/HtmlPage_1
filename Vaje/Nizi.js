@@ -41,15 +41,8 @@ for (let i = 0; i < limit; i++) {
 
 //****************** Code checking ***************************************************
 
-// console.log("\na-z slice values= " + sliceASCII(decAtoZLower, 97, 124));
-// console.log("A-Z slice values= " + sliceASCII(decAtoZUpper, 65, 91));
-// console.log("\nASCII Table dec array --> " + decASCIITable);
-// console.log("\nA-Z array--> " + decAtoZUpper);
-// console.log("a-z array--> " + decAtoZLower);
-// console.log("\nCombined arrray --> " + combinedAaZzArray);
-// console.log(randomCreator(combinedAaZzArray));
-// console.log(random)
  console.log("new array of random numbers --> " + randomValues);
+//************************************************************************************
 
 //print converted dec values from random numbers to char --backwards  3. naloga
 //for (let n = 0; n < randomValues.length; n++) {  //-- forward looping
@@ -57,13 +50,6 @@ for (let n = randomValues.length - 1; n >= 0; n--) {  //--backwards looping
   randomValuesToChar[n] = String.fromCharCode(randomValues[n]);
 }
 console.log("converted dec values from random numbers to char --> " + randomValuesToChar);
-
-/*let searchTerm = 'a';
-const indexOfFirst = randomValuesToChar.indexOf(searchTerm);
-console.log("occurences1 is index num -> " + (indexOfFirst));
-console.log("occurences2 is index num ->" + randomValuesToChar.indexOf(searchTerm, (indexOfFirst+1)));
-console.log("occurences3 is index num ->" + randomValuesToChar.indexOf(searchTerm, (indexOfFirst+1)));
-let f = randomValuesToChar.toString();*/
 
 // function to find ALL occurrences of a searching element
 function findIndexOfAllOccur(array,searchingElement) {
@@ -111,10 +97,6 @@ while (position !== -1) {
 console.log(str);
 console.log("count " + count);*/
 
-
-
-
-
 //******************* ideas to implement for later ************************************
 
 /*//RANDOM FUNCTION EXMPL with Date.now  //TODO try out this method later
@@ -144,10 +126,5 @@ for (int i = 0; i < counter; i++)
 console.log(RandomCreator( 26, 1, 100));*/
 
 //********************** side notes & TODO list *******************************
-//TODO
-// 4. Izpiši vse pozicije A R g T f znakov na ekran. Če znaka ni v nizu izpiši vrednost -1.
-// Izpis naj bo naslednji:
-//   znak: A pozicije: 2, 6, 8
-// znak: B pozicije: 1, 8, 11
-// Izpis naj se izvrši na koncu in ne sproti med procesiranjem niza !
+
 
