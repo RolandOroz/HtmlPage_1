@@ -22,22 +22,35 @@ class Circle {
 // TODO making a function for random radius values
 let pcs = 5;
 let randomCircleArr = [];
+
 function randRadius() {
     let valueArr = [15, 6, 29, 12, 3];
     for (let i = 0; i < pcs; i++ ) {
         randomCircleArr.push(valueArr[Math.floor(Math.random()
             * pcs)]);
     }
+    // let Circle1 = new Circle(randomCircleArr[0].value);
+    // let Circle2 = new Circle(randomCircleArr[1]);
+    // let Circle3 = new Circle(randomCircleArr[2]);
+    // let Circle4 = new Circle(randomCircleArr[3]);
+    // let Circle5 = new Circle(randomCircleArr[4]);
+
 }
 
+
 //****************** Code checking ***************************************************
-let Circle1 = new Circle(2);
-console.log(Circle1.circArea() + " " + Circle1.circDiameter());
-console.log(Circle1);
-console.log(Circle1 instanceof Circle); //check if it is the wright class
-Circle1.printDescription(randRadius());
+let Circle01 = new Circle(6);
+console.log(Circle01);
+console.log("Area is: " + Circle01.circArea() + ", diameter is: " + Circle01.circDiameter());
+console.log(Circle01 instanceof Circle); //check if it is the wright class
 
 
-//console.log(randRadius())
-console.log(randomCircleArr)
+
+
+
+//*************************************************************************************
+//Circle01.circArea(randRadius());
+//console.log(randomCircleArr)
+//console.log(randomCircleArr)
+//console.log(Circle1)
 
