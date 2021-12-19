@@ -28,11 +28,11 @@ function randomCreator(array) {
   random = array[Math.floor(Math.random() * limit)]
 }*/
 
-//for loop to populat random items in to an array
+//for loop to populate random items in to an array
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operatorrray
 for (let i = 0; i < limit; i++) {
   randomValues[i] = combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)];
-  // randomValues.push(combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)]); isti kurac
+  // randomValues.push(combinedAaZzArray[Math.floor(Math.random() * combinedAaZzArray.length)]); same as above
 }
 
 //TIP**********
@@ -103,7 +103,8 @@ console.log("count " + count);*/
 function randomArr(array) {
 
   randomD = array[Date.now() % array.length];
-}*/
+}
+*/
 
 /* primer padajočega izpisa v C#
 public static void Izpis(int[] tab)
