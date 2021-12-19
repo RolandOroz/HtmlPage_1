@@ -26,5 +26,5 @@ function randRadius() {
 let Circle1 = new Circle(2);
 console.log(Circle1.circArea() + " " + Circle1.circDiameter());
 console.log(Circle1);
-console.log(Circle1 instanceof Circle);
+console.log(Circle1 instanceof Circle); //check if it is the wright class
 Circle1.printDescription();
