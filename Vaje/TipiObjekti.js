@@ -21,7 +21,7 @@ class Circle {
 
 // TODO making a function for random radius values
 let pcs = 5;
-let randomCircleArr = [];
+let randomCircleArr = [];  //random circle radius numbers
 
 function randRadius() {
     let valueArr = [15, 6, 29, 12, 3];
@@ -29,12 +29,6 @@ function randRadius() {
         randomCircleArr.push(valueArr[Math.floor(Math.random()
             * pcs)]);
     }
-    // let Circle1 = new Circle(randomCircleArr[0].value);
-    // let Circle2 = new Circle(randomCircleArr[1]);
-    // let Circle3 = new Circle(randomCircleArr[2]);
-    // let Circle4 = new Circle(randomCircleArr[3]);
-    // let Circle5 = new Circle(randomCircleArr[4]);
-
 }
 
 
