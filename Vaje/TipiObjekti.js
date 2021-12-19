@@ -32,11 +32,12 @@ for (let i = 0; i < pcs; i++) {
 
 //****************** Code checking ***************************************************
 let Circle01 = new Circle(6);
+console.log("\n***TEST***TEST***TEST***\n");
 console.log(Circle01);
 console.log("Area is: " + Circle01.circArea() + ", diameter is: " + Circle01.circDiameter());
 console.log(Circle01 instanceof Circle); //check if it is the wright class
 
-console.log(randomCircleArr)
+console.log(randomCircleArr);
 
 
 //*************************************************************************************
