@@ -14,10 +14,11 @@ class Circle {
     }
     //method DESCRIPTION of class
     printDescription() {
-        console.log('krog 1: ploščina ${radius} obseg: ${this.circDiameter}');
+        console.log('krog 1: ploščina ${this.circArea} obseg: ${this.circDiameter}');
     }
-
 }
+
+
 // TODO making a function for random radius values
 let pcs = 5;
 let randomCircleArr = [];
