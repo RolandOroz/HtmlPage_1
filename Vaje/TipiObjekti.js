@@ -1,3 +1,4 @@
+let randomCircleArr = [];  //random circle radius numbers
 // class
 class Circle {
     constructor(radius) {
@@ -6,12 +7,14 @@ class Circle {
 
     //method AREA
     circArea() {
-        return Math.PI*(this.radius * this.radius);
+        return Math.PI * (this.radius * this.radius);
     }
+
     //method DIAMETER
     circDiameter() {
         return 2 * Math.PI * this.radius;
     }
+
     //method DESCRIPTION of class
     printDescription() {
         console.log('krog 1: ploščina ${this.circArea} obseg: ${this.circDiameter}');
@@ -21,14 +24,9 @@ class Circle {
 
 // TODO making a function for random radius values
 let pcs = 5;
-let randomCircleArr = [];  //random circle radius numbers
-
-function randRadius() {
-    let valueArr = [15, 6, 29, 12, 3];
-    for (let i = 0; i < pcs; i++ ) {
-        randomCircleArr.push(valueArr[Math.floor(Math.random()
-            * pcs)]);
-    }
+let valueArr = [15, 6, 29, 12, 3];
+for (let i = 0; i < pcs; i++) {
+    randomCircleArr.push(valueArr[Math.floor(Math.random() * pcs)]);
 }
 
 
@@ -38,8 +36,7 @@ console.log(Circle01);
 console.log("Area is: " + Circle01.circArea() + ", diameter is: " + Circle01.circDiameter());
 console.log(Circle01 instanceof Circle); //check if it is the wright class
 
-
-
+console.log(randomCircleArr)
 
 
 //*************************************************************************************
