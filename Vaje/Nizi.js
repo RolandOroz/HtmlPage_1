@@ -1,8 +1,6 @@
 let randomValues = [];   //1.naloga
 const decASCIITable = []; //0-127 ASCII dec values
 let counterASCII = 127;
-
-
 let limit = 25; //random counter limit
 let randomValuesToChar = [];
 
@@ -22,11 +20,6 @@ let decAtoZLower = sliceASCII(decASCIITable, 97, 123);  //97-122 ASCII
 
 //joining two arrays in to one array of ASCII dec values from A-Z to a-z
 const combinedAaZzArray = decAtoZUpper.concat(decAtoZLower);
-
-/*//RANDOM FUNCTION EXMPL with Math.random
-function randomCreator(array) {
-  random = array[Math.floor(Math.random() * limit)]
-}*/
 
 //for loop to populate random items in to an array
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operatorrray
@@ -59,7 +52,7 @@ function findIndexOfAllOccur(array,searchingElement) {
   let idx = tempArray.indexOf(element);
   if(idx == -1){indices.push(idx);}  //push -1 to array
 
-  // loops through whole index
+// loops through whole index
   while (idx != -1) {
     indices.push(idx);
     idx = tempArray.indexOf(element, idx + 1);
@@ -74,29 +67,6 @@ console.log(findIndexOfAllOccur(randomValuesToChar,'T'))
 console.log(findIndexOfAllOccur(randomValuesToChar,'f'))
 console.log(findIndexOfAllOccur(randomValuesToChar,'l'))
 
-
-//let c= randomValuesToChar.filter(el => el === 'a');
-
-/*for (let i=0; i < randomValuesToChar.length; i++) {
-let d;
-  if(randomValuesToChar.indexOf('a') !== -1){
-    let d = randomValuesToChar[i];
-    console.log(d);
-  }
-}*/
-
-/*const str = randomValuesToChar.toString();
-let count = 0;
-let position = str.indexOf('a');
-
-//counter of occurrences
-while (position !== -1) {
-  count++;
-  position = str.indexOf('a', position + 1);
-}
-console.log(str);
-console.log("count " + count);*/
-
 //******************* ideas to implement for later ************************************
 
 /*//RANDOM FUNCTION EXMPL with Date.now  //TODO try out this method later
@@ -105,26 +75,6 @@ function randomArr(array) {
   randomD = array[Date.now() % array.length];
 }
 */
-
-/* primer padajočega izpisa v C#
-public static void Izpis(int[] tab)
-{
-    for (int i = 0; i < tab.Length; i++)
-    {
-        if(i % 10 == 0)
-        {
-            Console.WriteLine();
-        }
-        Console.Write(tab[i] + " ");
-    }
-}
-int[] tabStevil = new int[counter];
-for (int i = 0; i < counter; i++)
-{
-    tabStevil[i] += counter - i;
-}*/
-/*
-console.log(RandomCreator( 26, 1, 100));*/
 
 //********************** side notes & TODO list *******************************
 

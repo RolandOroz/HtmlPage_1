@@ -1,7 +1,7 @@
 // class
 class Circle {
-    constructor(_radius) {
-        this.radius = _radius;
+    constructor(radius) {
+        this.radius = radius;
     }
 
     //method AREA
@@ -29,6 +29,7 @@ function randRadius() {
     }
 }
 
+//****************** Code checking ***************************************************
 let Circle1 = new Circle(2);
 console.log(Circle1.circArea() + " " + Circle1.circDiameter());
 console.log(Circle1);
