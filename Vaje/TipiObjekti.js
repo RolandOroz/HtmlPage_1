@@ -26,12 +26,13 @@ class Circle {
 let pcs = 5;
 let valueArr = [15, 6, 29, 12, 3];
 for (let i = 0; i < pcs; i++) {
-    randomCircleArr.push(valueArr[Math.floor(Math.random() * pcs)]);
+    //randomCircleArr.push(valueArr[Math.floor(Math.random() * pcs)]);
+    randomCircleArr.push(new Circle([Math.ceil(Math.random() * pcs)])); //instantiate pcs(5x) circles with rand
 }
 
 
 //****************** Code checking ***************************************************
-let Circle01 = new Circle(6);
+let Circle01 = new Circle(randomCircleArr[0]);
 console.log("\n***TEST***TEST***TEST***\n");
 console.log(Circle01);
 console.log("Area is: " + Circle01.circArea() + ", diameter is: " + Circle01.circDiameter());
