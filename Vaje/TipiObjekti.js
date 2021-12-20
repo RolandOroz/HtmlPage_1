@@ -49,19 +49,14 @@ for (let i = 0; i < pcs; i++) {
 // randomCircleArr["getColor"] = '';
 
 let key = 'color';
-randomCircleArr[key] = '';
+randomCircleArr[key] = 'something';
 
 
 //****************** Code checking ***************************************************
 console.log("\n***TEST***TEST***TEST***\n");
-// console.log(Circle01);
-//let Circle01 = new Circle(randomCircleArr[0]);
-//console.log("Area is: " + randomCircleArr[0].circArea() + ", diameter is: " + randomCircleArr[0].circDiameter());
-// console.log(Circle01 instanceof Circle); //check if it is the right class
-
 console.log(randomCircleArr)
 console.log();
-console.log(Circle.color)
+console.log(randomCircleArr.color)
 
 console.log("\nAverage Diameter of " + pcs + " Circles, with the sum value of " + resultDiameterC + " is " + resultDiameterC/pcs);
 console.log("Average Area of " + pcs + " Circles, with the sum value of " + resultAreaC + " is " + resultAreaC/pcs);
