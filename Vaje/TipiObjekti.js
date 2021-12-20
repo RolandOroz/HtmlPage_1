@@ -1,4 +1,7 @@
 let randomCircleArr = [];  //random circle radius numbers
+let resultAreaC = 0;
+let resultDiameterC = 0;
+
 // class
 class Circle {
     constructor(radius) {
@@ -15,32 +18,53 @@ class Circle {
         return 2 * Math.PI * this.radius;
     }
 
+
+
     //method DESCRIPTION of class
     printDescription() {
-        console.log('krog 1: ploščina ${this.circArea} obseg: ${this.circDiameter}');
+        console.log('krog: ploščina ${this.circArea} obseg: ${this.circDiameter}');
     }
 }
 
-
-// TODO making a function for random radius values
+//pcs of circle to make
 let pcs = 5;
-let valueArr = [15, 6, 29, 12, 3];
+//let valueArr = [15, 6, 29, 12, 3];
 for (let i = 0; i < pcs; i++) {
-    //randomCircleArr.push(valueArr[Math.floor(Math.random() * pcs)]);
-    randomCircleArr.push(new Circle([Math.ceil(Math.random() * pcs)])); //instantiate pcs(5x) circles with rand
+//randomCircleArr.push(valueArr[Math.floor(Math.random() * pcs)]);
+
+// instantiate pcs(5x) circles with rand
+    randomCircleArr.push(new Circle([Math.ceil(Math.random()
+      * pcs)]));
+//sum of Area
+    resultAreaC += randomCircleArr[i].circArea();
+//sum of Diameter
+    resultDiameterC += randomCircleArr[i].circDiameter();
+//print out all randCircles
+    console.log("Circle " + (i+1) + ": Area is: " + randomCircleArr[i].circArea()
+      + ", Diameter is: " + randomCircleArr[i].circDiameter() + " of " + Object.entries(randomCircleArr[i]));
 }
+
+// randomCircleArr["color"] = '';
+// randomCircleArr["setColor"] = '';
+// randomCircleArr["getColor"] = '';
+
+let key = 'color';
+randomCircleArr[key] = '';
 
 
 //****************** Code checking ***************************************************
-let Circle01 = new Circle(randomCircleArr[0]);
 console.log("\n***TEST***TEST***TEST***\n");
-console.log(Circle01);
-console.log("Area is: " + Circle01.circArea() + ", diameter is: " + Circle01.circDiameter());
-console.log(Circle01 instanceof Circle); //check if it is the wright class
+// console.log(Circle01);
+//let Circle01 = new Circle(randomCircleArr[0]);
+//console.log("Area is: " + randomCircleArr[0].circArea() + ", diameter is: " + randomCircleArr[0].circDiameter());
+// console.log(Circle01 instanceof Circle); //check if it is the right class
 
-console.log(randomCircleArr);
+console.log(randomCircleArr)
+console.log();
+console.log(Circle.color)
 
-
+console.log("\nAverage Diameter of " + pcs + " Circles, with the sum value of " + resultDiameterC + " is " + resultDiameterC/pcs);
+console.log("Average Area of " + pcs + " Circles, with the sum value of " + resultAreaC + " is " + resultAreaC/pcs);
 //*************************************************************************************
 //Circle01.circArea(randRadius());
 //console.log(randomCircleArr)
