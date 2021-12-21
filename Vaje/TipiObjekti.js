@@ -21,7 +21,7 @@ class Circle {
 
 let key = 'color';
 randomCircleArr[key] = 'no color defined';
-randomCircleArr["setColor"] = function(color) { randomCircleArr.color = color};  //setting the color
+//randomCircleArr["setColor"] = function(color) { randomCircleArr.color = color};  //setting the color
 
 //pcs of circle to make
 let pcs = 5;
@@ -36,12 +36,11 @@ for (let i = 0; i < pcs; i++) {
      this.color = colorS;
   }
   circle.setColor('f3f3fe')
-  circle.getColor = function() {
-    this.getColor = this.color;
-    return this.getColor.value
+  circle.getColor = function (){
+      return getColor = circle.color;
   }
 
-console.log("getColor ==> " + randomCircleArr.getColor)
+console.log(circle.getColor())
 
 
 // instantiate pcs(5x) circles with rand
