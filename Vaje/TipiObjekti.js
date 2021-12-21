@@ -1,7 +1,6 @@
 let randomCircleArr = [];  //random circle radius numbers
 let resultAreaC = 0;
 let resultDiameterC = 0;
-let colorC = 0;
 
 // class
 class Circle {
@@ -18,44 +17,33 @@ class Circle {
     circDiameter() {
         return 2 * Math.PI * this.radius;
     }
-
-    //method DESCRIPTION of class
-    printDescription() {
-        console.log('krog: ploščina ${this.circArea} obseg: ${this.circDiameter}');
-    }
 }
 
 let key = 'color';
 randomCircleArr[key] = 'no color defined';
 randomCircleArr["setColor"] = function(color) { randomCircleArr.color = color};  //setting the color
-// Object.defineProperty(randomCircleArr, "setColor", {
-//   set : function(colorS) { randomCircleArr.color = colorS}
-// });
-//get color method
-
-
 
 //pcs of circle to make
 let pcs = 5;
-//let valueArr = [15, 6, 29, 12, 3];
+
 for (let i = 0; i < pcs; i++) {
 //randomCircleArr.push(valueArr[Math.floor(Math.random() * pcs)]);
-  let circle = new Circle([Math.ceil(Math.random() * pcs)]);
-  /*Object.defineProperty(circle, "color", {
-    get : function () {
-      return circle.color;
-    },
-    set : function (color) {
-      circle.color = color;
-    }
-  });
-  circle.setColor('f3f3fe');*/
 
-  circle.setColor = function (color) {
-    this.setColor = color;
+  let circle = new Circle([Math.ceil(Math.random() * pcs)]);
+
+  circle.color = 'color not defined'
+  circle.setColor = function (colorS) {
+     this.color = colorS;
   }
-  circle.setColor('5555')
-  //circle.color = ''
+  circle.setColor('f3f3fe')
+  circle.getColor = function() {
+    this.getColor = this.color;
+    return this.getColor.value
+  }
+
+console.log("getColor ==> " + randomCircleArr.getColor)
+
+
 // instantiate pcs(5x) circles with rand
     randomCircleArr.push(circle);
 //sum of Area
@@ -65,7 +53,7 @@ for (let i = 0; i < pcs; i++) {
 
 //print out AREA & DIAMETER & RADIUS
     console.log("Circle " + (i+1) + ": Area is: " + randomCircleArr[i].circArea()
-      + ", Diameter is: " + randomCircleArr[i].circDiameter() + " of " + Object.entries(randomCircleArr[i]));
+      + ", Diameter is: " + randomCircleArr[i].circDiameter());
 //print out
     console.log(" Circle " + (i+1) + ": Radius: " + randomCircleArr[i].radius + " Color: " + circle.color);
 }
@@ -75,8 +63,6 @@ console.log("Average Area of " + pcs + " Circles, with the sum value of " + resu
 
 //****************** Code checking ***************************************************
 console.log("\n*****************\n");
-console.log(randomCircleArr.setColor('555'))
-console.log(randomCircleArr.color)
 
 //console.log("*****changed***********\n");
 // console.log(randomCircleArr.color)
@@ -87,8 +73,10 @@ console.log(randomCircleArr.color)
 // console.log(randomCircleArr);
 
 console.log("***********************************  AFTER DESTROY **************************");
-
-//destroy by keys
+//destroy by keys you can
 Object.keys(randomCircleArr).forEach(key => delete randomCircleArr[key]);
 console.log("randomCircleArr ==> " + randomCircleArr);
 console.log(randomCircleArr);
+randomCircleArr = null;   // ce hoces vse zbrisat
+console.log(randomCircleArr);
+
