@@ -32,12 +32,13 @@ for (let i = 0; i < pcs; i++) {
   let circle = new Circle([Math.ceil(Math.random() * pcs)]);
 
   circle.color = 'color not defined'
-  circle.setColor = function (colorS) {
-     this.color = colorS;
+  //getter always self reference --> "this."
+  circle.setColor = function (color) {
+     this.color = color;
   }
   circle.setColor('f3f3fe')
   circle.getColor = function (){
-      return getColor = circle.color;
+      return this.color;
   }
 
 console.log(circle.getColor())
