@@ -2,7 +2,7 @@
 
 //NODE
 class TreeNode {
-  constructor(id_Node, nameValue_Node, dateValue_Node, parent_Node, children_Node) {
+  constructor(id_Node, nameValue_Node, dateValue_Node, parent_Node, children_Node, level_Node) {
     //values
     this.idValue_Node = id_Node;
     this.nameValue_Node = nameValue_Node; //output --> N{nivo}_{index vozlišča v seznamu}
@@ -10,7 +10,16 @@ class TreeNode {
     //parent & child
     this.parent_Node = parent_Node;
     this.children_Node = children_Node;
+    this.level_Node = level_Node;
   }
+  level_Node_Idx() {
+
+    return arrNodeLevel[Math.floor(Math.random() * 3)];
+  }
+  nodes() {
+    return randArrIdx[Math.floor(Math.random() * 31)];
+  }
+
 }
 
 //TREE
@@ -19,18 +28,22 @@ class OneTree {
     this.root =new TreeNode();
   }
 }
-let arrNodeLevel = [0,1,2,3];
+//*************************************************************---LGC
+const root = 0;
+const arrNodeLevel = [1,2,3];
 let randArrForNode = [];
-let randArrIdx = [];
+const randArrIdx = [];
 let nodeOne;
 let childOne;
-for(let i = 0; i < 31; i++) {
+for(let i = 1; i < 31; i++) {
   randArrForNode[i] = ([i] + (randomizer()));
   randArrIdx[i] = i;
 
   nodeOne = new TreeNode(arrNodeLevel[0]);
   childOne = new TreeNode(randArrForNode[i]);
 }
+//**************************************************************
+
 //random number creator function
 function randomizer() {
 //random numbers
@@ -49,8 +62,10 @@ function randomizer() {
 
 //*******TEST**********
 
-console.log(randomizer())
-console.log(nodeOne)
-console.log(childOne)
+//console.log(randomizer())
+//console.log(nodeOne)
+
 console.log(randArrForNode)
 console.log(randArrIdx)
+console.log("Level ==>> " + childOne.level_Node_Idx())
+console.log("Nodes ==>> " + childOne.nodes())
