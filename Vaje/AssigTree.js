@@ -4,12 +4,12 @@ const d = new Date()
 class TreeNode {
   constructor(id_Node, nameValue_Node, dateValue_Node, parent_Node, children_Node, level_Node) {
     //values
-    this.idValue_Node = id_Node;
+    this.idValue_Node = randomizer();
     this.nameValue_Node = nameValue_Node; //output --> N{nivo}_{index vozlišča v seznamu}
-    this.dateValue_Node = dateValue_Node;
+    this.dateValue_Node = "1.1.2021";
     //parent & child
     this.parent_Node = parent_Node;
-    this.children_Node = children_Node;
+    this.children_Node = [];
     this.level_Node = level_Node;
   }
   depth_Node_idx() {
@@ -17,10 +17,7 @@ class TreeNode {
   }
 }
 
-function randNodeNum(num) {
-  let numN = [Math.ceil(Math.random() * num)];
-  return numN;
-}
+
 
 //TREE
 class OneTree {
@@ -37,6 +34,13 @@ let arrDay = [];
 let day = randDay[4];
 
 newdate = day + "." + month + "." + year;
+
+
+//random number for node creation
+function randNodeNum(num) {
+  return [Math.ceil(Math.random() * num)];
+}
+
 
 
 
@@ -75,4 +79,6 @@ function randomizer() {
 // console.log(newdate)
 // console.log(randDay)
  console.log(randNodeNum(30))
+let node = new TreeNode();
+console.log(node)
 
