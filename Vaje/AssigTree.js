@@ -1,5 +1,5 @@
 
-
+const d = new Date()
 //NODE
 class TreeNode {
   constructor(id_Node, nameValue_Node, dateValue_Node, parent_Node, children_Node, level_Node) {
@@ -12,14 +12,14 @@ class TreeNode {
     this.children_Node = children_Node;
     this.level_Node = level_Node;
   }
-  level_Node_Idx() {
-
-    return arrNodeLevel[Math.floor(Math.random() * 3)];
+  depth_Node_idx() {
+    return Math.floor(Math.random() * 4);
   }
-  nodes() {
-    return randArrIdx[Math.floor(Math.random() * 31)];
-  }
+}
 
+function randNodeNum(num) {
+  let numN = [Math.ceil(Math.random() * num)];
+  return numN;
 }
 
 //TREE
@@ -29,19 +29,22 @@ class OneTree {
   }
 }
 //*************************************************************---LGC
-const root = 0;
-const arrNodeLevel = [1,2,3];
-let randArrForNode = [];
-const randArrIdx = [];
-let nodeOne;
-let childOne;
-for(let i = 1; i < 31; i++) {
-  randArrForNode[i] = ([i] + (randomizer()));
-  randArrIdx[i] = i;
+let dateObj = new Date();
+let month = dateObj.getUTCMonth() + 1; //months from 1-12
+const randDay = [];
+let year = 2021;
+let arrDay = [];
+let day = randDay[4];
 
-  nodeOne = new TreeNode(arrNodeLevel[0]);
-  childOne = new TreeNode(randArrForNode[i]);
-}
+newdate = day + "." + month + "." + year;
+
+
+
+
+
+
+
+
 //**************************************************************
 
 //random number creator function
@@ -58,14 +61,18 @@ function randomizer() {
   // console.log(id2)
   return parseInt(algR.toString().slice(-6, -1));
 }
+//random date creator function
+
+
+
+
 
 
 //*******TEST**********
 
-//console.log(randomizer())
-//console.log(nodeOne)
 
-console.log(randArrForNode)
-console.log(randArrIdx)
-console.log("Level ==>> " + childOne.level_Node_Idx())
-console.log("Nodes ==>> " + childOne.nodes())
+// console.log(d.toLocaleDateString('de-DE'))
+// console.log(newdate)
+// console.log(randDay)
+ console.log(randNodeNum(30))
+
