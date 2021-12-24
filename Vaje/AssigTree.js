@@ -15,12 +15,23 @@ class TreeNode {
 
 //TREE
 class OneTree {
-  constructor(id_Node, ) {
-
+  constructor(id_Node) {
+    this.root =new TreeNode();
   }
 }
+let arrNodeLevel = [0,1,2,3];
+let randArrForNode = [];
+let randArrIdx = [];
+let nodeOne;
+let childOne;
+for(let i = 0; i < 31; i++) {
+  randArrForNode[i] = ([i] + (randomizer()));
+  randArrIdx[i] = i;
 
-//random number function
+  nodeOne = new TreeNode(arrNodeLevel[0]);
+  childOne = new TreeNode(randArrForNode[i]);
+}
+//random number creator function
 function randomizer() {
 //random numbers
   let rand = Date.now([Math.floor(Math.random() * Date.now) / 1000]);
@@ -38,4 +49,8 @@ function randomizer() {
 
 //*******TEST**********
 
-console.log()
+console.log(randomizer())
+console.log(nodeOne)
+console.log(childOne)
+console.log(randArrForNode)
+console.log(randArrIdx)
