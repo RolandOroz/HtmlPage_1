@@ -16,7 +16,7 @@ children: An array of pointers to the node's children
 
 The main operations of a tree data structure are:
 
-  insert: Inserts a node as a child of the given parent node
+insert: Inserts a node as a child of the given parent node
 remove: Removes a node and its children from the tree
 find: Retrieves a given node
 preOrderTraversal: Traverses the tree by recursively traversing each node followed by its children
@@ -43,8 +43,6 @@ abe.children.push(homer);
 homer.children.push(bart, lisa, maggie);
 
 console.log(abe)
-
-
 
 //*********SOURCES****************************
 //https://www.30secondsofcode.org/articles/s/js-data-structures-tree
