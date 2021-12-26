@@ -55,6 +55,7 @@ function treeDepth(depth) {
 }
 let node = new TreeNode();
 let num = randSiblingNum(30);
+let children_Node = [];
 
 function generNode(num) {
   console.log(num);
@@ -73,5 +74,6 @@ console.log(node)
 console.log(randSiblingNum(4))
 console.log("random nodes --> " + num);
 console.log(generNode(num));
+
 
 
