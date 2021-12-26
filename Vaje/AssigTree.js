@@ -36,7 +36,6 @@ class OneTree {
 
 
 
-
 //random date creation **TEST**
 function randDate (month, year, days) {
   // this.month;  //use Date.now()!!
@@ -49,16 +48,30 @@ function randDate (month, year, days) {
 function randSiblingNum(num) {
   return [Math.ceil(Math.random() * num)];
 }
+
 //tree depth setter
 function treeDepth(depth) {
   return Math.ceil(Math.random() * depth);
 }
+let node = new TreeNode();
+let num = randSiblingNum(30);
+
+function generNode(num) {
+  console.log(num);
+  const newNode = num - 1;
+  if(newNode >= 0) {
+    generNode(newNode);
+  }
+
+}
 
 //*******LOGS/TEST**********
 
- console.log("random nodes --> " + randSiblingNum(30));
-let node = new TreeNode();
+
+
 console.log(node)
 console.log(randSiblingNum(4))
+console.log("random nodes --> " + num);
+console.log(generNode(num));
 
 
