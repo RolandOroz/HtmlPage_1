@@ -26,13 +26,14 @@ function randNum(divider) {
   return Math.ceil((Math.random()) * Date.now() / divider);
 }
 
-//random date generator
+//random date generator   //TODO show only date with no time !!!!!!!!!!!!!!!!!!!!!!!
 function randomDay(year, month, randomDayInterval) {
   const date = new Date();
   date.setFullYear(year);
   date.setMonth(month);
   date.setDate(Math.ceil(Math.random() * randomDayInterval));
-  return new Intl.DateTimeFormat('de-DE').format(date);
+  //return new Intl.DateTimeFormat('de-DE', ).format(date);
+  return date;
 }
 
 
