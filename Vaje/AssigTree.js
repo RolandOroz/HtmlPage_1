@@ -1,13 +1,12 @@
 
 //************** NODE
 class TreeNode {
-  constructor(id_Node, nameValue_Node, dateValue_Node, parent_Node, children_Node, depth_Node) {
+  constructor(id_Node, nameValue_Node, dateValue_Node, depth_Node,children_Node) {
     //values
     this.idValue_Node = randNum(1000000)
     this.nameValue_Node = nameValue_Node; //output --> N{nivo}_{index vozlišča v seznamu}
     this.dateValue_Node = randomDay(2021,0,31)
-    //parent & child
-    this.parent_Node = parent_Node;
+    //child
     this.children_Node = [];
     this.depth_Node = depth_Node;
   }
@@ -61,20 +60,34 @@ function generateNode(num) {
 }
 
 //********* test **************
-let node = new TreeNode(randNum(1000000));
-let num = randSiblingNum(30);
-
-node.children_Node.push(new TreeNode(randNum(1000000),'bubu',randomDay(2021,0,31),1));
+let node = new TreeNode(randNum(1000000),'Root',randomDay(2021,0,31),0);
+let node2 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
+let node3 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
+let node4 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
+let node5 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 3);
+let node6 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 3);
+let node7 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
+let node8 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
+node.children_Node.push(node2,node4);
+node2.children_Node.push(node5, node6);
+node3.children_Node.push(node7,node8);
 
 //*******LOGS**********
+let num = randSiblingNum(30);
 console.log("random nodes --> " + num);
-console.log("genNode " + generateNode(randSiblingNum(30)));
+// console.log("genNode " + generateNode(randSiblingNum(30)));
 
-//console.log(child)
 
- console.log(node)
- console.log(node.children_Node)
- console.log();
+ console.log("\nDEPTH 0: ")
+ console.log(node);
+ console.log("\nDEPTH 1: ");
+console.log(node.children_Node)
+ console.log("\nDEPTH 2: ");
+console.log(node2.children_Node)
+console.log(node2.idValue_Node)
+ console.log("\nDEPTH 3: ");
+ console.log(node3.children_Node);
+
 
 //console.log("here " + generateNode(30))
 //********************************* test
