@@ -61,30 +61,21 @@ function generateNode(num) {
 }
 
 //********* test **************
-let node = new TreeNode();
+let node = new TreeNode(randNum(1000000));
 let num = randSiblingNum(30);
-let newTree1 = new TreeNode();
-node.children_Node.push(newTree1.children_Node);
-newTree1.children_Node.push(generateNode(30))
 
-
-
-
-
+node.children_Node.push(new TreeNode(randNum(1000000),'bubu',randomDay(2021,0,31),1));
 
 //*******LOGS**********
-
-
-
-
 console.log("random nodes --> " + num);
 console.log("genNode " + generateNode(randSiblingNum(30)));
 
 //console.log(child)
 
  console.log(node)
+ console.log(node.children_Node)
  console.log();
- console.log(newTree1)
+
 //console.log("here " + generateNode(30))
 //********************************* test
 
