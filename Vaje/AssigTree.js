@@ -1,25 +1,123 @@
-
+//random number for node creation
+function randSiblingNum(num) {
+  return [Math.ceil(Math.random() * num)];
+}
+const nu = randSiblingNum(30);
 //************** NODE
 class TreeNode {
-  constructor(id_Node, nameValue_Node, dateValue_Node, depth_Node,children_Node) {
+  constructor(id_Node, nodeName, dateValue_Node, depth_Node,children_Node) {
     //values
     this.idValue_Node = randNum(1000000)
-    this.nameValue_Node = nameValue_Node; //output --> N{nivo}_{index vozlišča v seznamu}
+    this.nodeName = nodeName; //output --> N{nivo}_{index vozlišča v seznamu}
     this.dateValue_Node = randomDay(2021,0,31)
     //child
-    this.children_Node = [];
+  //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
+    this.children_Node = children_Node//.from({length: nu});
     this.depth_Node = depth_Node;
   }
 
 }
 //************** TREE
 class OneTree {
-  constructor(id_Node) {
-    this.id_Node = id_Node;
-    this.children = [];
+  constructor() {
+    this.root = null;
+  }
+
+  //*************** snip ******************************
+  traverseBFS() {
+    // no root throw error
+    if(!this.root) {
+      throw new Error('Tree has no ROOT node!!');
+    }
+    /*
+    //start a new Queue
+    const queue = new Queue();
+    //keep a tally of all values in the tree
+    const treeValues = [];
+    //add root to queue
+    queue.enqueue(this.root);
+    //while queue is not empty
+    while (queue.size !== 0) {
+      //get TreeNode Children
+      const nodeChildren = queue.first.value.children;
+      //if node has children, loop and add each to queue
+      if (nodeChildren.length !== 0) {
+        nodeChildren.forEach(child => queue.enqueue(child));
+      }
+      //push the first item in the queue to the tree values
+      treeValues.push(queue.first.value);
+      //remove first node from queue
+      queue.dequeue();
+    }
+    //return values, should be all TreeNodes
+    return treeValues;
   }
 }
+//********************************** SNIP ************************
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+  //newnode goes to back of the line/end of the queue
+  enqueue(value) {
+    const newNode = new QueueNode(value);
+    //if queue is empty
+    if (this.size === 0) {
+      this.first = newNode;
+      this.last = newNode;
+      // add current first pointer to new first(new node), and make new node new first
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    //add 1 to size
+    this.size++;
 
+    return this;
+    //*************** snip ******************************
+
+  }
+  // dequeue nodes off the front of the line
+  dequeue() {
+    //if queue is empty return false
+    if (this.size === 0) return false;
+    //get dequeuedNode
+    const dequeuedNode = this.first;
+    //get new first (could be NULL if stack is length 1)
+    const newFirst = this.first.next;
+    //if newFirst is null, reassign last to newFirst(null)
+    if (!newFirst) {
+      this.last = newFirst;
+    }
+    //assign new first
+    this.first = newFirst;
+    //remove refernce to list
+    dequeuedNode.next = null;
+    //remove 1 from size
+    this.size--;
+    //return dequeuednode
+    return dequeuedNode;
+  }
+
+  log() {
+    let currentNode = this.first;
+    let i = 0;
+    while (currentNode) {
+      console.log(i, currentNode.value);
+      i++;
+      currentNode = currentNode.next;
+    }
+  }
+}
+class QueueNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;*/
+  }
+}
+//********************************** SNIP ************************
 
 //random id number
 function randNum(divider) {
@@ -32,17 +130,15 @@ function randomDay(year, month, randomDayInterval) {
   date.setFullYear(year);
   date.setMonth(month);
   date.setDate(Math.ceil(Math.random() * randomDayInterval));
+  date.setHours(0);
   //return new Intl.DateTimeFormat('de-DE', ).format(date);
-  return new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
+  return  date;
 }
 
 
 //*********************
 
-//random number for node creation
-function randSiblingNum(num) {
-  return [Math.ceil(Math.random() * num)];
-}
+
 
 //tree depth setter
 function treeDepth(depth) {
@@ -56,60 +152,74 @@ function WithoutTime(dateTime) {
 }
 
 // **********************************************TODO make an recursive node generator
-let child=[];
-function generateNode(num) {
-  child[num] += new TreeNode();
-  const newNode = num - 1;
-  if(child >= 0) {
-    generateNode(num);
+function nodeRecursiveIterator(arr, i) {
+  if (arr.length === i) {
+    return;
+  }
+  console.log(arr[i])
+  nodeRecursiveIterator(arr, ++i)
+}
+
+
+function nodeIterator(num) {
+  let end = randSiblingNum(num);
+  for (let i = 0; i < end; i ++) {
+    console.log(i);
+    let n = new TreeNode((randNum(1000000),'A',randomDay(2021,0,31), 1));
+    console.log(n)
+    //return n;
   }
 }
 
+console.log(nodeIterator(30))
+
 //********* test **************
-let node = new TreeNode(randNum(1000000),'Root',randomDay(2021,0,31),0);
-let node2 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
-let node3 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
-let node4 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
-let node5 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 3);
-let node6 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 3);
-let node7 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
-let node8 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
-node.children_Node.push(node2,node4);
-node2.children_Node.push(node5, node6);
-node3.children_Node.push(node7,node8);
+// let node = new TreeNode(randNum(1000000),'Root',randomDay(2021,0,31),0);
+//let node2 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
+//let node3 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
+// let node4 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
+// let node5 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 3);
+// let node6 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 3);
+// let node7 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
+// let node8 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
+const testTree = new OneTree();  //tree
+const testTree2 = new OneTree();
+testTree.root = new TreeNode(new TreeNode((randNum(1000000),'A',randomDay(2021,0,31), 1)));  // node
+testTree.root.children_Node.push(new TreeNode((randNum(1000000),'childA',randomDay(2021,0,31), 1)));
+testTree.root.children_Node.push(new TreeNode((randNum(1000000),'childB',randomDay(2021,0,31), 1)));
+testTree.root.children_Node[0].children_Node.push(new TreeNode(randNum(1000000),'child2',randomDay(2021,0,31), 1));
+testTree.root.children_Node[1].children_Node.push(new TreeNode(randNum(1000000),'child3',randomDay(2021,0,31), 1));
+testTree.root.children_Node[1].children_Node.push(new TreeNode(randNum(1000000),'child3',randomDay(2021,0,31), 1));
+//testTree2.root.children_Node[nodeIterator(30)];
+
+
 
 //*******LOGS**********
-let num = randSiblingNum(30);
-console.log("random nodes --> " + num);
-// console.log("genNode " + generateNode(randSiblingNum(30)));
+//  let num = randSiblingNum(30);
+// console.log("random nodes --> " + num);
+//console.log("genNode " + generateNode(randSiblingNum(30)));
 
 
- console.log("\nDEPTH 0: ")
- console.log(node);
- console.log("\nDEPTH 1: ");
-console.log(node.children_Node)
- console.log("\nDEPTH 2: ");
-console.log(node2.children_Node)
-console.log(node2.idValue_Node)
- console.log("\nDEPTH 3: ");
- console.log(node3.children_Node);
- console.log(randomDay(2021,0,31));
+
+testTree.root = new TreeNode();
+
+console.log(testTree);
+console.log(testTree);
+console.log();
+console.log();
+console.log();
+console.log();
+console.log();
+//console.log(testTree.traverseBFS());
+console.log("HERE")
+nodeRecursiveIterator(testTree.root.children_Node, 0)
 
 
-//console.log("here " + generateNode(30))
 //********************************* test
+
 
 
 
 
 //****** ideas ***************
 
-/*//random number creator function
-function randomizer(counter) {
-//random numbers
-  let rand = Date.now([Math.floor(Math.random() * Date.now) / counter]);
-  let divis = rand.toString().slice(7, -1) * rand;
-  let facX = ((rand / divis).toString().slice(4, -1) * rand / divis);
-  let algR = Math.floor(divis / rand / facX.toString().slice(0, 4) * 1000) + rand.toString().slice(0, 4) / rand.toString().slice(8, -1);
-  return parseInt(algR.toString().slice(-6, -1));
-}*/
