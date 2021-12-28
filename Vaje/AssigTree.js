@@ -130,7 +130,7 @@ function randNum(divider) {
   return Math.ceil((Math.random()) * Date.now() / divider);
 }
 
-//random date generator   //TODO show only date with no time !!!!!!!!!!!!!!!!!!!!!!!
+//random date generator
 function randomDay(year, month, randomDayInterval) {
   const date = new Date();
   date.setFullYear(year);
@@ -140,49 +140,16 @@ function randomDay(year, month, randomDayInterval) {
   return  date;
 }
 
-
-//*********************
-
-
-
-//tree depth setter
-function treeDepth(depth) {
-  return Math.ceil(Math.random() * depth);
-}
-
 // **********************************************TODO make an recursive node generator
-
-
-//array generator
-function* range(start, end, step) {
-  while (start < end) {
-    yield start;
-    start += step;
-  }
-}
-let out = Array.from(range(0,10,1));
-console.log(out);
 
 //while loop(start, x loops, step)
 function nodeIterator(fromNumber, loops, step) {
   while (fromNumber < loops) {
-    fromNumber = fromNumber+step;
-    console.log(fromNumber);
+    fromNumber = fromNumber+step;    ;
     let n = new TreeNode((randNum(1000000),'A',randomDay(2021,0,31), 1));
     console.log(n);
   }
 }
-//nodeIterator(0,4,1);
-
-
-
-console.log("************************************************")
-console.log(nodeIterator(0,4,1))
-
-console.log(nodeArray)
-
-console.log("************************************************")
-
 
 //********* test **************
 // let node = new TreeNode(randNum(1000000),'Root',randomDay(2021,0,31),0);
@@ -200,14 +167,6 @@ console.log("************************************************")
 
 
 //*******LOGS**********
-//  let num = randSiblingNum(30);
-// console.log("random nodes --> " + num);
-//console.log("genNode " + generateNode(randSiblingNum(30)));
-
-
-
-
-
 // console.log(testTree);
 // console.log(testTree);
 // console.log();
@@ -217,10 +176,15 @@ console.log("************************************************")
 // console.log();
 //console.log(testTree.traverseBFS());
 console.log("HERE")
+let out = Array.from(range(0,10,1));
+console.log(out);
+console.log("************************************************")
+console.log(nodeIterator(0,4,1))
+console.log(nodeArray)
+console.log("************************************************")
 
 
-
-//********************************* test
+//*********************************
 
 //TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
 
@@ -228,3 +192,10 @@ console.log("HERE")
 
 //****** ideas ***************
 
+//array generator
+function* range(start, end, step) {
+  while (start < end) {
+    yield start;
+    start += step;
+  }
+}
