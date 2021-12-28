@@ -33,7 +33,7 @@ function randomDay(year, month, randomDayInterval) {
   date.setMonth(month);
   date.setDate(Math.ceil(Math.random() * randomDayInterval));
   //return new Intl.DateTimeFormat('de-DE', ).format(date);
-  return date;
+  return new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
 }
 
 
@@ -49,6 +49,11 @@ function treeDepth(depth) {
   return Math.ceil(Math.random() * depth);
 }
 
+function WithoutTime(dateTime) {
+  var date = new Date(dateTime.getTime());
+  date.setHours(0, 0, 0, 0);
+  return date;
+}
 
 // **********************************************TODO make an recursive node generator
 let child=[];
@@ -88,6 +93,7 @@ console.log(node2.children_Node)
 console.log(node2.idValue_Node)
  console.log("\nDEPTH 3: ");
  console.log(node3.children_Node);
+ console.log(randomDay(2021,0,31));
 
 
 //console.log("here " + generateNode(30))
