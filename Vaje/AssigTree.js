@@ -175,10 +175,7 @@ function nodeIterator(num) {
 console.log(nodeIterator(30))
 
 //********* test **************
-// let node = new TreeNode(randNum(1000000)class OneTree {
-  constructor() {
-    this.root = null;
-  },'Root',randomDay(2021,0,31),0);
+// let node = new TreeNode(randNum(1000000),'Root',randomDay(2021,0,31),0);
 //let node2 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
 //let node3 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
 // let node4 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
@@ -221,10 +218,9 @@ nodeRecursiveIterator(testTree.root.children_Node, 0)
 
 //********************************* test
 
-
+//TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
 
 
 
 //****** ideas ***************
 
-//TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
