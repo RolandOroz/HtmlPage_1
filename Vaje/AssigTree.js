@@ -151,13 +151,7 @@ function treeDepth(depth) {
 }
 
 // **********************************************TODO make an recursive node generator
-// function nodeRecursiveIterator(arr, i) {
-//   if (arr.length === i) {
-//     return;
-//   }
-//   console.log(arr[i])
-//   nodeRecursiveIterator(arr, ++i)
-// }
+
 
 //array generator
 function* range(start, end, step) {
@@ -183,8 +177,8 @@ function nodeIterator(fromNumber, loops, step) {
 
 
 console.log("************************************************")
-//console.log(nodeIterator(30))
-//console.log(nodeRecursiveIterator())
+console.log(nodeIterator(0,4,1))
+
 console.log(nodeArray)
 
 console.log("************************************************")
