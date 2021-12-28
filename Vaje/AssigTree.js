@@ -13,7 +13,7 @@ class TreeNode {
     //child
   //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
   //https://www.w3schools.com/jsref/jsref_from.asp
-    this.children_Node = children_Node//.from({length: nu});
+    this.children_Node = [];//Array.from({length: ), () => [];
     this.depth_Node = depth_Node;
   }
 
@@ -101,7 +101,7 @@ class Queue {
     //return dequeuednode
     return dequeuedNode;
   }
-
+children_Node//.from({length: nu});
   log() {
     let currentNode = this.first;
     let i = 0;
@@ -175,7 +175,10 @@ function nodeIterator(num) {
 console.log(nodeIterator(30))
 
 //********* test **************
-// let node = new TreeNode(randNum(1000000),'Root',randomDay(2021,0,31),0);
+// let node = new TreeNode(randNum(1000000)class OneTree {
+  constructor() {
+    this.root = null;
+  },'Root',randomDay(2021,0,31),0);
 //let node2 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
 //let node3 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
 // let node4 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
@@ -224,3 +227,4 @@ nodeRecursiveIterator(testTree.root.children_Node, 0)
 
 //****** ideas ***************
 
+//TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541

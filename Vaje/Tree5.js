@@ -1,15 +1,18 @@
-const randnumgen = //random number for node creation
+//random number for node creation
+const randnumgen =
   function randSiblingNum(num) {
     return [Math.ceil(Math.random() * num)];
   }
 
-function randTreeGenerator(value) {
+function randomTreeGenerator(value) {
   let stringR = ""
+
   class TreeNode {
     constructor(value) {
       this.value = value;
       this.children = [];
     }
+
   }
 
   class Tree {
@@ -17,5 +20,4 @@ function randTreeGenerator(value) {
       this.root = null;
     }
   }
-
 }
