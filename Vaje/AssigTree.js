@@ -12,6 +12,7 @@ class TreeNode {
     this.dateValue_Node = randomDay(2021,0,31)
     //child
   //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
+  //https://www.w3schools.com/jsref/jsref_from.asp
     this.children_Node = children_Node//.from({length: nu});
     this.depth_Node = depth_Node;
   }
