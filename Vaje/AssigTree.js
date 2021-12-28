@@ -9,7 +9,7 @@ const nodeArray = Array(nu);
 
 //************** NODE
 class TreeNode {
-  constructor(id_Node, nodeName, dateValue_Node, depth_Node,children_Node) {
+  constructor( nodeName) {
     //values
     this.idValue_Node = randNum(1000000)
     this.nodeName = nodeName; //output --> N{nivo}_{index vozlišča v seznamu}
@@ -18,7 +18,7 @@ class TreeNode {
   //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
   //https://www.w3schools.com/jsref/jsref_from.asp
     this.children_Node = [];//Array.from({length: ), () => [];
-    this.depth_Node = depth_Node;
+    //this.depth_Node = depth_Node;
   }
 }
 
@@ -74,27 +74,33 @@ function nodeIterator(fromNumber, loops, step) {
 // let node6 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 3);
 // let node7 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
 // let node8 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
-// const testTree = new OneTree();  //tree
+const testTree = new OneTree();  //tree
 // const testTree2 = new OneTree();
-//testTree.root = new TreeNode();
+testTree.root = new TreeNode(1);
+testTree.root.children_Node.push(new TreeNode(2));
+testTree.root.children_Node[0].children_Node.push(new TreeNode());
+testTree.root.children_Node[0].children_Node[0].children_Node.push(new TreeNode(3));
 
 
 
 //*******LOGS**********
+console.log(testTree);
+console.log(testTree.root.children_Node);
+console.log(testTree.root.children_Node[0].children_Node[0].children_Node);
 // console.log(testTree);
-// console.log(testTree);
 // console.log();
 // console.log();
 // console.log();
 // console.log();
 // console.log();
-//console.log(testTree.traverseBFS());
+console.log(testTree.traverseBFS());
+
 console.log("HERE")
 let out = Array.from(range(0,10,1));
 console.log(out);
 console.log("************************************************")
-console.log(nodeIterator(0,4,1))
-console.log(nodeArray)
+// console.log(nodeIterator(0,4,1))
+// console.log(nodeArray)
 console.log("************************************************")
 
 
