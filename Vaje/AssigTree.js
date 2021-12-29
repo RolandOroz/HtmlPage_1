@@ -4,45 +4,32 @@ function randSiblingNum(num) {
 }
 const nu = randSiblingNum(30);
 //random array length constant
-const nodeArray = Array(nu);
+//random id number
+function randNum(divider) {
+  return Math.ceil((Math.random()) * Date.now() / divider);
+}
 
 
 //************** NODE
 class TreeNode {
   constructor( nodeName) {
     //values
+    this.nodeName = "N" + nodeName; //output --> N{nivo}_{index vozlišča v seznamu}
     this.idValue_Node = randNum(1000000)
-    this.nodeName = nodeName; //output --> N{nivo}_{index vozlišča v seznamu}
+
     this.dateValue_Node = randomDay(2021,0,31)
     //child
   //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
   //https://www.w3schools.com/jsref/jsref_from.asp
-    this.children_Node = [];//Array.from({length: ), () => [];
+    this.children = [];//Array.from({length: ), () => [];
     //this.depth_Node = depth_Node;
   }
 }
 
+//random node array N0
+const nodeArray = randomNumbersOfNodeIterator('0');
 
-//************** TREE
-class OneTree {
-  constructor() {
-    this.root = [];
-  }
 
-  //*************** snip ******************************
-  traverseBFS() {
-    // no root throw error
-    if(!this.root) {
-      throw new Error('Tree has no ROOT node!!');
-    }
-  }
-}
-//********************************** SNIP ************************
-
-//random id number
-function randNum(divider) {
-  return Math.ceil((Math.random()) * Date.now() / divider);
-}
 
 //random date generator
 function randomDay(year, month, randomDayInterval) {
@@ -56,15 +43,26 @@ function randomDay(year, month, randomDayInterval) {
 
 // **********************************************TODO make an recursive node generator
 
-//while loop(start, x loops, step)
-function nodeIterator(fromNumber, loops, step) {
-  while (fromNumber < loops) {
-    fromNumber = fromNumber+step;    ;
-    let n = new TreeNode((randNum(1000000),'A',randomDay(2021,0,31), 1));
-    console.log(n);
-  }
+function rec(num) {
+  if(num > 4) return;
+  console.log(num);
+  num++;
+  rec(num);
 }
+rec(0);
 
+//while loop(start, x loops, step)
+function randomNumbersOfNodeIterator(level ) {
+  let xNodes = randSiblingNum(30);
+  let arrNode =[];
+  for (let i = 0; i < xNodes; i ++) {
+    arrNode[i] = new TreeNode(level + "_" + i , (randNum(1000000)), randomDay(2021, 0, 31));
+    console.log(i);
+  }return arrNode;
+}
+//console.log(nodeIterator());
+
+console.log(nodeArray);
 //********* test **************
 // let node = new TreeNode(randNum(1000000),'Root',randomDay(2021,0,31),0);
 //let node2 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
@@ -74,34 +72,34 @@ function nodeIterator(fromNumber, loops, step) {
 // let node6 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 3);
 // let node7 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
 // let node8 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 2);
-const testTree = new OneTree();  //tree
-// const testTree2 = new OneTree();
-testTree.root = new TreeNode(1);
-testTree.root.children_Node.push(new TreeNode(2));
-testTree.root.children_Node[0].children_Node.push(new TreeNode());
-testTree.root.children_Node[0].children_Node[0].children_Node.push(new TreeNode(3));
+// const testTree = new OneTree();  //tree
+// // const testTree2 = new OneTree();
+// testTree.root = new TreeNode(1);
+// testTree.root.children_Node.push(new TreeNode(2));
+// testTree.root.children_Node[0].children_Node.push(new TreeNode());
+// testTree.root.children_Node[0].children_Node[0].children_Node.push(new TreeNode(3));
 
 
 
 //*******LOGS**********
-console.log(testTree);
-console.log(testTree.root.children_Node);
-console.log(testTree.root.children_Node[0].children_Node[0].children_Node);
+// console.log(testTree);
+// console.log(testTree.root.children_Node);
+// console.log(testTree.root.children_Node[0].children_Node[0].children_Node);
 // console.log(testTree);
 // console.log();
 // console.log();
 // console.log();
 // console.log();
 // console.log();
-console.log(testTree.traverseBFS());
+//console.log(testTree.traverseBFS());
 
-console.log("HERE")
-let out = Array.from(range(0,10,1));
-console.log(out);
-console.log("************************************************")
-// console.log(nodeIterator(0,4,1))
-// console.log(nodeArray)
-console.log("************************************************")
+// console.log("HERE")
+// let out = Array.from(range(0,5,1));
+// console.log(out);
+// console.log("************************************************")
+//
+// // console.log(nodeArray)
+// console.log("************************************************")
 
 
 //*********************************
@@ -113,9 +111,17 @@ console.log("************************************************")
 //****** ideas ***************
 
 //array generator
-function* range(start, end, step) {
-  while (start < end) {
-    yield start;
-    start += step;
-  }
-}
+// function* range(start, end, step) {
+//   while (start < end) {
+//     yield start;
+//     start += step;
+//   }
+// }
+
+// const recurToN = (number = 1) => {
+//   if (number > 4) return;
+//   console.log(number);
+//   number++;
+//   recurToN(number);
+// }
+// recurToN();
