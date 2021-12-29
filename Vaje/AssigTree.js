@@ -2,7 +2,7 @@
 function randSiblingNum(num) {
   return [Math.ceil(Math.random() * num)];
 }
-const nu = randSiblingNum(30);
+
 //random array length constant
 //random id number
 function randNum(divider) {
@@ -14,10 +14,10 @@ function randNum(divider) {
 class TreeNode {
   constructor( nodeName) {
     //values
-    this.nodeName = "N" + nodeName; //output --> N{nivo}_{index vozlišča v seznamu}
-    this.idValue_Node = randNum(1000000)
+    this.nodeName = nodeName;
+    this.idValueNode = randNum(1000000)
 
-    this.dateValue_Node = randomDay(2021,0,31)
+    this.dateValueNode = randomDay(2021,0,31)
     //child
   //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
   //https://www.w3schools.com/jsref/jsref_from.asp
@@ -27,9 +27,7 @@ class TreeNode {
 }
 
 //random node array N0
-const nodeArray = randomNumbersOfNodeIterator('0');
-
-
+let nodeArray = randomNumbersOfNodeIterator(0);
 
 //random date generator
 function randomDay(year, month, randomDayInterval) {
@@ -42,27 +40,53 @@ function randomDay(year, month, randomDayInterval) {
 }
 
 // **********************************************TODO make an recursive node generator
-
+//recursive node level
 function rec(num) {
   if(num > 4) return;
   console.log(num);
   num++;
   rec(num);
 }
-rec(0);
+//rec(0);
+function recursiveNodeLevel(from,arr) {
+  let x = arr;
+  let level = 4;
+  if(from > level) return;
+  console.log(from);
+  from++;
+  recursiveNodeLevel(from);
+}
+recursiveNodeLevel(0);
 
-//while loop(start, x loops, step)
+let testTree = randomNumbersOfNodeIterator(0);
+ testTree.children[0].children.push(new TreeNode(1));
+ testTree.children[1].children.push(new TreeNode(1));
+// testTree.children[1].children[0].children.push(new TreeNode(1));
+// testTree.children[2].children.push(new TreeNode(1));
+
+
+
+//node iterator
 function randomNumbersOfNodeIterator(level ) {
   let xNodes = randSiblingNum(30);
-  let arrNode =[];
+  let arrNode = new TreeNode("N" + level );
+  if(level > 3) return;
   for (let i = 0; i < xNodes; i ++) {
-    arrNode[i] = new TreeNode(level + "_" + i , (randNum(1000000)), randomDay(2021, 0, 31));
-    console.log(i);
+    arrNode.children.push(new TreeNode("N" + level + "_" + i , (randNum(1000000)),
+      randomDay(2021, 0, 31)));
+
   }return arrNode;
 }
-//console.log(nodeIterator());
+// let xNodes = randSiblingNum(30);
+// let arrNode =[];
+// for (let i = 0; i < xNodes; i ++) {
+//   arrNode[i] = new TreeNode("N" + level + "_" + i , (randNum(1000000)), randomDay(2021, 0, 31));
+// }return arrNode;
+// }
 
-console.log(nodeArray);
+console.log(testTree)
+
+//console.log(nodeArray);
 //********* test **************
 // let node = new TreeNode(randNum(1000000),'Root',randomDay(2021,0,31),0);
 //let node2 = new TreeNode(randNum(1000000),'child',randomDay(2021,0,31), 1);
@@ -125,3 +149,10 @@ console.log(nodeArray);
 //   recurToN(number);
 // }
 // recurToN();
+
+// let xNodes = randSiblingNum(30);
+// let arrNode =[];
+// for (let i = 0; i < xNodes; i ++) {
+//   arrNode[i] = new TreeNode("N" + level + "_" + i , (randNum(1000000)), randomDay(2021, 0, 31));
+// }return arrNode;
+// }
