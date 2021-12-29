@@ -58,26 +58,34 @@ function recursiveNodeLevel(from,arr) {
 }
 recursiveNodeLevel(0);
 
-let testTree = randomNumbersOfNodeIterator(0);
- testTree.children[0].children.push(new TreeNode(1));
- testTree.children[1].children.push(new TreeNode(1));
- testTree.children[1].children[0].children.push(new TreeNode(2));
- testTree.children[1].children[0].children[0].children.push(new TreeNode(3));
- testTree.children[1].children[0].children[0].children[0].children.push(new TreeNode(4));
- testTree.children[2].children.push(new TreeNode(1));
+// let testTree = randomNumbersOfNodeIterator(0);
+//  testTree.children[0].children.push(new TreeNode(1));
+//  testTree.children[1].children.push(new TreeNode(1));
+//  testTree.children[2].children.push(new TreeNode(1));
+//  testTree.children[3].children.push(new TreeNode(1));
+//  testTree.children[1].children[0].children.push(new TreeNode(2));
+//  testTree.children[1].children[0].children[0].children.push(new TreeNode(3));
+//  testTree.children[1].children[0].children[0].children[0].children.push(new TreeNode(4));
+//  testTree.children[2].children.push(new TreeNode(1));
 
 
 
 //node iterator
 function randomNumbersOfNodeIterator(level ) {
-  let xNodes = randSiblingNum(30);
-  let arrNode = new TreeNode("N" + level );  //TODO samo v array
-  if(level > 3) return;
-  for (let i = 0; i < xNodes; i ++) {
-    arrNode.children.push(new TreeNode("N" + level + "_" + i , (randNum(1000000)),
-      randomDay(2021, 0, 31)));
+  // let xNodes = randSiblingNum(30);
+  // let arrNode = new TreeNode("N" + level );  //TODO just array
+  // if(level > 3) return;
+  // for (let i = 0; i < xNodes; i ++) {
+  //   arrNode.children.push(new TreeNode("N" + level + "_" + i , (randNum(1000000)),
+  //     randomDay(2021, 0, 31)));
+  //
+  // }return arrNode;
+let xNodes = randSiblingNum(30);
+let arrNode =[];
+for (let i = 0; i < xNodes; i ++) {
+  arrNode[i] = new TreeNode("N" + level + "_" + i , (randNum(1000000)), randomDay(2021, 0, 31));
+}return arrNode;
 
-  }return arrNode;
 }
 // let xNodes = randSiblingNum(30);
 // let arrNode =[];
@@ -86,7 +94,7 @@ function randomNumbersOfNodeIterator(level ) {
 // }return arrNode;
 // }
 
-console.log(testTree)
+console.log(nodeArray)
 
 //console.log(nodeArray);
 //********* test **************
