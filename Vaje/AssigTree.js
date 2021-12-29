@@ -71,7 +71,7 @@ let testTree = randomNumbersOfNodeIterator(0);
 //node iterator
 function randomNumbersOfNodeIterator(level ) {
   let xNodes = randSiblingNum(30);
-  let arrNode = new TreeNode("N" + level );
+  let arrNode = new TreeNode("N" + level );  //TODO samo v array
   if(level > 3) return;
   for (let i = 0; i < xNodes; i ++) {
     arrNode.children.push(new TreeNode("N" + level + "_" + i , (randNum(1000000)),
