@@ -61,8 +61,10 @@ recursiveNodeLevel(0);
 let testTree = randomNumbersOfNodeIterator(0);
  testTree.children[0].children.push(new TreeNode(1));
  testTree.children[1].children.push(new TreeNode(1));
-// testTree.children[1].children[0].children.push(new TreeNode(1));
-// testTree.children[2].children.push(new TreeNode(1));
+ testTree.children[1].children[0].children.push(new TreeNode(2));
+ testTree.children[1].children[0].children[0].children.push(new TreeNode(3));
+ testTree.children[1].children[0].children[0].children[0].children.push(new TreeNode(4));
+ testTree.children[2].children.push(new TreeNode(1));
 
 
 
