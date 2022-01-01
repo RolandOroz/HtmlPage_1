@@ -37,7 +37,7 @@ function randomDay(year, month, randomDayInterval) {
   return  date;
 }
 
-//
+//start array
 let randomStartNodeArray = randomNumbersOfNodeIterator(0);
 recursiveNodeLevel(randomStartNodeArray, randomStartNodeArray.length);
 //recursive node generator
