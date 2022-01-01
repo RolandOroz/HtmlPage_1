@@ -10,7 +10,7 @@ function randNum(divider) {
 
 //************** CLASS NODE
 class TreeNode {
-  constructor( nodeName) {
+  constructor( nodeName, children) {
     //values
     this.nodeName = nodeName;
     //random id value
@@ -20,12 +20,14 @@ class TreeNode {
     //child
   //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
   //https://www.w3schools.com/jsref/jsref_from.asp
-    this.children = [];//Array.from({length: ), () => [];
+    this.children = children;//Array.from({length: ), () => [];
     //this.depth_Node = depth_Node;
   }
 }
 
 //random node array level N0
+//let randomNodeArray = new TreeNode();
+//let randomNodeArray = [null];
 let randomNodeArray = randomNumbersOfNodeIterator(0);
 
 
@@ -44,79 +46,52 @@ function randomDay(year, month, randomDayInterval) {
 function rec(num) {
   if(num > 4) return;
   console.log(num);
+   randomNodeArray = randomNumbersOfNodeIterator(num-1);
   num++;
   rec(num);
 }
 
-//console.log(treArr)
-//rec(0);
-function recursiveNodeLevel1(num) {
-  if(num > 4) return;
-  console.log(num);
-  num++;
-  rec(num);
-}
-
-// //random numbers of node iterator(array)
-// function randomNumbersOfNodeIterator(numberSpan) {
-//   let xNodes = randSiblingNum(numberSpan);
-//   let arrNode = [];
-//   for (let i = 0; i < xNodes; i++) {
-//     arrNode[i] = i;
-//   }
-//   return arrNode;
-// }
 function randomNumbersOfNodeIterator(level) {
-  let xNodes = randSiblingNum(30);
+  let xNodes = randSiblingNum(6);
   let arrNode = [];
   for (let i = 0; i < xNodes; i++) {
     arrNode[i] = new TreeNode("N" + level + "_" + i, (randNum(1000000)), randomDay(2021, 0, 31));
   }
   return arrNode;
 }
-
+let hgt = recursiveNodeLevel(randomNodeArray, randomNodeArray.length);
 //**********
-function recursiveNodeLevel(base, i) {
-  if(i > 0) {
-   // base.map(randomNumbersOfNodeIterator(i+1));
-    recursiveNodeLevel[i - 1 ] = Array(Array.length).fill(randomNumbersOfNodeIterator(0));
-    return recursiveNodeLevel(base, i-1);
+function recursiveNodeLevel(base, i,j) {
+
+  if (i > 0) {
+    recursiveNodeLevel[i - 1] = base[i-1].children = randomNumbersOfNodeIterator((i));
+     recursiveNodeLevel[i - 1] = base[i-1].children.children = randomNumbersOfNodeIterator((i));
+     recursiveNodeLevel[i - 1] = base[i-1].children.children.children = randomNumbersOfNodeIterator((i));
+     recursiveNodeLevel[i - 1] = base[i-1].children.children.children.children = randomNumbersOfNodeIterator((i));
+    return recursiveNodeLevel(base, i -1  );
   }
-     return recursiveNodeLevel;
+  return recursiveNodeLevel;
 }
 
-//********* test **************
-
-//*******LOGS**********
-//console.log(recursiveNodeLevel(0));
-
-console.log()
-console.log(recursiveNodeLevel(randomNodeArray, randomNodeArray.length));
-
-console.log()
-console.log()
-console.log()
-console.log(randomNodeArray);
-console.log("index length ")
-console.log(randomNodeArray.length);
-console.log(randomNodeArray[0].children);
-
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-// console.log("************************************************")
-
-// console.log("************************************************")
-
-//*********************************
-
-
-
-
-
-
-
+//******* TEST / LOGS **********
+console.log("level 1 *************************************************************");
+  console.log(randomNodeArray);
+  console.log();
+  console.log();
+console.log("level 2 *************************************************************");
+  console.log(randomNodeArray[0].idValueNode);
+  console.log(randomNodeArray[0].children);
+  console.log();
+  console.log();
+console.log("level 3 *************************************************************");
+  console.log(randomNodeArray[0].children.idValueNode);
+  console.log(randomNodeArray[0].children.children);
+  console.log();
+  console.log();
+console.log("level 4 *************************************************************");
+  console.log(randomNodeArray[0].children[0].children.idValueNode);
+  console.log(randomNodeArray[0].children[0].children.children);
+ // console.log("****************************************")
 
 
 
