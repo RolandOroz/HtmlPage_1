@@ -38,11 +38,12 @@ function randomDay(year, month, randomDayInterval) {
 //start array
 let randomStartNodeArray = randomNumbersOfNodeIterator(0);
 recursiveNodeLevel(randomStartNodeArray, randomStartNodeArray.length);
+
 //recursive node generator
 function recursiveNodeLevel(base, i) {
   if (i > 0) {
     recursiveNodeLevel[i - 1] = base[i-1].children = randomNumbersOfNodeIterator((1));
-   // recursiveNodeLevel[i - 1] = base[i-1].children[i - 1].children = randomNumbersOfNodeIterator((2));
+    //recursiveNodeLevel[i - 1] = base[i-1].children[i - 1].children = randomNumbersOfNodeIterator((2));
     //recursiveNodeLevel[i - 1] = base[i-1].children[i - 1].children[i - 1].children = randomNumbersOfNodeIterator((3));
     // recursiveNodeLevel[i - 1] = base[i-1].children.children.children = randomNumbersOfNodeIterator((i));
     // recursiveNodeLevel[i - 1] = base[i-1].children.children.children.children = randomNumbersOfNodeIterator((i));
@@ -52,7 +53,7 @@ function recursiveNodeLevel(base, i) {
 }
 
 function randomNumbersOfNodeIterator(level) {
-  let xNodes = randSiblingNum(29);                                        //TODO fro Test set to 4, change to 29!!!!!!!!!!!!!!!
+  let xNodes = randSiblingNum(29);
   let arrNode = [];
   for (let i = 0; i < xNodes; i++) {
     arrNode[i] = new Node("N" + level + "_" + i, (randNum(1000000)), randomDay(2021, 0, 31));
