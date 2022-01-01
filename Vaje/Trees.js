@@ -23,27 +23,36 @@ preOrderTraversal: Traverses the tree by recursively traversing each node follow
 postOrderTraversal: Traverses the tree by recursively traversing each node's children followed by the node*/
 
 //TODO make an General tree
-
-//EXMPL implementing Tree******************************
-class TreeNode {
-  constructor(value) {
-    this.value = value;
-    this.children = [];
-  }
+//random number for node creation
+function randSiblingNum(num) {
+  return [Math.ceil(Math.random() * num)];
 }
-//EXMPL create nodes with values
-const abe = new TreeNode('Abe');
-const homer = new TreeNode('Homer');
-const bart = new TreeNode('Bart');
-const lisa = new TreeNode('Lisa');
-const maggie = new TreeNode('Maggie');
 
-//EXMPL associate root with is descendants
-abe.children.push(homer);
-homer.children.push(bart, lisa, maggie);
+//random start array for tree(forest) creation
+let randomStartArray = Array.from({length: Math.ceil(Math.random() * 30)}, () => null);
 
-console.log(abe)
+//XMPL implementing Tree******************************
+// class TreeNode {
+//   constructor(value) {
+//     this.value = value;
+//     this.children = [];
+//   }
+// }
+//
+// //EXMPL create nodes with values
+// const abe = new TreeNode('Abe');
+// const homer = new TreeNode('Homer');
+// const bart = new TreeNode('Bart');
+// const lisa = new TreeNode('Lisa');
+// const maggie = new TreeNode('Maggie');
+//
+// //EXMPL associate root with is descendants
+// abe.children.push(homer);
+// homer.children.push(bart, lisa, maggie);
+// console.log(abe)
 
+
+console.log(randomStartArray);
 //*********SOURCES****************************
 //https://www.30secondsofcode.org/articles/s/js-data-structures-tree
 //vozlišče = node

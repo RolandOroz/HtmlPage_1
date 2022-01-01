@@ -61,18 +61,8 @@ console.log(circle.getColor())
 console.log("\nAverage Diameter of " + pcs + " Circles, with the sum value of " + resultDiameterC + " is " + resultDiameterC/pcs);
 console.log("Average Area of " + pcs + " Circles, with the sum value of " + resultAreaC + " is " + resultAreaC/pcs);
 
-//****************** Code checking ***************************************************
-console.log("\n*****************\n");
-
-//console.log("*****changed***********\n");
-// console.log(randomCircleArr.color)
-// console.log(randomCircleArr.setColor('f3f3fe'));
-// console.log(randomCircleArr.color);
-// console.log("get color ==> " + randomCircleArr.getColor);
-// let colorAllC = randomCircleArr.setColor('f3f3fe');
-// console.log(randomCircleArr);
-
-console.log("***********************************  AFTER DESTROY **************************");
+//****************** Test ***************************************************
+console.log("\n***********************************  AFTER DESTROY **************************");
 //destroy by keys you can
 Object.keys(randomCircleArr).forEach(key => delete randomCircleArr[key]);
 console.log("randomCircleArr ==> " + randomCircleArr);
