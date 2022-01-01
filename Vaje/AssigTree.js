@@ -17,15 +17,13 @@ class Node {
     this.idValueNode = randNum(1000000)
     //random date value
     this.dateValueNode = randomDay(2021,0,31)
-    //child
-  //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
-  //https://www.w3schools.com/jsref/jsref_from.asp
-    this.children = [];//Array.from({length: ), () => [];
+                                          //child
+                                          //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
+                                          //https://www.w3schools.com/jsref/jsref_from.asp
+    this.children = [];
     //this.depth_Node = depth_Node;
-
   }
 }
-
 
 //random date generator
 function randomDay(year, month, randomDayInterval) {
@@ -62,9 +60,7 @@ function randomNumbersOfNodeIterator(level) {
   return arrNode;
 }
 
-
-
-//******* TEST / LOGS **********
+//****************************** TEST / LOGS ***************************************
 console.log("level 1 *************************************************************");
   console.log(randomStartNodeArray);
   console.log();
@@ -87,8 +83,6 @@ console.log("*******************************************************************
 
 
 
-
-//TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
 
 
 
@@ -134,3 +128,4 @@ console.log("*******************************************************************
 //   }
 //   return arrNode;
 // }
+//TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
