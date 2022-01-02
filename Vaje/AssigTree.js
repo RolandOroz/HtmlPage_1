@@ -4,24 +4,25 @@ function randSiblingNum(num) {
 }
 
 //random id number
-function randNum(divider) {
+function randomIdNumber(divider) {
   return Math.ceil((Math.random()) * Date.now() / divider);
 }
 
 //************** CLASS NODE
 class Node {
-  constructor( nodeName) {
+  constructor(nodeName, idValueNode) {
     //values
     this.nodeName = nodeName;
     //random id value
-    this.idValueNode = randNum(1000000)
+    this.idValueNode = idValueNode;//randNum(1000_000);
     //random date value
-    this.dateValueNode = randomDay(2021,0,31)
-                                          //child
-                                          //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
-                                          //https://www.w3schools.com/jsref/jsref_from.asp
+    this.dateValueNode = randomDay(2021, 0, 31);
+    //child
+    //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
+    //https://www.w3schools.com/jsref/jsref_from.asp
     this.children = [];
     //this.depth_Node = depth_Node;
+
   }
 }
 
@@ -56,31 +57,51 @@ function randomNumbersOfNodeIterator(level) {
   let xNodes = randSiblingNum(29);
   let arrNode = [];
   for (let i = 0; i < xNodes; i++) {
-    arrNode[i] = new Node("N" + level + "_" + i, (randNum(1000000)), randomDay(2021, 0, 31));
+    arrNode[i] = new Node("N" + level + "_" + i, randomIdNumber(1000_000), randomDay(2021, 0, 31));
   }
   return arrNode;
 }
 
+//duplicate checking
+function findDuplicates(searchArray, keyValue) {
+  let array = searchArray;
+  const uniqueValues = new Set(array.map(v => v[keyValue]));
+  if (uniqueValues.size < array.length) {
+    console.log('Duplicates are: ', uniqueValues.valueOf(), array.valueOf().length)
+  } else {
+    console.log("No Duplicates: ", uniqueValues.valueOf(), "\n#Of Arrays: " + array.valueOf().length);
+  }
+}
+
+findDuplicates(randomStartNodeArray, 'idValueNode')
+
+
+
 //****************************** TEST / LOGS ***************************************
-console.log("level 1 *************************************************************");
-  console.log(randomStartNodeArray);
-  console.log();
-  console.log();
-console.log("level 2 *************************************************************");
-  console.log(randomStartNodeArray[0].idValueNode);
-  console.log(randomStartNodeArray[0].children);
-  console.log();
-  console.log();
-console.log("level 3 *************************************************************");
-  console.log(randomStartNodeArray[0].children[0].idValueNode);
-  console.log(randomStartNodeArray[0].children[0].children);
-  console.log();
-  console.log();
-console.log("level 4 *************************************************************");
-  console.log(randomStartNodeArray[0].children[0].children[0].idValueNode);
-  console.log(randomStartNodeArray[0].children[0].children[0].children);
-  console.log(randomStartNodeArray.find(el => el === 'children'));
-console.log("**********************************************************************")
+//  console.log("level 1 *************************************************************");
+//    console.log(randomStartNodeArray);
+//    console.log(randomStartNodeArray.length);
+//    console.log();
+//    console.log();
+//  console.log("level 2 *************************************************************");
+//    console.log(randomStartNodeArray[0].children.length);
+//    console.log(randomStartNodeArray[0].children.idValueNode);
+//    console.log(randomStartNodeArray[0].children);
+
+//   console.log();
+//   console.log();
+// console.log("level 3 *************************************************************");
+//   console.log(randomStartNodeArray[0].children[0].idValueNode);
+//   console.log(randomStartNodeArray[0].children[0].children);
+//   console.log();
+//   console.log();
+// console.log("level 4 *************************************************************");
+//   console.log(randomStartNodeArray[0].children[0].children[0].idValueNode);
+//   console.log(randomStartNodeArray[0].children[0].children[0].children);
+//   console.log(randomStartNodeArray.find(el => el === 'children'));
+// console.log("**********************************************************************")
+
+
 
 
 
@@ -130,3 +151,36 @@ console.log("*******************************************************************
 //   return arrNode;
 // }
 //TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
+
+// let uniqueList = [];
+// let dupList = [];
+//
+// Array.prototype.contains = function(item){
+//   let filtered_item = this.filter((i) => {
+//     return i.idValueNode === item.idValueNode
+//   });
+//   return !!filtered_item.length;
+// }
+//
+// function contains(list, item){
+//   let filtered_item = list.filter((i) => {
+//     return i.idValueNode === item.idValueNode
+//   });
+//   return !!filtered_item.length;
+// }
+//
+// function pushToUniqueList(item){
+//   if(!uniqueList.contains(item)) uniqueList.push(item);
+// }
+//
+// function pushToDuplicateList(item){
+//   if(!dupList.contains(item)) dupList.push(item);
+// }
+//
+// for(let i = 0; i < randomStartNodeArray.length; i++){
+//   if(uniqueList.contains(randomStartNodeArray[i])){
+//     pushToDuplicateList(randomStartNodeArray[i]);
+//   } else {
+//     pushToUniqueList(randomStartNodeArray[i]);
+//   }
+// }
