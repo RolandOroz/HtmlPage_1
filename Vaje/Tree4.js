@@ -19,20 +19,24 @@ function rDay(year, month, randomDayInterval) {
   dateR.setFullYear(year);
   dateR.setMonth(month);
   dateR.setDate(Math.ceil(Math.random() * randomDayInterval));
+  dateR.setHours(0, 0, 0, 0);
   //return new Intl.DateTimeFormat('de-DE', ).format(date);
   return dateR;
 }
-
+//random id number
+function randNum(divider) {
+  return Math.ceil((Math.random()) * Date.now() / divider);
+}
 
 
 
 //*****TEST********
 const testTree = new Tree();
 
-testTree.root = new Node(100,'Root', rDay(2021,0,31))
-testTree.root.children.push(new Node(101,'child', rDay(2021,0,31)))
-testTree.root.children.push(new Node(102,'child', rDay(2021,0,31)))
-testTree.root.children[0].children.push(new Node(201,'child', rDay(2021,0,31)))
+testTree.root = new Node(randNum(1000_000),'Root', rDay(2021,0,31))
+testTree.root.children.push(new Node(randNum(1000_000),'child', rDay(2021,0,31)))
+testTree.root.children.push(new Node(randNum(1000_000),'child', rDay(2021,0,31)))
+testTree.root.children[0].children.push(new Node(randNum(1000_000),'child', rDay(2021,0,31)))
 
 
 console.log(testTree.root)

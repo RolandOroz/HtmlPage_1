@@ -1,23 +1,34 @@
-//random number for node creation
-const randnumgen =
-  function randSiblingNum(num) {
-    return [Math.ceil(Math.random() * num)];
-  }
+class Tree {
+    #children = new Map();
+    #parent = null;
+    #id = Math.floor(Mat.random() * Date.now());
+    #name;
 
-function randomTreeGenerator(value) {
-  let stringR = ""
+    constructor(name) {
+        if (!name || typeof name !== 'string' || !name.trim.length) {
+            throw new Error('Name must be a non-empty String');
+        }
 
-  class TreeNode {
-    constructor(value) {
-      this.value = value;
-      this.children = [];
+        this.#name = name;
     }
 
-  }
-
-  class Tree {
-    constructor() {
-      this.root = null;
+    get name() {
+        return this.#name;
     }
-  }
+
+    set name(newName) {
+        if (!newName || typeof newName !== 'string' || !newName.trim.length) {
+            throw new Error('Cannot change name. Name must be a non-empty String');
+        }
+        this.#name = newName;
+    }
+
+    get identiefier() {
+        return this.#id;
+    }
+
+    get children() {
+      return Array.from(this.#children.values());
+    }
+
 }
