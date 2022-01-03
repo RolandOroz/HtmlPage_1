@@ -14,7 +14,7 @@ class Node {
     //values
     this.nodeName = nodeName;
     //random id value
-    this.idValueNode = idValueNode;//randNum(1000_000);
+    this.idValueNode = idValueNode;//randomIdNumber(1000_000);
     //random date value
     this.dateValueNode = randomDay(2021, 0, 31);
     //child
@@ -22,7 +22,6 @@ class Node {
     //https://www.w3schools.com/jsref/jsref_from.asp
     this.children = [];
     //this.depth_Node = depth_Node;
-
   }
 }
 
@@ -38,26 +37,39 @@ function randomDay(year, month, randomDayInterval) {
 
 //start array
 let randomStartNodeArray = randomNumbersOfNodeIterator(0);
-recursiveNodeLevel(randomStartNodeArray, randomStartNodeArray.length);
+//recursiveNodeLevel(randomStartNodeArray, randomStartNodeArray.length);
 
 //recursive node generator
-function recursiveNodeLevel(base, i) {
-  if (i > 0) {
-    recursiveNodeLevel[i - 1] = base[i-1].children = randomNumbersOfNodeIterator((1));
-    //recursiveNodeLevel[i - 1] = base[i-1].children[i - 1].children = randomNumbersOfNodeIterator((2));
-    //recursiveNodeLevel[i - 1] = base[i-1].children[i - 1].children[i - 1].children = randomNumbersOfNodeIterator((3));
-    // recursiveNodeLevel[i - 1] = base[i-1].children.children.children = randomNumbersOfNodeIterator((i));
-    // recursiveNodeLevel[i - 1] = base[i-1].children.children.children.children = randomNumbersOfNodeIterator((i));
-    return recursiveNodeLevel(base, i -1  );
+// function recursiveNodeLevel(base, i, level) {
+//   if (i > 0) {
+//     recursiveNodeLevel[i - 1] = base[i-1].children = randomNumbersOfNodeIterator(level);
+//     return recursiveNodeLevel(base, i -1  );
+//   }
+//   return recursiveNodeLevel;
+// }
+
+function build(n, lvl) {
+  lvl +=1;
+  if (lvl > 4) return [];
+  let output = [];
+  for (let i = 0; i < n; i++) {
+    let node = new Node("N" + lvl + "_" + i, randSiblingNum(10), randomDay(2021, 0, 31));
+    node.children = build(randSiblingNum(5), lvl);
+    output.push(node);
   }
-  return recursiveNodeLevel;
+  return output;
 }
+console.log('--------------------------------------');
+console.log('My nodes');
+let output = build(randSiblingNum(5),-1);
+console.log(output);
+
 
 function randomNumbersOfNodeIterator(level) {
   let xNodes = randSiblingNum(29);
   let arrNode = [];
   for (let i = 0; i < xNodes; i++) {
-    arrNode[i] = new Node("N" + level + "_" + i, randomIdNumber(1000_000), randomDay(2021, 0, 31));
+    arrNode[i] = new Node("N" + level + "_" + i, randSiblingNum(10), randomDay(2021, 0, 31));
   }
   return arrNode;
 }
@@ -73,20 +85,55 @@ function findDuplicates(searchArray, keyValue) {
   }
 }
 
-findDuplicates(randomStartNodeArray, 'idValueNode')
+//display date function
+function displayValueOfTree(arr, val) {
+  //if (array.children === 0 ) return [];
+  let display = [];
+  for( let i = 0; i < arr.length; i++) {
+    let display = arr[i][val]
+    console.log("z je: " + display );
+  }
+  return display;
+}
+console.log(displayValueOfTree(output, 'nodeName'));
+
+//  function build(n, lvl) {
+//   lvl +=1;
+//   if (lvl > 4) return [];
+//   let output = [];
+//   for (let i = 0; i < n; i++) {
+//     let node = new Node("N" + lvl + "_" + i, randSiblingNum(10), randomDay(2021, 0, 31));
+//     node.children = build(randSiblingNum(5), lvl);
+//     output.push(node);
+//   }
+//   return output;
+// }
 
 
 
 //****************************** TEST / LOGS ***************************************
-//  console.log("level 1 *************************************************************");
-//    console.log(randomStartNodeArray);
+//console.log("level 1 *************************************************************");
+//findDuplicates(output, 'idValueNode');
+// output.forEach(object => {
+//   if(object.idValueNode === 3){
+//   console.log(object.nodeName);
+//   }
+// })
+// for( let i = 0; i < output.length; i++) {
+//   let z = output[i];
+//   console.log("z je: " + z.nodeName)
+// }
+// console.log("z je: " + z)
+
+
+    //console.log(randomStartNodeArray);
 //    console.log(randomStartNodeArray.length);
 //    console.log();
 //    console.log();
-//  console.log("level 2 *************************************************************");
-//    console.log(randomStartNodeArray[0].children.length);
-//    console.log(randomStartNodeArray[0].children.idValueNode);
-//    console.log(randomStartNodeArray[0].children);
+  //console.log("level 2 *************************************************************");
+    //console.log(randomStartNodeArray[0].children.length);
+    //console.log(randomStartNodeArray[0].children.idValueNode);
+    //console.log(randomStartNodeArray[0].children);
 
 //   console.log();
 //   console.log();
