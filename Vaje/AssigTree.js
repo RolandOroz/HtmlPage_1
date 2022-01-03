@@ -87,11 +87,25 @@ function findDuplicates(searchArray, keyValue) {
 
 //display date function
 function displayValueOfTree(arr, val) {
-  //if (array.children === 0 ) return [];
+
+
   let display = [];
   for( let i = 0; i < arr.length; i++) {
-    let display = arr[i][val]
-    console.log("z je: " + display );
+    let display = arr[i];
+
+    if(display[val].slice(0,2) === 'N0') {
+      console.log(display[val] );
+    } else if(display[val].slice(0,2) === 'N1') {
+      console.log("|-" + display[val] );
+    } else if(display[val].slice(0,2) === 'N2') {
+      console.log("|--" + display[val] );
+    } else if(display[val].slice(0,2) === 'N3') {
+      console.log("|---" + display[val] );
+    } else {
+      console.log("|----" + display[val]);
+    }
+    displayValueOfTree(display.children, 'nodeName');
+
   }
   return display;
 }
