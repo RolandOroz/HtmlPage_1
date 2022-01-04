@@ -1,5 +1,5 @@
 //random number for node creation
-function randSiblingNum(num) {
+function randNum(num) {
   return Math.ceil(Math.random() * num);
 }
 
@@ -16,7 +16,7 @@ class Node {
     //random id value
     this.idValueNode = idValueNode;//randomIdNumber(1000_000);
     //random date value
-    this.dateValueNode = randomDay(2021, 0, 31);
+    this.dateValueNode = randomDay(2021, 0, 0);
     //child
     //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
     //https://www.w3schools.com/jsref/jsref_from.asp
@@ -53,23 +53,23 @@ function build(n, lvl) {
   if (lvl > 4) return [];
   let output = [];
   for (let i = 0; i < n; i++) {
-    let node = new Node("N" + lvl + "_" + i, randSiblingNum(10), randomDay(2021, 0, 31));
-    node.children = build(randSiblingNum(5), lvl);
+    let node = new Node("N" + lvl + "_" + i, randNum(10), randomDay(2021, 0, 0));
+    node.children = build(randNum(5), lvl);
     output.push(node);
   }
   return output;
 }
 console.log('--------------------------------------');
 console.log('My nodes');
-let output = build(randSiblingNum(5),-1);
+let output = build(randNum(5),-1);
 console.log(output);
 
 
 function randomNumbersOfNodeIterator(level) {
-  let xNodes = randSiblingNum(29);
+  let xNodes = randNum(29);
   let arrNode = [];
   for (let i = 0; i < xNodes; i++) {
-    arrNode[i] = new Node("N" + level + "_" + i, randSiblingNum(10), randomDay(2021, 0, 31));
+    arrNode[i] = new Node("N" + level + "_" + i, randNum(10), randomDay(2021, 0, 0));
   }
   return arrNode;
 }
@@ -81,92 +81,41 @@ function findDuplicates(searchArray, keyValue) {
   if (uniqueValues.size < array.length) {
     console.log('Duplicates are: ', uniqueValues.valueOf(), array.valueOf().length)
   } else {
-    console.log("No Duplicates: ", uniqueValues.valueOf(), "\n#Of Arrays: " + array.valueOf().length);
+    console.log("No Duplicates: ", uniqueValues.valueOf(), "\n#Of Arrays: " + array.valueOf().length + array.nodeName);
   }
 }
 
 //display date function
-function displayValueOfTree(arr, val) {
+function displayValueOfTree(arr, lvl) {
 
 
-  let display = [];
   for( let i = 0; i < arr.length; i++) {
-    let display = arr[i];
-
-    if(display[val].slice(0,2) === 'N0') {
-      console.log(display[val] );
-    } else if(display[val].slice(0,2) === 'N1') {
-      console.log("|-" + display[val] );
-    } else if(display[val].slice(0,2) === 'N2') {
-      console.log("|--" + display[val] );
-    } else if(display[val].slice(0,2) === 'N3') {
-      console.log("|---" + display[val] );
-    } else {
-      console.log("|----" + display[val]);
+    let node = arr[i];
+    let spaces = " ";
+    for(let j = 0; j < lvl; j++) {
+      spaces += " " ;
     }
-    displayValueOfTree(display.children, 'nodeName');
-
+    console.log(spaces + node.nodeName);
+    displayValueOfTree( node.children, lvl + 1);
   }
-  return display;
 }
-console.log(displayValueOfTree(output, 'nodeName'));
+displayValueOfTree(output, 0)
 
-//  function build(n, lvl) {
-//   lvl +=1;
-//   if (lvl > 4) return [];
-//   let output = [];
-//   for (let i = 0; i < n; i++) {
-//     let node = new Node("N" + lvl + "_" + i, randSiblingNum(10), randomDay(2021, 0, 31));
-//     node.children = build(randSiblingNum(5), lvl);
-//     output.push(node);
-//   }
-//   return output;
+// function searchByValue(arr, val) {
+//   return arr.find( key => arr[val] === val);
 // }
-
+let item = output.find((el) => el.nodeName === el.nodeName);
+console.log(item);
 
 
 //****************************** TEST / LOGS ***************************************
 //console.log("level 1 *************************************************************");
-//findDuplicates(output, 'idValueNode');
-// output.forEach(object => {
-//   if(object.idValueNode === 3){
-//   console.log(object.nodeName);
-//   }
-// })
-// for( let i = 0; i < output.length; i++) {
-//   let z = output[i];
-//   console.log("z je: " + z.nodeName)
-// }
-// console.log("z je: " + z)
+findDuplicates(output, 'dateValueNode');
+
+//TODO recursive search function(searchArray, resultArray) --no return
 
 
-    //console.log(randomStartNodeArray);
-//    console.log(randomStartNodeArray.length);
-//    console.log();
-//    console.log();
-  //console.log("level 2 *************************************************************");
-    //console.log(randomStartNodeArray[0].children.length);
-    //console.log(randomStartNodeArray[0].children.idValueNode);
-    //console.log(randomStartNodeArray[0].children);
-
-//   console.log();
-//   console.log();
-// console.log("level 3 *************************************************************");
-//   console.log(randomStartNodeArray[0].children[0].idValueNode);
-//   console.log(randomStartNodeArray[0].children[0].children);
-//   console.log();
-//   console.log();
-// console.log("level 4 *************************************************************");
-//   console.log(randomStartNodeArray[0].children[0].children[0].idValueNode);
-//   console.log(randomStartNodeArray[0].children[0].children[0].children);
-//   console.log(randomStartNodeArray.find(el => el === 'children'));
-// console.log("**********************************************************************")
-
-
-
-
-
-
+//TODO recursive search function(searchArray) --return
 
 
 //****** ideas ***************
@@ -187,30 +136,6 @@ console.log(displayValueOfTree(output, 'nodeName'));
 // }
 // recurToN();
 
-// let xNodes = randSiblingNum(30);
-// let arrNode =[];
-// for (let i = 0; i < xNodes; i ++) {
-//   arrNode[i] = new TreeNode("N" + level + "_" + i , (randNum(1000000)), randomDay(2021, 0, 31));
-// }return arrNode;
-// }
-
-// function randomNumbersOfNodeIterator(level) {
-//   let xNodes = randSiblingNum(30);
-//   let arrNode = [];
-//   for (let i = 0; i < xNodes; i++) {
-//     arrNode[i] = new TreeNode("N" + level + "_" + i, (randNum(1000000)), randomDay(2021, 0, 31));
-//   }
-//   return arrNode;
-// }
-
-// function randomNumbersOfNodeIterator2(level) {
-//   let xNodes = randSiblingNum(30);
-//   let arrNode = [];
-//   for (let i = 0; i < xNodes; i++) {
-//     arrNode[i] = new TreeNode("N" + level + "_" + i, (randNum(1000000)), randomDay(2021, 0, 31));
-//   }
-//   return arrNode;
-// }
 //TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
 
 // let uniqueList = [];
