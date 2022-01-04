@@ -86,9 +86,7 @@ function findDuplicates(searchArray, keyValue) {
 }
 
 //display date function
-function displayValueOfTree(arr, lvl) {
-
-
+function displayNodeNames(arr, lvl, val) {
   for( let i = 0; i < arr.length; i++) {
     let node = arr[i];
     let spaces = " ";
@@ -96,10 +94,10 @@ function displayValueOfTree(arr, lvl) {
       spaces += " " ;
     }
     console.log(spaces + node.nodeName);
-    displayValueOfTree( node.children, lvl + 1);
+    displayNodeNames( node.children, lvl + 1);
   }
 }
-displayValueOfTree(output, 0)
+displayNodeNames(output, 0)
 
 // function searchByValue(arr, val) {
 //   return arr.find( key => arr[val] === val);
@@ -113,10 +111,15 @@ console.log(item);
 findDuplicates(output, 'dateValueNode');
 
 //TODO recursive search function(searchArray, resultArray) --no return
+function searchWithResult(searchArray, resultArray) {
 
+}
 
 //TODO recursive search function(searchArray) --return
+function search(searchArray) {
 
+
+}
 
 //****** ideas ***************
 
