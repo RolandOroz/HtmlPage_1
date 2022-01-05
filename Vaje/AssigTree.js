@@ -1,41 +1,43 @@
 //random number for node creation
 function randNum(num) {
-  return Math.ceil(Math.random() * num);
+    return Math.ceil(Math.random() * num);
 }
-//result arrays
+
+//result arrays for search function
 let resultValue1 = [];
 let resultValue2 = [];
 
+
 //random id number
 function randomIdNumber(divider) {
-  return Math.ceil((Math.random()) * Date.now() / divider);
+    return Math.ceil((Math.random()) * Date.now() / divider);
 }
 
 //************** CLASS NODE
 class Node {
-  constructor(nodeName, idValueNode) {
-    //values
-    this.nodeName = nodeName;
-    //random id value
-    this.idValueNode = idValueNode;//randomIdNumber(1000_000);
-    //random date value
-    this.dateValueNode = randomDay(2021, 0, 2);
-    //child
-    //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
-    //https://www.w3schools.com/jsref/jsref_from.asp
-    this.children = [];
-    //this.depth_Node = depth_Node;
-  }
+    constructor(nodeName, idValueNode) {
+        //values
+        this.nodeName = nodeName;
+        //random id value
+        this.idValueNode = idValueNode;//randomIdNumber(1000_000);
+        //random date value
+        this.dateValueNode = randomDay(2021, 0, 2);
+        //child
+        //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
+        //https://www.w3schools.com/jsref/jsref_from.asp
+        this.children = [];
+        //this.depth_Node = depth_Node;
+    }
 }
 
 //random date generator
 function randomDay(year, month, randomDayInterval) {
-  const date = new Date();
-  date.setFullYear(year);
-  date.setMonth(month);
-  date.setDate(Math.ceil(Math.random() * randomDayInterval));
-  date.setHours(0, 0, 0, 0);  //sets T all to 0
-  return  date;
+    const date = new Date();
+    date.setFullYear(year);
+    date.setMonth(month);
+    date.setDate(Math.ceil(Math.random() * randomDayInterval));
+    date.setHours(0, 0, 0, 0);  //sets T all to 0
+    return date;
 }
 
 //start array
@@ -52,102 +54,110 @@ let randomStartNodeArray = randomNumbersOfNodeIterator(0);
 // }
 
 function build(n, lvl) {
-  lvl +=1;
-  if (lvl > 4) return [];
-  let output = [];
-  for (let i = 0; i < n; i++) {
-    let node = new Node("N" + lvl + "_" + i, randNum(10), randomDay(2021, 0, 0));
-    node.children = build(randNum(3), lvl);
-    output.push(node);
-  }
-  return output;
+    lvl += 1;
+    if (lvl > 4) return [];
+    let output = [];
+    for (let i = 0; i < n; i++) {
+        let node = new Node("N" + lvl + "_" + i, randNum(10), randomDay(2021, 0, 0));
+        node.children = build(randNum(3), lvl);
+        output.push(node);
+    }
+    return output;
 }
+
 console.log('--------------------------------------');
 console.log('My nodes');
-let output = build(randNum(2),-1);
+let output = build(randNum(2), -1);
+
 //console.log(output);
 
 
 function randomNumbersOfNodeIterator(level) {
-  let xNodes = randNum(29);
-  let arrNode = [];
-  for (let i = 0; i < xNodes; i++) {
-    arrNode[i] = new Node("N" + level + "_" + i, randNum(2), randomDay(2021, 0, 0));
-  }
-  return arrNode;
+    let xNodes = randNum(29);
+    let arrNode = [];
+    for (let i = 0; i < xNodes; i++) {
+        arrNode[i] = new Node("N" + level + "_" + i, randNum(2), randomDay(2021, 0, 0));
+    }
+    return arrNode;
 }
 
 //duplicate checking
 function findDuplicates(searchArray, keyValue) {
-  let array = searchArray;
-  const uniqueValues = new Set(array.map(v => v[keyValue]));
-  if (uniqueValues.size < array.length) {
-    console.log('Duplicates are: ', uniqueValues.valueOf(), array.valueOf().length)
-  } else {
-    console.log("No Duplicates: ", uniqueValues.valueOf(), "\n#Of Arrays: " + array.valueOf().length + array.nodeName);
-  }
+    let array = searchArray;
+    const uniqueValues = new Set(array.map(v => v[keyValue]));
+    if (uniqueValues.size < array.length) {
+        console.log('Duplicates are: ', uniqueValues.valueOf(), array.valueOf().length)
+    } else {
+        console.log("No Duplicates: ", uniqueValues.valueOf(), "\n#Of Arrays: " + array.valueOf().length + array.nodeName);
+    }
 }
 
 //display tree value function
-
-
 function displayNodeNames(arr, lvl, searchStringDate) {
-  let dateSearch = searchStringDate;
-  for (let i = 0; i < arr.length; i++) {
-    let node = arr[i];
-    let spaces = " ";
+    let dateSearch = searchStringDate;
+    for (let i = 0; i < arr.length; i++) {
+        let node = arr[i];
+        let spaces = " ";
 
-    for (let j = 0; j < lvl; j++) {
-      spaces += " ";
-    }
+        for (let j = 0; j < lvl; j++) {
+            spaces += " ";
+        }
 
-    console.log(spaces + node.nodeName);   // for TESTING purpose
-    console.log(node.dateValueNode);
+        console.log(spaces + node.nodeName);   // for TESTING purpose
+        console.log(node.dateValueNode);
 //************************************************************** date search HERE!!
-    // if (node.dateValueNode.toUTCString() === dateSearch) {
-    //   resultValue1.push(node.dateValueNode);
-    //   resultValue2.push(node.nodeName);
-    // }
-    console.log(spaces + node.nodeName);
-    displayNodeNames(node.children, lvl + 1);
-  }
+        // if (node.dateValueNode.toUTCString() === dateSearch) {
+        //   resultValue1.push(node.dateValueNode);
+        //   resultValue2.push(node.nodeName);
+        // }
+        console.log(spaces + node.nodeName);
+        displayNodeNames(node.children, lvl + 1);
+    }
 }
-
 console.log(displayNodeNames(output, 0/*, 'Fri, 01 Jan 2021 23:00:00 GMT'*/));
 
-//TODO*************************************************************************************************TODO
+//*************************************************************************************************
 // 5. Ob generaciji drevesa si generiraj index tabelo v katero shranjuješ reference vozlišč, ki imajo isti datum.
 // 6. Napiši metodo searchByDate ki sprejme parameter date, in vrne seznam vseh vozlišč, ki ustrezajo iskanemu datumu. Primerjaj niz z indexiranim nizom.
 //     primer:
 // let date = new Date(2021,1,1);
 // searchByDate(date);
 
+// TODO change search with string format to search with Date format ---!!!
 function searchByValueRec(arr, lvl, stringDate) {
-  let dateSearch;
-  dateSearch = stringDate;
-  for (let i = 0; i < arr.length; i++) {
-    let node = arr[i];
+    let dateSearch;
+    dateSearch = stringDate;
 
-    let spaces = " ";
-    for (let j = 0; j < lvl; j++) {
-      spaces += " ";
-    }
-    console.log(spaces + node.nodeName);   // for TESTING purpose
-    console.log(node.dateValueNode);
-    if (node.dateValueNode.toUTCString() === dateSearch) {
-      resultValue1.push(node.dateValueNode);
-      resultValue2.push(node.nodeName);
-    }
-    searchByValueRec(node.children, lvl + 1, 'Fri, 01 Jan 2021 23:00:00 GMT');
+    for (let i = 0; i < arr.length; i++) {
+        let node = arr[i];
+        let spaces = " ";
 
-  }
+        for (let j = 0; j < lvl; j++) {
+            spaces += " ";
+        }
+        console.log(spaces + node.nodeName);  // for TESTING purpose
+        console.log(node.dateValueNode);      // for TESTING purpose
+
+        if (node.dateValueNode.toUTCString() === dateSearch) {
+            resultValue1.push(node.dateValueNode);
+            resultValue2.push(node.nodeName);
+        }
+        searchByValueRec(node.children, lvl + 1, 'Fri, 01 Jan 2021 23:00:00 GMT');
+    }
 }
+
 
 searchByValueRec(output, 0)
 console.log(resultValue1);
+console.log(resultValue1.length);
 console.log(resultValue2);
+console.log(resultValue2.length);
+
+
 console.log("***************************************")
-console.log(output[0].dateValueNode.toUTCString())
+// console.log(output[0].dateValueNode.toUTCString())
+
+//******************************************todo***************************************
 // function displayNodeNames(arr, lvl, val) {
 //   for( let i = 0; i < arr.length; i++) {
 //     let node = arr[i];
@@ -167,6 +177,7 @@ console.log(output[0].dateValueNode.toUTCString())
 
 //dateValueNode
 
+
 //****************************** TEST / LOGS ***************************************
 //console.log("level 1 *************************************************************");
 //findDuplicates(output, 'dateValueNode');
@@ -182,8 +193,6 @@ console.log(output[0].dateValueNode.toUTCString())
 //     }
 //   }
 // }
-
-
 
 
 // searchWithResult(output);
