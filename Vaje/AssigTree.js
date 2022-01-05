@@ -2,6 +2,9 @@
 function randNum(num) {
   return Math.ceil(Math.random() * num);
 }
+//result arrays
+let resultValue1 = [];
+let resultValue2 = [];
 
 //random id number
 function randomIdNumber(divider) {
@@ -54,7 +57,7 @@ function build(n, lvl) {
   let output = [];
   for (let i = 0; i < n; i++) {
     let node = new Node("N" + lvl + "_" + i, randNum(10), randomDay(2021, 0, 0));
-    node.children = build(randNum(2), lvl);
+    node.children = build(randNum(3), lvl);
     output.push(node);
   }
   return output;
@@ -85,19 +88,32 @@ function findDuplicates(searchArray, keyValue) {
   }
 }
 
-//display date function
-function displayNodeNames(arr, lvl, val) {
-  for( let i = 0; i < arr.length; i++) {
+//display tree value function
+
+
+function displayNodeNames(arr, lvl, searchStringDate) {
+  let dateSearch = searchStringDate;
+  for (let i = 0; i < arr.length; i++) {
     let node = arr[i];
     let spaces = " ";
-    for(let j = 0; j < lvl; j++) {
-      spaces += " " ;
+
+    for (let j = 0; j < lvl; j++) {
+      spaces += " ";
     }
+
+    console.log(spaces + node.nodeName);   // for TESTING purpose
+    console.log(node.dateValueNode);
+//************************************************************** date search HERE!!
+    // if (node.dateValueNode.toUTCString() === dateSearch) {
+    //   resultValue1.push(node.dateValueNode);
+    //   resultValue2.push(node.nodeName);
+    // }
     console.log(spaces + node.nodeName);
-    displayNodeNames( node.children, lvl + 1);
+    displayNodeNames(node.children, lvl + 1);
   }
 }
 
+console.log(displayNodeNames(output, 0/*, 'Fri, 01 Jan 2021 23:00:00 GMT'*/));
 
 //TODO*************************************************************************************************TODO
 // 5. Ob generaciji drevesa si generiraj index tabelo v katero shranjuješ reference vozlišč, ki imajo isti datum.
@@ -106,14 +122,9 @@ function displayNodeNames(arr, lvl, val) {
 // let date = new Date(2021,1,1);
 // searchByDate(date);
 
-
-
-
-
-let resultValue1 = [];
-let resultValue2 = [];
 function searchByValueRec(arr, lvl, stringDate) {
-  let dateSearch = stringDate;
+  let dateSearch;
+  dateSearch = stringDate;
   for (let i = 0; i < arr.length; i++) {
     let node = arr[i];
 
@@ -131,6 +142,7 @@ function searchByValueRec(arr, lvl, stringDate) {
 
   }
 }
+
 searchByValueRec(output, 0)
 console.log(resultValue1);
 console.log(resultValue2);
