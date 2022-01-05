@@ -16,7 +16,7 @@ class Node {
     //random id value
     this.idValueNode = idValueNode;//randomIdNumber(1000_000);
     //random date value
-    this.dateValueNode = randomDay(2021, 0, 0);
+    this.dateValueNode = randomDay(2021, 0, 2);
     //child
     //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
     //https://www.w3schools.com/jsref/jsref_from.asp
@@ -54,22 +54,22 @@ function build(n, lvl) {
   let output = [];
   for (let i = 0; i < n; i++) {
     let node = new Node("N" + lvl + "_" + i, randNum(10), randomDay(2021, 0, 0));
-    node.children = build(randNum(5), lvl);
+    node.children = build(randNum(2), lvl);
     output.push(node);
   }
   return output;
 }
 console.log('--------------------------------------');
 console.log('My nodes');
-let output = build(randNum(5),-1);
-console.log(output);
+let output = build(randNum(2),-1);
+//console.log(output);
 
 
 function randomNumbersOfNodeIterator(level) {
   let xNodes = randNum(29);
   let arrNode = [];
   for (let i = 0; i < xNodes; i++) {
-    arrNode[i] = new Node("N" + level + "_" + i, randNum(10), randomDay(2021, 0, 0));
+    arrNode[i] = new Node("N" + level + "_" + i, randNum(2), randomDay(2021, 0, 0));
   }
   return arrNode;
 }
@@ -97,29 +97,89 @@ function displayNodeNames(arr, lvl, val) {
     displayNodeNames( node.children, lvl + 1);
   }
 }
-displayNodeNames(output, 0)
+
+
+//TODO*************************************************************************************************TODO
+// 5. Ob generaciji drevesa si generiraj index tabelo v katero shranjuješ reference vozlišč, ki imajo isti datum.
+// 6. Napiši metodo searchByDate ki sprejme parameter date, in vrne seznam vseh vozlišč, ki ustrezajo iskanemu datumu. Primerjaj niz z indexiranim nizom.
+//     primer:
+// let date = new Date(2021,1,1);
+// searchByDate(date);
+
+
+
+
+
+let resultValue1 = [];
+let resultValue2 = [];
+function searchByValueRec(arr, lvl, stringDate) {
+  let dateSearch = stringDate;
+  for (let i = 0; i < arr.length; i++) {
+    let node = arr[i];
+
+    let spaces = " ";
+    for (let j = 0; j < lvl; j++) {
+      spaces += " ";
+    }
+    console.log(spaces + node.nodeName);   // for TESTING purpose
+    console.log(node.dateValueNode);
+    if (node.dateValueNode.toUTCString() === dateSearch) {
+      resultValue1.push(node.dateValueNode);
+      resultValue2.push(node.nodeName);
+    }
+    searchByValueRec(node.children, lvl + 1, 'Fri, 01 Jan 2021 23:00:00 GMT');
+
+  }
+}
+searchByValueRec(output, 0)
+console.log(resultValue1);
+console.log(resultValue2);
+console.log("***************************************")
+console.log(output[0].dateValueNode.toUTCString())
+// function displayNodeNames(arr, lvl, val) {
+//   for( let i = 0; i < arr.length; i++) {
+//     let node = arr[i];
+//     let spaces = " ";
+//     for(let j = 0; j < lvl; j++) {
+//       spaces += " " ;
+//     }
+//     console.log(spaces + node.nodeName);
+//     displayNodeNames( node.children, lvl + 1);
+//   }
+// }
+//displayNodeNames(output, 0)
 
 // function searchByValue(arr, val) {
 //   return arr.find( key => arr[val] === val);
 // }
-let item = output.find((el) => el.nodeName === el.nodeName);
-console.log(item);
 
+//dateValueNode
 
 //****************************** TEST / LOGS ***************************************
 //console.log("level 1 *************************************************************");
-findDuplicates(output, 'dateValueNode');
+//findDuplicates(output, 'dateValueNode');
 
 //TODO recursive search function(searchArray, resultArray) --no return
-function searchWithResult(searchArray, resultArray) {
+// function searchWithResult(searchArray, resultArray) {
+//   let tempSearchArr = searchArray;
+//   let resultArray = searchArray.find();
+//   for(let i = 0; i < searchArray.length; i++) {
+//     if (searchArray.find('2020-12-30T23:00:00.000Z')) {
+//       tempSearchArr[i] += searchArray.dateValueNode;
+//       console.log(tempSearchArr);
+//     }
+//   }
+// }
 
-}
-
-//TODO recursive search function(searchArray) --return
-function search(searchArray) {
 
 
-}
+
+// searchWithResult(output);
+// //TODO recursive search function(searchArray) --return
+// function search(searchArray) {
+//
+//
+// }
 
 //****** ideas ***************
 
@@ -139,7 +199,23 @@ function search(searchArray) {
 // }
 // recurToN();
 
-//TODO https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
+// console.log("return search*************************************")
+// let index = output.findIndex(function (arr, index) {
+//   console.log(arr);
+//   return arr.dateValueNode.toString() === 'Thu Dec 31 2020 00:00:00 GMT+0100 (GMT+01:00)';
+// })
+// console.log(index)
+
+//console.log(output[0].dateValueNode.toString())
+
+// let foundDate = function (el, index, arr) {
+//  // console.log(el + " " + index + " " + arr);
+//   if (el.dateValueNode.toString() === 'Thu Dec 31 2020 00:00:00 GMT+0100 (GMT+01:00)') {
+//     return arr + index;
+//   }
+// }
+
+// https://mail.google.com/mail/u/0?ui=2&ik=cc00633881&attid=0.1&permmsgid=msg-a:r-1427440940777264359&th=17e00c0b01492c20&view=att&disp=safe&realattid=17e00c0925eae0193541
 
 // let uniqueList = [];
 // let dupList = [];
