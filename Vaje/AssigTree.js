@@ -111,7 +111,6 @@ function displayNodeNames(arr, lvl, searchStringDate) {
         for (let j = 0; j < lvl; j++) {
             spaces += " ";
         }
-
         //console.log(spaces + node.nodeName);   // for TESTING purpose
         //console.log(node.dateValueNode);
 //************************************************************** date search HERE!!
@@ -171,16 +170,17 @@ console.log("Result for Node Name")
 
 let searchVal = searchByDate(2021, 0, 2).getTime();
 
-function listDate() {
-    let xArr = resultValue2;
-    xArr.map((item, index) => {
-        console.log(item)
-    })
+function listMapItems(keyItem, valueItem) {
+    let arr1 = keyItem;
+    let arr2 = valueItem;
+    const myMap = new Map();
+    myMap.set(arr1, arr2);
+
+    for(const [key, value] of myMap) {
+        console.log(value);
+    }
 }
-
-listDate()
-//console.log(mapResVal1)
-
+listMapItems(resultValue1, resultValue2);
 // console.log(output[0].dateValueNode.toUTCString())
 
 //******************************************todo***************************************
