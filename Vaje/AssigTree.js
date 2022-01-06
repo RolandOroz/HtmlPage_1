@@ -76,7 +76,7 @@ function build(n, lvl) {
 
 console.log('--------------------------------------');
 console.log('My nodes');
-let output = build(randNum(2), -1);
+let output = build(randNum(10), -1);
 
 //console.log(output);
 
@@ -152,7 +152,6 @@ function searchByValueRec(arr, lvl, year, month, day) {
         if (dateMilli === search) {
             resultValue1.push(node.dateValueNode);
             resultValue2.push(node.nodeName);
-
         }
         searchByValueRec(node.children, lvl + 1);
     }
@@ -160,20 +159,27 @@ function searchByValueRec(arr, lvl, year, month, day) {
 searchByValueRec(output, 0, 2021, 0, 2 );
 console.log("***************************************")
 
-// console.log("\nResult for Date")
+console.log("\nResult for Date")
 //  console.log(resultValue1);
-//  console.log(resultValue1.length);
-// console.log("Result for Node Name")
+ console.log(resultValue1.length);
+console.log("Result for Node Name")
 //  console.log(resultValue2);
-// console.log(resultValue2.length);
+ console.log(resultValue2.length);
 
 
 
-let xArr = resultValue2;
+
 let searchVal = searchByDate(2021, 0, 2).getTime();
 
-let mapResVal1 = xArr.map( item => resultValue2);
-console.log(mapResVal1)
+function listDate() {
+    let xArr = resultValue2;
+    xArr.map((item, index) => {
+        console.log(item)
+    })
+}
+
+listDate()
+//console.log(mapResVal1)
 
 // console.log(output[0].dateValueNode.toUTCString())
 
