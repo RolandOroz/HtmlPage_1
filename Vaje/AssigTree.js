@@ -76,7 +76,7 @@ function build(n, lvl) {
 
 console.log('--------------------------------------');
 console.log('My nodes');
-let output = build(randNum(10), -1);
+let output = build(randNum(2), -1);
 
 //console.log(output);
 
@@ -102,8 +102,8 @@ function findDuplicates(searchArray, keyValue) {
 }
 
 //display tree value function
-function displayNodeNames(arr, lvl, searchStringDate) {
-    let dateSearch = searchStringDate;
+function displayNodeNames(arr, lvl) {
+
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
         let spaces = " ";
@@ -122,7 +122,8 @@ function displayNodeNames(arr, lvl, searchStringDate) {
         displayNodeNames(node.children, lvl + 1);
     }
 }
-//console.log(displayNodeNames(output, 0/*, 'Fri, 01 Jan 2021 23:00:00 GMT'*/));
+displayNodeNames(output, 0);
+
 
 
 
@@ -148,10 +149,10 @@ function searchByValueRec(arr, lvl, year, month, day) {
         //console.log(spaces + node.nodeName);  // for TESTING purpose
         //console.log(node.dateValueNode);      // for TESTING purpose
 
-        if (dateMilli === search) {
+        //if (dateMilli === search) {
             resultValue1.push(node.dateValueNode);
             resultValue2.push(node.nodeName);
-        }
+        //}
         searchByValueRec(node.children, lvl + 1);
     }
 }
