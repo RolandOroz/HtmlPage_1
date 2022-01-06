@@ -184,7 +184,7 @@ function listMapItems(keyItem, valueItem) {
     for(const [key, value] of valuesMap) {
         // console.log(key);
         // console.log(value);
-        return indexedValueCollection = valuesMap;
+        indexedValueCollection = valuesMap;
     }
 }
 listMapItems(resultValue1, resultValue2);
