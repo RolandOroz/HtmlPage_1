@@ -7,6 +7,8 @@ function randNum(num) {
 let resultValue1 = [];
 let resultValue2 = [];
 
+let indexedValueCollection;
+
 
 //random id number
 function randomIdNumber(divider) {
@@ -127,6 +129,8 @@ displayNodeNames(output, 0);
 
 
 
+
+
 //*************************************************************************************************
 // 5. Ob generaciji drevesa si generiraj index tabelo v katero shranjuješ reference vozlišč, ki imajo isti datum.
 // 6. Napiši metodo searchByDate ki sprejme parameter date, in vrne seznam vseh vozlišč, ki ustrezajo iskanemu datumu. Primerjaj niz z indexiranim nizom.
@@ -174,15 +178,21 @@ let searchVal = searchByDate(2021, 0, 2).getTime();
 function listMapItems(keyItem, valueItem) {
     let arr1 = keyItem;
     let arr2 = valueItem;
-    const myMap = new Map();
-    myMap.set(arr1, arr2);
+    const valuesMap = new Map();
+    valuesMap.set(arr1, arr2);
 
-    for(const [key, value] of myMap) {
-        console.log(value);
+    for(const [key, value] of valuesMap) {
+        // console.log(key);
+        // console.log(value);
+        return indexedValueCollection = valuesMap;
     }
 }
 listMapItems(resultValue1, resultValue2);
-// console.log(output[0].dateValueNode.toUTCString())
+console.log(indexedValueCollection);
+
+
+
+
 
 //******************************************todo***************************************
 // function displayNodeNames(arr, lvl, val) {
