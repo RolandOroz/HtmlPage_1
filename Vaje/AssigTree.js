@@ -40,6 +40,15 @@ function randomDay(year, month, randomDayInterval) {
     return date;
 }
 
+function searchByDate(year, month, day) {
+    const date = new Date();
+    date.setFullYear(year);
+    date.setMonth(month);
+    date.setDate(day);
+    date.setHours(0, 0, 0, 0);  //sets T all to 0
+    return date;
+}
+
 //start array
 let randomStartNodeArray = randomNumbersOfNodeIterator(0);
 //recursiveNodeLevel(randomStartNodeArray, randomStartNodeArray.length);
@@ -59,7 +68,7 @@ function build(n, lvl) {
     let output = [];
     for (let i = 0; i < n; i++) {
         let node = new Node("N" + lvl + "_" + i, randNum(10), randomDay(2021, 0, 0));
-        node.children = build(randNum(3), lvl);
+        node.children = build(randNum(2), lvl);
         output.push(node);
     }
     return output;
@@ -103,8 +112,8 @@ function displayNodeNames(arr, lvl, searchStringDate) {
             spaces += " ";
         }
 
-        console.log(spaces + node.nodeName);   // for TESTING purpose
-        console.log(node.dateValueNode);
+        //console.log(spaces + node.nodeName);   // for TESTING purpose
+        //console.log(node.dateValueNode);
 //************************************************************** date search HERE!!
         // if (node.dateValueNode.toUTCString() === dateSearch) {
         //   resultValue1.push(node.dateValueNode);
@@ -114,7 +123,9 @@ function displayNodeNames(arr, lvl, searchStringDate) {
         displayNodeNames(node.children, lvl + 1);
     }
 }
-console.log(displayNodeNames(output, 0/*, 'Fri, 01 Jan 2021 23:00:00 GMT'*/));
+//console.log(displayNodeNames(output, 0/*, 'Fri, 01 Jan 2021 23:00:00 GMT'*/));
+
+
 
 //*************************************************************************************************
 // 5. Ob generaciji drevesa si generiraj index tabelo v katero shranjuješ reference vozlišč, ki imajo isti datum.
@@ -124,37 +135,46 @@ console.log(displayNodeNames(output, 0/*, 'Fri, 01 Jan 2021 23:00:00 GMT'*/));
 // searchByDate(date);
 
 // TODO change search with string format to search with Date format ---!!!
-function searchByValueRec(arr, lvl, stringDate) {
-    let dateSearch;
-    dateSearch = stringDate;
+function searchByValueRec(arr, lvl, year, month, day) {
 
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
         let spaces = " ";
+        let search = searchByDate(year, month, day).getTime();
+        let dateMilli = node.dateValueNode.getTime();
 
         for (let j = 0; j < lvl; j++) {
             spaces += " ";
         }
-        console.log(spaces + node.nodeName);  // for TESTING purpose
-        console.log(node.dateValueNode);      // for TESTING purpose
+        //console.log(spaces + node.nodeName);  // for TESTING purpose
+        //console.log(node.dateValueNode);      // for TESTING purpose
 
-        if (node.dateValueNode.toUTCString() === dateSearch) {
+        if (dateMilli === search) {
             resultValue1.push(node.dateValueNode);
             resultValue2.push(node.nodeName);
+
         }
-        searchByValueRec(node.children, lvl + 1, 'Fri, 01 Jan 2021 23:00:00 GMT');
+        searchByValueRec(node.children, lvl + 1);
     }
 }
-
-
-searchByValueRec(output, 0)
-console.log(resultValue1);
-console.log(resultValue1.length);
-console.log(resultValue2);
-console.log(resultValue2.length);
-
-
+searchByValueRec(output, 0, 2021, 0, 2 );
 console.log("***************************************")
+
+// console.log("\nResult for Date")
+//  console.log(resultValue1);
+//  console.log(resultValue1.length);
+// console.log("Result for Node Name")
+//  console.log(resultValue2);
+// console.log(resultValue2.length);
+
+
+
+let xArr = resultValue2;
+let searchVal = searchByDate(2021, 0, 2).getTime();
+
+let mapResVal1 = xArr.map( item => resultValue2);
+console.log(mapResVal1)
+
 // console.log(output[0].dateValueNode.toUTCString())
 
 //******************************************todo***************************************
