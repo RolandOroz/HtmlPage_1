@@ -6,7 +6,6 @@ function randNum(num) {
 //result arrays for search function
 let resultValue1 = [];
 let resultValue2 = [];
-
 let indexedValueCollection;
 
 
@@ -124,21 +123,10 @@ function displayNodeNames(arr, lvl) {
         displayNodeNames(node.children, lvl + 1);
     }
 }
+
 displayNodeNames(output, 0);
 
 
-
-
-
-
-//*************************************************************************************************
-// 5. Ob generaciji drevesa si generiraj index tabelo v katero shranjuješ reference vozlišč, ki imajo isti datum.
-// 6. Napiši metodo searchByDate ki sprejme parameter date, in vrne seznam vseh vozlišč, ki ustrezajo iskanemu datumu. Primerjaj niz z indexiranim nizom.
-//     primer:
-// let date = new Date(2021,1,1);
-// searchByDate(date);
-
-// TODO change search with string format to search with Date format ---!!!
 function searchByValueRec(arr, lvl, year, month, day) {
 
     for (let i = 0; i < arr.length; i++) {
@@ -153,25 +141,24 @@ function searchByValueRec(arr, lvl, year, month, day) {
         //console.log(spaces + node.nodeName);  // for TESTING purpose
         //console.log(node.dateValueNode);      // for TESTING purpose
 
-        //if (dateMilli === search) {
+        if (dateMilli === search) {
             resultValue1.push(node.dateValueNode);
             resultValue2.push(node.nodeName);
-        //}
+        }
         searchByValueRec(node.children, lvl + 1);
     }
 }
-searchByValueRec(output, 0, 2021, 0, 2 );
+
+searchByValueRec(output, 0, 2021, 0, 2);
+
 console.log("***************************************")
 
-console.log("\nResult for Date")
+// console.log("\nResult for Date")
 //  console.log(resultValue1);
- console.log(resultValue1.length);
-console.log("Result for Node Name")
-//  console.log(resultValue2);
- console.log(resultValue2.length);
-
-
-
+//  console.log(resultValue1.length);
+// console.log("Result for Node Name")
+//   console.log(resultValue2);
+//   console.log(resultValue2.length);
 
 let searchVal = searchByDate(2021, 0, 2).getTime();
 
@@ -181,20 +168,18 @@ function listMapItems(keyItem, valueItem) {
     const valuesMap = new Map();
     valuesMap.set(arr1, arr2);
 
-    for(const [key, value] of valuesMap) {
+    for (const [key, value] of valuesMap) {
         // console.log(key);
         // console.log(value);
         indexedValueCollection = valuesMap;
     }
 }
+
 listMapItems(resultValue1, resultValue2);
 console.log(indexedValueCollection);
 
 
-
-
-
-//******************************************todo***************************************
+//*********************************************************************************
 // function displayNodeNames(arr, lvl, val) {
 //   for( let i = 0; i < arr.length; i++) {
 //     let node = arr[i];
@@ -206,8 +191,8 @@ console.log(indexedValueCollection);
 //     displayNodeNames( node.children, lvl + 1);
 //   }
 // }
-//displayNodeNames(output, 0)
-
+// displayNodeNames(output, 0)
+//
 // function searchByValue(arr, val) {
 //   return arr.find( key => arr[val] === val);
 // }
