@@ -23,7 +23,7 @@ class Node {
         //random id value
         this.idValueNode = idValueNode;//randomIdNumber(1000_000);
         //random date value
-        this.dateValueNode = randomDay(2021, 0, 0);
+        this.dateValueNode = randomDay(2021, 0, 31);
         //child
         //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
         //https://www.w3schools.com/jsref/jsref_from.asp
