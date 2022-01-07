@@ -148,8 +148,8 @@ function searchByValueRec(arr, lvl, year, month, day) {
         searchByValueRec(node.children, lvl + 1);
     }
 }
-
 searchByValueRec(output, 0, 2021, 0, 2);
+
 
 console.log("***************************************")
 
