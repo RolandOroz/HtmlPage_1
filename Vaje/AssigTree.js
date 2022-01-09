@@ -9,6 +9,11 @@ let resultValue2 = [];
 
 let indexedValueCollection;
 
+//TODO indexing date and node names
+
+
+let arrValueDateNode = [];
+let arrValueNodeName = [];
 
 //random id number
 function randomIdNumber(divider) {
@@ -51,18 +56,6 @@ function searchByDate(year, month, day) {
     return date;
 }
 
-//start array
-let randomStartNodeArray = randomNumbersOfNodeIterator(0);
-//recursiveNodeLevel(randomStartNodeArray, randomStartNodeArray.length);
-
-//recursive node generator
-// function recursiveNodeLevel(base, i, level) {
-//   if (i > 0) {
-//     recursiveNodeLevel[i - 1] = base[i-1].children = randomNumbersOfNodeIterator(level);
-//     return recursiveNodeLevel(base, i -1  );
-//   }
-//   return recursiveNodeLevel;
-// }
 
 function build(n, lvl) {
     lvl += 1;
@@ -74,7 +67,7 @@ function build(n, lvl) {
             randomIdNumber(1000_000),
             randomDay(2021, 0, 31));
 
-        node.children = build(randNum(2), lvl);
+        node.children = build(randNum(3), lvl);
         output.push(node);
     }
     return output;
@@ -98,15 +91,22 @@ function randomNumbersOfNodeIterator(level) {
 
 //duplicate checking
 function findDuplicates(searchArray, keyValue) {
-    let array = searchArray;
-    const uniqueValues = new Set(array.map(v => v[keyValue]));
-    if (uniqueValues.size < array.length) {
-        console.log('Duplicates are: ', uniqueValues.valueOf(), array.valueOf().length)
-    } else {
-        console.log("No Duplicates: ", uniqueValues.valueOf(), "\n#Of Arrays: " + array.valueOf().length + array.nodeName);
+    let arr = searchArray;
+    const compare = [];
+    const duplicates = [];
+
+    for(let num of arr) {
+        if(!compare.includes(num)) {
+            compare.push(num);
+        } else {
+            duplicates.push(num);
+        }
     }
+    return duplicates;
 }
 
+// unique Date values
+const uniqueValues = new Set(output.map(v => v.dateValueNode));
 //display tree value function
 function displayNodeNames(arr, lvl) {
 
@@ -115,15 +115,18 @@ function displayNodeNames(arr, lvl) {
         let spaces = " ";
 
         for (let j = 0; j < lvl; j++) {
-            spaces += " ";
+            spaces += "-";
         }
         // console.log(spaces + node.nodeName);   // for TESTING purpose
         // console.log(node.dateValueNode);
 //************************************************************** date search HERE!!
-        // if (node.dateValueNode.toUTCString() === dateSearch) {
-        //   resultValue1.push(node.dateValueNode);
-        //   resultValue2.push(node.nodeName);
-        // }
+
+       // if (uniqueValues.size !== arrValueDateNode.length) {}
+
+            arrValueDateNode.push(node.dateValueNode);
+            arrValueNodeName.push(node.nodeName);
+
+
         console.log(spaces + node.nodeName);
         displayNodeNames(node.children, lvl + 1);
     }
@@ -146,7 +149,7 @@ function searchByValueRec(arr, lvl, year, month, day) {
         //console.log(spaces + node.nodeName);  // for TESTING purpose
         //console.log(node.dateValueNode);      // for TESTING purpose
 
-       // if (dateMilli === search) {
+        //if (dateMilli === search) {
             resultValue1.push(node.dateValueNode);
             resultValue2.push(node.nodeName);
        // }
@@ -182,6 +185,12 @@ function listMapItems(keyItem, valueItem) {
 
  listMapItems(resultValue1, resultValue2);
  console.log(indexedValueCollection);
+ console.log(indexedValueCollection.length);
+ // console.log(arrValueNodeName);
+ console.log(arrValueDateNode);
+ console.log(uniqueValues);
+
+
 
 
 //*********************************************************************************
@@ -199,7 +208,8 @@ function listMapItems(keyItem, valueItem) {
 // displayNodeNames(output, 0)
 //
 // function searchByValue(arr, val) {
-//   return arr.find( key => arr[val] === val);
+//   return arr.find( key => ar
+//   r[val] === val);
 // }
 
 //dateValueNode
