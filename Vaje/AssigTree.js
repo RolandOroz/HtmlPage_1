@@ -3,10 +3,6 @@ function randNum(num) {
     return Math.ceil(Math.random() * num);
 }
 
-//result arrays for search function
-let resultValue1 = [];
-let resultValue2 = [];
-
 let indexedValueCollection;
 
 //TODO indexing date and node names
@@ -26,7 +22,7 @@ class Node {
         //random id value
         this.idValueNode = idValueNode;//randomIdNumber(1000_000);
         //random date value
-        this.dateValueNode = randomDay(2021, 0, 1);
+        this.dateValueNode = randomDay(2021, 0, 5);
         //child
         this.children = [];
         //this.depth_Node = depth_Node;
@@ -94,15 +90,12 @@ function displayNodeNames(arr, lvl) {
          console.log(node.dateValueNode);
 //************************************************************** date search HERE!!
 
-
-
         console.log(spaces + node.nodeName);
         displayNodeNames(node.children, lvl + 1);
     }
 }
 displayNodeNames(output, 0);
 
-let modifiedArr;
 
 function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
@@ -113,26 +106,16 @@ function searchByDateRecord(arr, lvl, year, month, day) {
         if (dateMilli === search) {
             listMapItems(node.dateValueNode, node.nodeName);
             console.log("search date is " + search + " ==> " + new Date(search).toISOString());
-            console.log(node.nodeName);
+           console.log(node.nodeName);
         }
         searchByDateRecord(node.children, lvl++);
     }
 }
-
 searchByDateRecord(output, 0, 2021, 0, 1);
 
 
 
 console.log("**************** MAP ***********************")
-
-console.log("\nResult for Date")
- console.log(resultValue1);
- console.log(resultValue1.length);
-console.log("Result for Node Name")
-  console.log(resultValue2);
-  console.log(resultValue2.length);
-
-//let searchVal = searchByDate(2021, 0, 2).getTime();
 
 function listMapItems(keyItem, valueItem) {
     let arr1 = keyItem;
@@ -141,18 +124,14 @@ function listMapItems(keyItem, valueItem) {
     valuesMap.set(arr1, arr2);
 
     for (const [key, value] of valuesMap) {
-         //console.log(key);
-         //console.log(value);
+         console.log(key);
+         console.log(value);
         indexedValueCollection = valuesMap;
     }
 }
 
-// listMapItems(arrValueDateNode, arrValueNodeName);
-// listMapItems(resultValue1, resultValue2);
+
  console.log(indexedValueCollection);
- console.log(indexedValueCollection.size);
- // console.log(arrValueNodeName);
- console.log(modifiedArr);
  console.log(uniqueValues);
 
 
