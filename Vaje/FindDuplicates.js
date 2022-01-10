@@ -21,7 +21,7 @@ randArr(dateRandArr);
 
 console.log(dateRandArr);
 console.log(dateRandArr.length);
-console.log(uniqueArr);
+
 console.log(uniqueArr.size);
 console.log(uniqueArr);
 

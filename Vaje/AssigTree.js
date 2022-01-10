@@ -123,7 +123,6 @@ function displayNodeNames(arr, lvl) {
 //************************************************************** date search HERE!!
 
         if (output.length < arrValueDateNode.length) {
-            console.log("HELLO!!!!")
         }
 
         console.log(spaces + node.nodeName);
@@ -134,6 +133,7 @@ function displayNodeNames(arr, lvl) {
 displayNodeNames(output, 0);
 
 let modifiedArr;
+
 function searchByValueRec(arr, lvl, year, month, day) {
 
     for (let i = 0; i < arr.length; i++) {
@@ -143,7 +143,7 @@ function searchByValueRec(arr, lvl, year, month, day) {
         let arr2 = node.nodeName;
         if (dateMilli === search) {
             resultValue1.push(node.dateValueNode);
-            modifiedArr = arr.map(function(element){
+            modifiedArr = arr.map(function (element) {
                 return arr2;
 
             });
