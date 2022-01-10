@@ -102,6 +102,22 @@ function displayNodeNames(arr, lvl) {
 }
 displayNodeNames(output, 0);
 
+// const measurementDataMap = {};
+// //...
+// if(measurementDataMap[value.name] == undefined) {
+//     measurementDataMap[value.name] = [];
+// }
+// measurementDataMap[value.name].push(value.value);
+//
+// // OR
+//
+// const measurementDataMap = new Map;
+// //...
+// if(!measurementDataMap.has(value.name))
+//     measurementDataMap.set(value.name, []);
+//
+//
+// measurementDataMap.get(value.name).push(value.value);
 
 function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
