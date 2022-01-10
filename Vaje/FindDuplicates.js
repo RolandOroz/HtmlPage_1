@@ -7,13 +7,13 @@ function randomDay(year, month, randomDayInterval) {
     date.setHours(0, 0, 0, 0);  //sets T all to 0
     return date;
 }
+
+
 let dateRandArr = [];
 let uniqueArr = new Set();
 let setKey = new Map();
 let date = new Date();
 let searchByDate = setDate(2021,0,0);
-
-
 
 function setDate(year, month, day) {
     const date = new Date();

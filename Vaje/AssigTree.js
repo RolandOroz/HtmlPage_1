@@ -6,7 +6,8 @@ function randNum(num) {
 let indexedValueCollection;
 
 //TODO indexing date and node names
-let arrValueDateNode = new Set();
+let nameAndDateNodesMap = new Map();
+
 let arrValueNodeName = [];
 
 //random id number
@@ -22,7 +23,7 @@ class Node {
         //random id value
         this.idValueNode = idValueNode;//randomIdNumber(1000_000);
         //random date value
-        this.dateValueNode = randomDay(2021, 0, 5);
+        this.dateValueNode = randomDay(2021, 0, 3);
         //child
         this.children = [];
         //this.depth_Node = depth_Node;
@@ -39,7 +40,7 @@ function randomDay(year, month, randomDayInterval) {
     return date;
 }
 
-function searchByDate(year, month, day) {
+function setupDate(year, month, day) {
     const date = new Date();
     date.setFullYear(year);
     date.setMonth(month);
@@ -66,14 +67,13 @@ function build(n, lvl) {
 }
 
 console.log('------------------ NODES --------------------');
-console.log('My nodes');
+console.log('My nodes:\n');
 let output = build(randNum(1), -1);
 
-//console.log(output);
-
-// unique Date values
-const uniqueValues = new Set(output.map(v => v.dateValueNode));
 //display tree value function
+let allNodeNames = [];
+let allNodeDates = [];
+let allNodeDatesGetTime = [];
 
 //display tree nodes visually
 function displayNodeNames(arr, lvl) {
@@ -81,58 +81,57 @@ function displayNodeNames(arr, lvl) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
         let spaces = " ";
-        // arrValueNodeName.push(node.nodeName);
-       // arrValueDateNode.add(node.dateValueNode);
+
         for (let j = 0; j < lvl; j++) {
             spaces += "-";
         }
         // console.log(spaces + node.nodeName);   // for TESTING purpose
-         console.log(node.dateValueNode);
-//************************************************************** date search HERE!!
+
+        nameAndDateNodesMap.set(node.dateValueNode, node.nodeName)
+
+
+        console.log(node.dateValueNode);
 
         console.log(spaces + node.nodeName);
+        allNodeDates.push(node.dateValueNode);
+        allNodeDatesGetTime.push(node.dateValueNode.getTime());
+        allNodeNames.push(node.nodeName);
         displayNodeNames(node.children, lvl + 1);
+
     }
 }
+
 displayNodeNames(output, 0);
 
 
 function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
-        let search = searchByDate(year, month, day).getTime();
+        let search = setupDate(year, month, day).getTime();
         let dateMilli = node.dateValueNode.getTime();
 
         if (dateMilli === search) {
-            listMapItems(node.dateValueNode, node.nodeName);
             console.log("search date is " + search + " ==> " + new Date(search).toISOString());
-           console.log(node.nodeName);
         }
         searchByDateRecord(node.children, lvl++);
+
     }
 }
 searchByDateRecord(output, 0, 2021, 0, 1);
 
-
+//getting unique values from date nodes with Set() and transforming back to array
+let uniqueSetOfAllNodeDates = new Set(allNodeDatesGetTime);
+console.log(uniqueSetOfAllNodeDates);
+const uniqueArrayOfAllNodeDates = [ ...uniqueSetOfAllNodeDates];
+console.log(uniqueArrayOfAllNodeDates);
 
 console.log("**************** MAP ***********************")
 
-function listMapItems(keyItem, valueItem) {
-    let arr1 = keyItem;
-    let arr2 = valueItem;
-    const valuesMap = new Map();
-    valuesMap.set(arr1, arr2);
 
-    for (const [key, value] of valuesMap) {
-         console.log(key);
-         console.log(value);
-        indexedValueCollection = valuesMap;
-    }
-}
+ console.log(allNodeNames);
+ console.log(allNodeDatesGetTime);
+ console.log(nameAndDateNodesMap);
 
-
- console.log(indexedValueCollection);
- console.log(uniqueValues);
 
 
 
@@ -275,4 +274,16 @@ function listMapItems(keyItem, valueItem) {
 //         }
 //     }
 //     return duplicates;
+// }
+
+// function listMapItems(keyItem, valueItem) {
+//     let key1 = keyItem;
+//     let arr2 = valueItem;
+//     const valuesMap = new Map();
+//     valuesMap.set(key1, arr2);
+//
+//     for (let [key, value] of valuesMap) {
+//
+//         indexedValueCollection = valuesMap;
+//     }
 // }
