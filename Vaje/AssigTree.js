@@ -12,7 +12,7 @@ let indexedValueCollection;
 //TODO indexing date and node names
 
 
-let arrValueDateNode = [];
+let arrValueDateNode = new Set();
 let arrValueNodeName = [];
 
 //random id number
@@ -28,7 +28,7 @@ class Node {
         //random id value
         this.idValueNode = idValueNode;//randomIdNumber(1000_000);
         //random date value
-        this.dateValueNode = randomDay(2021, 0, 31);
+        this.dateValueNode = randomDay(2021, 0, 1);
         //child
         //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
         //https://www.w3schools.com/jsref/jsref_from.asp
@@ -113,19 +113,18 @@ function displayNodeNames(arr, lvl) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
         let spaces = " ";
-
+        arrValueNodeName.push(node.nodeName);
+        arrValueDateNode.add(node.dateValueNode);
         for (let j = 0; j < lvl; j++) {
             spaces += "-";
         }
         // console.log(spaces + node.nodeName);   // for TESTING purpose
-        // console.log(node.dateValueNode);
+         console.log(node.dateValueNode);
 //************************************************************** date search HERE!!
 
-       // if (uniqueValues.size !== arrValueDateNode.length) {}
-
-            arrValueDateNode.push(node.dateValueNode);
-            arrValueNodeName.push(node.nodeName);
-
+        if (output.length < arrValueDateNode.length) {
+            console.log("HELLO!!!!")
+        }
 
         console.log(spaces + node.nodeName);
         displayNodeNames(node.children, lvl + 1);
@@ -134,30 +133,31 @@ function displayNodeNames(arr, lvl) {
 
 displayNodeNames(output, 0);
 
-
+let modifiedArr;
 function searchByValueRec(arr, lvl, year, month, day) {
 
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
-        let spaces = " ";
         let search = searchByDate(year, month, day).getTime();
         let dateMilli = node.dateValueNode.getTime();
+        let arr2 = node.nodeName;
 
-        for (let j = 0; j < lvl; j++) {
-            spaces += " ";
-        }
         //console.log(spaces + node.nodeName);  // for TESTING purpose
         //console.log(node.dateValueNode);      // for TESTING purpose
 
-        //if (dateMilli === search) {
+        if (dateMilli === search) {
             resultValue1.push(node.dateValueNode);
-            resultValue2.push(node.nodeName);
-       // }
+            modifiedArr = arr.map(function(element){
+                return arr2;
+
+            });
+            // arr2[i] = resultValue2.push(node.nodeName);
+        }
         searchByValueRec(node.children, lvl++);
     }
 }
 
-searchByValueRec(output, 0, 2021, 0, 0);
+searchByValueRec(output, 0, 2021, 0, 1);
 
 console.log("**************** MAP ***********************")
 
@@ -183,12 +183,13 @@ function listMapItems(keyItem, valueItem) {
     }
 }
 
- listMapItems(resultValue1, resultValue2);
+// listMapItems(arrValueDateNode, arrValueNodeName);
+ listMapItems(resultValue1, modifiedArr);
  console.log(indexedValueCollection);
- console.log(indexedValueCollection.length);
+ console.log(indexedValueCollection.size);
  // console.log(arrValueNodeName);
- console.log(arrValueDateNode);
- console.log(uniqueValues);
+ //console.log(arrValueDateNode);
+// console.log(uniqueValues);
 
 
 

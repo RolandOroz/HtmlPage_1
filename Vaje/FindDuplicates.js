@@ -23,5 +23,5 @@ console.log(dateRandArr);
 console.log(dateRandArr.length);
 console.log(uniqueArr);
 console.log(uniqueArr.size);
-console.log(uniqueArr.values());
+console.log(uniqueArr);
 
