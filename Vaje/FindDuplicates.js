@@ -14,11 +14,29 @@ let date = new Date();
 function randArr(arr) {
     for (let i = 0; i < 20; i++) {
         arr[i] = randomDay(2021,0,3);
-        uniqueArr.add(arr[i].toISOString());
+        uniqueArr.add(arr[i].getTime());
     }
 }
 randArr(dateRandArr);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//********************************************************
 console.log(dateRandArr);
 console.log(dateRandArr.length);
 

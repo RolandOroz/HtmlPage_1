@@ -10,8 +10,6 @@ let resultValue2 = [];
 let indexedValueCollection;
 
 //TODO indexing date and node names
-
-
 let arrValueDateNode = new Set();
 let arrValueNodeName = [];
 
@@ -20,7 +18,7 @@ function randomIdNumber(divider) {
     return Math.ceil((Math.random()) * Date.now() / divider);
 }
 
-//************** CLASS NODE
+//******************************************* CLASS NODE ****************************************************
 class Node {
     constructor(nodeName, idValueNode) {
         //values
@@ -30,8 +28,6 @@ class Node {
         //random date value
         this.dateValueNode = randomDay(2021, 0, 1);
         //child
-        //https://stackoverflow.com/questions/62676186/generate-random-tree-using-javascript
-        //https://www.w3schools.com/jsref/jsref_from.asp
         this.children = [];
         //this.depth_Node = depth_Node;
     }
@@ -56,7 +52,7 @@ function searchByDate(year, month, day) {
     return date;
 }
 
-
+// build tree with random nodes
 function build(n, lvl) {
     lvl += 1;
     if (lvl > 4) return [];
@@ -75,46 +71,22 @@ function build(n, lvl) {
 
 console.log('------------------ NODES --------------------');
 console.log('My nodes');
-let output = build(randNum(2), -1);
+let output = build(randNum(1), -1);
 
 //console.log(output);
-
-
-function randomNumbersOfNodeIterator(level) {
-    let xNodes = randNum(29);
-    let arrNode = [];
-    for (let i = 0; i < xNodes; i++) {
-        arrNode[i] = new Node("N" + level + "_" + i, randomIdNumber(1000000), randomDay(2021, 0, 31));
-    }
-    return arrNode;
-}
-
-//duplicate checking
-function findDuplicates(searchArray, keyValue) {
-    let arr = searchArray;
-    const compare = [];
-    const duplicates = [];
-
-    for(let num of arr) {
-        if(!compare.includes(num)) {
-            compare.push(num);
-        } else {
-            duplicates.push(num);
-        }
-    }
-    return duplicates;
-}
 
 // unique Date values
 const uniqueValues = new Set(output.map(v => v.dateValueNode));
 //display tree value function
+
+//display tree nodes visually
 function displayNodeNames(arr, lvl) {
 
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
         let spaces = " ";
-        arrValueNodeName.push(node.nodeName);
-        arrValueDateNode.add(node.dateValueNode);
+        // arrValueNodeName.push(node.nodeName);
+       // arrValueDateNode.add(node.dateValueNode);
         for (let j = 0; j < lvl; j++) {
             spaces += "-";
         }
@@ -122,47 +94,43 @@ function displayNodeNames(arr, lvl) {
          console.log(node.dateValueNode);
 //************************************************************** date search HERE!!
 
-        if (output.length < arrValueDateNode.length) {
-        }
+
 
         console.log(spaces + node.nodeName);
         displayNodeNames(node.children, lvl + 1);
     }
 }
-
 displayNodeNames(output, 0);
 
 let modifiedArr;
 
-function searchByValueRec(arr, lvl, year, month, day) {
-
+function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
         let search = searchByDate(year, month, day).getTime();
         let dateMilli = node.dateValueNode.getTime();
-        let arr2 = node.nodeName;
-        if (dateMilli === search) {
-            resultValue1.push(node.dateValueNode);
-            modifiedArr = arr.map(function (element) {
-                return arr2;
 
-            });
-            // arr2[i] = resultValue2.push(node.nodeName);
+        if (dateMilli === search) {
+            listMapItems(node.dateValueNode, node.nodeName);
+            console.log("search date is " + search + " ==> " + new Date(search).toISOString());
+            console.log(node.nodeName);
         }
-        searchByValueRec(node.children, lvl++);
+        searchByDateRecord(node.children, lvl++);
     }
 }
 
-searchByValueRec(output, 0, 2021, 0, 1);
+searchByDateRecord(output, 0, 2021, 0, 1);
+
+
 
 console.log("**************** MAP ***********************")
 
-// console.log("\nResult for Date")
-//  console.log(resultValue1);
-//  console.log(resultValue1.length);
-// console.log("Result for Node Name")
-//   console.log(resultValue2);
-//   console.log(resultValue2.length);
+console.log("\nResult for Date")
+ console.log(resultValue1);
+ console.log(resultValue1.length);
+console.log("Result for Node Name")
+  console.log(resultValue2);
+  console.log(resultValue2.length);
 
 //let searchVal = searchByDate(2021, 0, 2).getTime();
 
@@ -173,19 +141,19 @@ function listMapItems(keyItem, valueItem) {
     valuesMap.set(arr1, arr2);
 
     for (const [key, value] of valuesMap) {
-        // console.log(key);
-        // console.log(value);
+         //console.log(key);
+         //console.log(value);
         indexedValueCollection = valuesMap;
     }
 }
 
 // listMapItems(arrValueDateNode, arrValueNodeName);
- listMapItems(resultValue1, modifiedArr);
+// listMapItems(resultValue1, resultValue2);
  console.log(indexedValueCollection);
  console.log(indexedValueCollection.size);
  // console.log(arrValueNodeName);
- //console.log(arrValueDateNode);
-// console.log(uniqueValues);
+ console.log(modifiedArr);
+ console.log(uniqueValues);
 
 
 
@@ -303,4 +271,29 @@ function listMapItems(keyItem, valueItem) {
 //   } else {
 //     pushToUniqueList(randomStartNodeArray[i]);
 //   }
+// }
+
+// function randomNumbersOfNodeIterator(level) {
+//     let xNodes = randNum(29);
+//     let arrNode = [];
+//     for (let i = 0; i < xNodes; i++) {
+//         arrNode[i] = new Node("N" + level + "_" + i, randomIdNumber(1000000), randomDay(2021, 0, 31));
+//     }
+//     return arrNode;
+// }
+
+//duplicate checking
+// function findDuplicates(searchArray, keyValue) {
+//     let arr = searchArray;
+//     const compare = [];
+//     const duplicates = [];
+//
+//     for(let num of arr) {
+//         if(!compare.includes(num)) {
+//             compare.push(num);
+//         } else {
+//             duplicates.push(num);
+//         }
+//     }
+//     return duplicates;
 // }
