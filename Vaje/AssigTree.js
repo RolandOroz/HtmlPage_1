@@ -129,6 +129,7 @@ console.log("**************** MAP ***********************")
 
 
  console.log(allNodeNames);
+ console.log(allNodeDates);
  console.log(allNodeDatesGetTime);
  console.log(nameAndDateNodesMap);
 
