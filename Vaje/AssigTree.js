@@ -141,10 +141,6 @@ function searchByValueRec(arr, lvl, year, month, day) {
         let search = searchByDate(year, month, day).getTime();
         let dateMilli = node.dateValueNode.getTime();
         let arr2 = node.nodeName;
-
-        //console.log(spaces + node.nodeName);  // for TESTING purpose
-        //console.log(node.dateValueNode);      // for TESTING purpose
-
         if (dateMilli === search) {
             resultValue1.push(node.dateValueNode);
             modifiedArr = arr.map(function(element){
