@@ -86,6 +86,7 @@ function displayNodeNames(arr, lvl) {
         // console.log(spaces + node.nodeName);   // for TESTING purpose
 
         // key/value setup for node Mapping
+
         nameAndDateNodesMap.set(node.dateValueNode, node.nodeName)
 
 
@@ -122,11 +123,11 @@ displayNodeNames(output, 0);
 function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
-        let search = setupDate(year, month, day).getTime();
-        let dateMilli = node.dateValueNode.getTime();
+        let searchDateGetTime = setupDate(year, month, day).getTime();
+        let dateNodeGetTime = node.dateValueNode.getTime();
 
-        if (dateMilli === search) {
-            console.log("\nsearched date is " + search + " ==> " + new Date(search).toUTCString());
+        if (dateNodeGetTime === searchDateGetTime) {
+            console.log("\nsearched date is " + searchDateGetTime + " ==> " + new Date(searchDateGetTime));
         }
         searchByDateRecord(node.children, lvl++);
     }
