@@ -3,12 +3,10 @@ function randNum(num) {
     return Math.ceil(Math.random() * num);
 }
 
-let indexedValueCollection;
-
-//TODO indexing date and node names
+//collection of all date and node names
 let nameAndDateNodesMap = new Map();
 
-let arrValueNodeName = [];
+
 
 //random id number
 function randomIdNumber(divider) {
@@ -70,7 +68,7 @@ console.log('------------------ NODES --------------------');
 console.log('My nodes:\n');
 let output = build(randNum(1), -1);
 
-//display tree value function
+//variables for name and date nodes
 let allNodeNames = [];
 let allNodeDates = [];
 let allNodeDatesGetTime = [];
@@ -87,20 +85,21 @@ function displayNodeNames(arr, lvl) {
         }
         // console.log(spaces + node.nodeName);   // for TESTING purpose
 
+        // key/value setup for node Mapping
         nameAndDateNodesMap.set(node.dateValueNode, node.nodeName)
 
 
         console.log(node.dateValueNode);
-
+        //visual display of nodes in console with space indentations
         console.log(spaces + node.nodeName);
         allNodeDates.push(node.dateValueNode);
+        //for Set() to find unique dates
         allNodeDatesGetTime.push(node.dateValueNode.getTime());
         allNodeNames.push(node.nodeName);
         displayNodeNames(node.children, lvl + 1);
 
     }
 }
-
 displayNodeNames(output, 0);
 
 
@@ -111,10 +110,9 @@ function searchByDateRecord(arr, lvl, year, month, day) {
         let dateMilli = node.dateValueNode.getTime();
 
         if (dateMilli === search) {
-            console.log("search date is " + search + " ==> " + new Date(search).toISOString());
+            console.log("\nsearched date is " + search + " ==> " + new Date(search).toUTCString());
         }
         searchByDateRecord(node.children, lvl++);
-
     }
 }
 searchByDateRecord(output, 0, 2021, 0, 1);
