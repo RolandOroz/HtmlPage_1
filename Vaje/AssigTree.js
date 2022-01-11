@@ -4,8 +4,9 @@ function randNum(num) {
 }
 
 //collection of all date and node names
-let nameAndDateNodesMap = new Map();
-
+const nameAndDateNodesMap = new Map();
+//collection of all date and node names with getTime()!!!---correct collection of data
+const nameAndDateNodesMapGetTime = new Map();
 
 
 //random id number
@@ -63,9 +64,6 @@ function build(n, lvl) {
     }
     return output;
 }
-
-console.log('------------------ NODES --------------------');
-console.log('My nodes:\n');
 let output = build(randNum(1), -1);
 
 //variables for name and date nodes
@@ -83,42 +81,35 @@ function displayNodeNames(arr, lvl) {
         for (let j = 0; j < lvl; j++) {
             spaces += "-";
         }
+
         // console.log(spaces + node.nodeName);   // for TESTING purpose
+        // console.log(node.dateValueNode);       // for TESTING purpose
 
-        // key/value setup for node Mapping
+        // key/value setup for node Mapping with no getTime()
+        //---> does not set collection of node names for same date !!!!!!
+        //nameAndDateNodesMap.set(node.dateValueNode, node.nodeName);  // same method for no collection
+        if(!nameAndDateNodesMap.has(node.dateValueNode))
+            nameAndDateNodesMap.set(node.dateValueNode, []);
+        nameAndDateNodesMap.get(node.dateValueNode).push(node.nodeName);
 
-        nameAndDateNodesMap.set(node.dateValueNode, node.nodeName)
+        //key/value with getTime() ---> does set collection of node names for same date !!!!!!
+        if(!nameAndDateNodesMapGetTime.has(node.dateValueNode.getTime()))
+            nameAndDateNodesMapGetTime.set(node.dateValueNode.getTime(), []);
 
+        nameAndDateNodesMapGetTime.get(node.dateValueNode.getTime()).push(node.nodeName);
 
-        console.log(node.dateValueNode);
         //visual display of nodes in console with space indentations
         console.log(spaces + node.nodeName);
-        allNodeDates.push(node.dateValueNode);
+
         //for Set() to find unique dates
+        allNodeDates.push(node.dateValueNode);
         allNodeDatesGetTime.push(node.dateValueNode.getTime());
         allNodeNames.push(node.nodeName);
         displayNodeNames(node.children, lvl + 1);
 
     }
 }
-displayNodeNames(output, 0);
 
-// const measurementDataMap = {};
-// //...
-// if(measurementDataMap[value.name] == undefined) {
-//     measurementDataMap[value.name] = [];
-// }
-// measurementDataMap[value.name].push(value.value);
-//
-// // OR
-//
-// const measurementDataMap = new Map;
-// //...
-// if(!measurementDataMap.has(value.name))
-//     measurementDataMap.set(value.name, []);
-//
-//
-// measurementDataMap.get(value.name).push(value.value);
 
 function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
@@ -127,26 +118,46 @@ function searchByDateRecord(arr, lvl, year, month, day) {
         let dateNodeGetTime = node.dateValueNode.getTime();
 
         if (dateNodeGetTime === searchDateGetTime) {
+            console.log("\n*********** SEARCH FUNCTION ************");
             console.log("\nsearched date is " + searchDateGetTime + " ==> " + new Date(searchDateGetTime));
+            console.log("\n****************************************\n");
         }
         searchByDateRecord(node.children, lvl++);
     }
 }
 searchByDateRecord(output, 0, 2021, 0, 1);
 
+
+//********************* console logs ***************
+// Please comment out Section/s you do not want to display
+
+// SECTION: 1
+console.log('-------------------- NODES DISPLAY --------------------\n');
+console.log('My nodes:\n');
+displayNodeNames(output, 0);
+
+// SECTION: 2
+console.log();
+console.log('-------------------- UNIQUE VALUES --------------------\n');
 //getting unique values from date nodes with Set() and transforming back to array
 let uniqueSetOfAllNodeDates = new Set(allNodeDatesGetTime);
 console.log(uniqueSetOfAllNodeDates);
 const uniqueArrayOfAllNodeDates = [ ...uniqueSetOfAllNodeDates];
 console.log(uniqueArrayOfAllNodeDates);
 
-console.log("**************** MAP ***********************")
+// SECTION: 3
+console.log();
+console.log('-------------------- COMPARISON OF NODES NAME & DATE LENGTH --------------------\n');
+ console.log("All nodes names: " + allNodeNames.length);
+ console.log("All nodes dates " + allNodeDates.length);
 
+// console.log(allNodeDatesGetTime);
 
- console.log(allNodeNames);
- console.log(allNodeDates);
- console.log(allNodeDatesGetTime);
+// SECTION: 4
+console.log("\n**************** MAP (no getTime() used) ***********************")
  console.log(nameAndDateNodesMap);
+console.log("\n**************** MAP (with getTime() used) ***********************")
+ console.log(nameAndDateNodesMapGetTime);
 
 
 
