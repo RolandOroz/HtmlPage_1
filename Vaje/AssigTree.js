@@ -163,7 +163,25 @@ console.log("\n**************** MAP (with getTime() used) **********************
 
 
 
-//*********************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//********************************* IDEAS / DUMP  ************************************************
+
 // function displayNodeNames(arr, lvl, val) {
 //   for( let i = 0; i < arr.length; i++) {
 //     let node = arr[i];
@@ -184,11 +202,6 @@ console.log("\n**************** MAP (with getTime() used) **********************
 
 //dateValueNode
 
-
-//****************************** TEST / LOGS ***************************************
-//console.log("level 1 *************************************************************");
-//findDuplicates(output, 'dateValueNode');
-
 //TODO recursive search function(searchArray, resultArray) --no return
 // function searchWithResult(searchArray, resultArray) {
 //   let tempSearchArr = searchArray;
@@ -208,8 +221,6 @@ console.log("\n**************** MAP (with getTime() used) **********************
 //
 //
 // }
-
-//****** ideas ***************
 
 //array generator
 // function* range(start, end, step) {
