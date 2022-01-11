@@ -27,6 +27,20 @@ class Node {
         this.children = [];
         //this.depth_Node = depth_Node;
     }
+
+    get getAllNodeNames() {
+            return this.nodeName;
+        };
+
+    get getAllNodeDates() {
+            return this.dateValueNode;
+        };
+    get getAllNodeIds() {
+            return this.idValueNode;
+        };
+
+
+
 }
 
 //random date generator
@@ -67,10 +81,11 @@ function build(n, lvl) {
 
 let output = build(randNum(1), -1);
 
-//variables for name and date nodes
-let allNodeNames = [];
-let allNodeDates = [];
-let allNodeDatesGetTime = [];
+//TODO MAKE FUNCTION  (variables for name and date nodes)
+// let allNodeNames = [];
+// let allNodeDates = [];
+// let allNodeDatesGetTime = [];
+// let allNodeIds = [];
 
 //display tree nodes visually
 function displayNodeNames(arr, lvl) {
@@ -102,13 +117,43 @@ function displayNodeNames(arr, lvl) {
         //visual display of nodes in console with space indentations
         console.log(spaces + node.nodeName);
 
-        //for Set() to find unique dates
-        allNodeDates.push(node.dateValueNode);
-        allNodeDatesGetTime.push(node.dateValueNode.getTime());
-        allNodeNames.push(node.nodeName);
+
+        // //for Set() to find unique dates
+        // allNodeDates.push(node.dateValueNode);
+        // allNodeDatesGetTime.push(node.dateValueNode.getTime());
+        // allNodeNames.push(node.nodeName);
+        // allNodeIds.push(node.idValueNode);
+
         displayNodeNames(node.children, lvl + 1);
 
     }
+}
+//TODO****************************************************************************************************
+function idOfNodes(arr) {
+    const lvl = 0;
+
+    // static get allNodeDatesGetTime = [];
+    // static get allNodeIds = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        let node = arr[i];
+
+        //for Set() to find unique dates
+        // allNodeDates.push(node.dateValueNode);
+        // allNodeDatesGetTime.push(node.dateValueNode.getTime());
+         let allNodeIds = {
+            dat: node.idValueNode,
+            get getAllNodeNames() {
+                return this.dat;
+            }
+        };
+
+            //allNodeNames.push(node.nodeName);};
+            // allNodeIds.push(node.idValueNode);
+        console.log(allNodeIds.getAllNodeNames);
+
+        idOfNodes(node.children, lvl + 1);
+    } return void(0);
 }
 
 
@@ -141,23 +186,31 @@ displayNodeNames(output, 0);
 // SECTION: 2
 console.log();
 console.log('-------------------- UNIQUE VALUES --------------------\n');
-//getting unique values from date nodes with Set() and transforming back to array
-let uniqueSetOfAllNodeDates = new Set(allNodeDatesGetTime);
-console.log(uniqueSetOfAllNodeDates);
-const uniqueArrayOfAllNodeDates = [...uniqueSetOfAllNodeDates];
-console.log(uniqueArrayOfAllNodeDates);
-
-// SECTION: 3
-console.log();
-console.log('-------------------- COMPARISON OF NODES NAME & DATE LENGTH --------------------\n');
-console.log("All nodes names: " + allNodeNames.length);
-console.log("All nodes dates " + allNodeDates.length);
+output.getAllNodeNames;
+console.log(idOfNodes(output));
+// getting unique values from date nodes with Set() and transforming back to array
+// let uniqueSetOfAllNodeDates = new Set(allNodeDatesGetTime);
+// console.log(uniqueSetOfAllNodeDates);
+// const uniqueArrayOfAllNodeDates = [...uniqueSetOfAllNodeDates];
+// console.log("Unique Dates Array Length: " +uniqueArrayOfAllNodeDates.length);
+//
+// let uniqueSetOfAllNodeIds = new Set(allNodeIds);
+// console.log(uniqueSetOfAllNodeIds);
+// const uniqueArrayOfAllNodeIds = [...uniqueSetOfAllNodeIds];
+// console.log("Unique ID's Array Length: " + uniqueArrayOfAllNodeIds.length);
+//
+// // SECTION: 3
+// console.log();
+// console.log('-------------------- COMPARISON OF NODES NAME, DATE & ID LENGTH --------------------\n');
+// console.log("All nodes names: " + allNodeNames.length);
+// console.log("All nodes dates " + allNodeDates.length);
+// console.log("All nodes Ids " + allNodeIds.length);
 
 // console.log(allNodeDatesGetTime);
 
 // SECTION: 4
-console.log("\n**************** MAP (no getTime() used) ***********************")
-console.log(nameAndDateNodesMap);
+// console.log("\n**************** MAP (no getTime() used) ***********************")
+// console.log(nameAndDateNodesMap);
 console.log("\n**************** MAP (with getTime() used) ***********************")
 console.log(nameAndDateNodesMapGetTime);
 
