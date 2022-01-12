@@ -92,6 +92,7 @@ let output = build(randNum(1), -1);
 // let allNodeDatesGetTime = [];
 // let allNodeIds = [];
 
+
 //display tree nodes visually
 function displayNodeNames(arr, lvl) {
 
