@@ -8,6 +8,8 @@ const nameAndDateNodesMap = new Map();
 //collection of all date and node names with getTime()!!!---correct collection of data
 const nameAndDateNodesMapGetTime = new Map();
 
+const nameAndIdNodesMap = new Map();
+
 
 //random id number
 function randomIdNumber(divider) {
@@ -29,18 +31,20 @@ class Node {
     }
 
     get getAllNodeNames() {
-            return this.nodeName;
+           return this.nodeName;
         };
 
     get getAllNodeDates() {
             return this.dateValueNode;
         };
+
+    get NodeDatesGetTime() {
+        return this.dateValueNode.getTime();
+    };
+
     get getAllNodeIds() {
             return this.idValueNode;
         };
-
-
-
 }
 
 //random date generator
@@ -70,7 +74,8 @@ function build(n, lvl) {
 
     for (let i = 0; i < n; i++) {
         let node = new Node("N" + lvl + "_" + i,
-            randomIdNumber(1000_000),
+            randNum(3),
+            //randomIdNumber(1000_000),
             randomDay(2021, 0, 31));
 
         node.children = build(randNum(3), lvl);
@@ -116,9 +121,9 @@ function displayNodeNames(arr, lvl) {
 
         //visual display of nodes in console with space indentations
         console.log(spaces + node.nodeName);
+        idRet =  node.idValueNode;
 
-
-        // //for Set() to find unique dates
+        //for Set() to find unique dates
         // allNodeDates.push(node.dateValueNode);
         // allNodeDatesGetTime.push(node.dateValueNode.getTime());
         // allNodeNames.push(node.nodeName);
@@ -128,35 +133,36 @@ function displayNodeNames(arr, lvl) {
 
     }
 }
-//TODO****************************************************************************************************
-function idOfNodes(arr) {
+//display name, id & date of nodes
+function allNodesValues(arr) {
     const lvl = 0;
+            for (let i = 0; i < arr.length; i++) {
+                let node = arr[i];
 
-    // static get allNodeDatesGetTime = [];
-    // static get allNodeIds = [];
+                console.log("\t" + node.getAllNodeNames);
+                console.log("\t" + node.getAllNodeIds);
+                console.log("\t" + node.getAllNodeDates);
+                console.log();
 
-    for (let i = 0; i < arr.length; i++) {
-        let node = arr[i];
-
-        //for Set() to find unique dates
-        // allNodeDates.push(node.dateValueNode);
-        // allNodeDatesGetTime.push(node.dateValueNode.getTime());
-         let allNodeIds = {
-            dat: node.idValueNode,
-            get getAllNodeNames() {
-                return this.dat;
+                allNodesValues(node.children, lvl + 1);
             }
-        };
-
-            //allNodeNames.push(node.nodeName);};
-            // allNodeIds.push(node.idValueNode);
-        console.log(allNodeIds.getAllNodeNames);
-
-        idOfNodes(node.children, lvl + 1);
-    } return void(0);
 }
 
+//show duplicate Ids
+function showDuplicateId(arr) {
+    const lvl = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let node = arr[i];
+        if (!nameAndIdNodesMap.has(node.idValueNode))
+            nameAndIdNodesMap.set(node.idValueNode, []);
 
+        nameAndIdNodesMap.get(node.idValueNode).push(node.nodeName);
+
+        showDuplicateId(node.children, lvl + 1);
+    }
+}
+
+//search function of date value
 function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
@@ -171,8 +177,12 @@ function searchByDateRecord(arr, lvl, year, month, day) {
         searchByDateRecord(node.children, lvl++);
     }
 }
-
 searchByDateRecord(output, 0, 2021, 0, 1);
+
+
+
+
+
 
 
 //********************* console logs ***************
@@ -186,11 +196,12 @@ displayNodeNames(output, 0);
 // SECTION: 2
 console.log();
 console.log('-------------------- UNIQUE VALUES --------------------\n');
-output.getAllNodeNames;
-console.log(idOfNodes(output));
+
+
 // getting unique values from date nodes with Set() and transforming back to array
-// let uniqueSetOfAllNodeDates = new Set(allNodeDatesGetTime);
-// console.log(uniqueSetOfAllNodeDates);
+
+//  let uniqueSetOfAllNodeDates = new Set();
+//  console.log(uniqueSetOfAllNodeDates);
 // const uniqueArrayOfAllNodeDates = [...uniqueSetOfAllNodeDates];
 // console.log("Unique Dates Array Length: " +uniqueArrayOfAllNodeDates.length);
 //
@@ -198,8 +209,13 @@ console.log(idOfNodes(output));
 // console.log(uniqueSetOfAllNodeIds);
 // const uniqueArrayOfAllNodeIds = [...uniqueSetOfAllNodeIds];
 // console.log("Unique ID's Array Length: " + uniqueArrayOfAllNodeIds.length);
-//
-// // SECTION: 3
+
+// SECTION: 3
+ console.log();
+ console.log('-------------------- DISPLAYING ALL NODES NAMES, DATES & IDS --------------------\n');
+allNodesValues(output);
+
+// SECTION: 4
 // console.log();
 // console.log('-------------------- COMPARISON OF NODES NAME, DATE & ID LENGTH --------------------\n');
 // console.log("All nodes names: " + allNodeNames.length);
@@ -208,12 +224,17 @@ console.log(idOfNodes(output));
 
 // console.log(allNodeDatesGetTime);
 
-// SECTION: 4
+// SECTION: 5
 // console.log("\n**************** MAP (no getTime() used) ***********************")
 // console.log(nameAndDateNodesMap);
 console.log("\n**************** MAP (with getTime() used) ***********************")
 console.log(nameAndDateNodesMapGetTime);
 
+// SECTION: 4
+console.log();
+console.log("\n**************** MAP (id) ***********************")
+showDuplicateId(output);
+console.log(nameAndIdNodesMap);
 
 //********************************* IDEAS / DUMP  ************************************************
 
