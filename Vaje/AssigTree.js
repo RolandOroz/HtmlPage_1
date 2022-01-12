@@ -121,7 +121,7 @@ function displayNodeNames(arr, lvl) {
 
         //visual display of nodes in console with space indentations
         console.log(spaces + node.nodeName);
-        idRet = node.idValueNode;
+
 
         //for Set() to find unique dates
         // allNodeDates.push(node.dateValueNode);
