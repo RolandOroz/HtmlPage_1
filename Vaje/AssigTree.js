@@ -38,7 +38,7 @@ class Node {
         return this.dateValueNode;
     };
 
-    get NodeDatesGetTime() {
+    get getNodeDatesGetTime() {
         return this.dateValueNode.getTime();
     };
 
@@ -116,19 +116,43 @@ function displayNodeNames(arrMap, arr, lvl) {
         // console.log(node.dateValueNode);       // for TESTING purpose
 
 
-        // ---> does not set collection of node names for same date !!!!!!//TODO****************************************
+        // ---> does not set collection of node names for same date !!!!!!
 
         //visual display of nodes in console with space indentations
-       // console.log(spaces + node.nodeName);
-
+        function print() {
+         return spaces + node.nodeName;
+        };
 
         displayNodeNames(arrMap, node.children, lvl + 1);
     }
 }
 console.log("before " + nameAndDateNodesMapGetTime) //output = [objectMap]
-displayNodeNames(nameAndDateNodesMapGetTime, output, 0);
+//displayNodeNames(nameAndDateNodesMapGetTime, output, 0);
 
+function checkDuplicateNodeDates(arrMap, arr, lvl, key, value) {
 
+    for (let i = 0; i < arr.length; i++) {
+
+        let node = arr[i];
+        let xArr = arrMap;
+        let spaces = " ";
+        let keyPass = node.getNodeDatesGetTime;
+        let valuePass = node.getAllNodeNames;
+
+        for (let j = 0; j < lvl; j++) {
+            spaces += "-";
+        }
+
+        // key/value setup for node Mapping with no getTime()
+        if (!xArr.has(keyPass))
+            xArr.set(keyPass, []);
+        xArr.get(keyPass).push(valuePass);
+
+        checkDuplicateNodeDates(arrMap, node.children, lvl + 1);
+    }
+}
+console.log("before " + nameAndDateNodesMapGetTime) //output = [objectMap]
+checkDuplicateNodeDates(nameAndDateNodesMapGetTime, output, 0, 'dateValueNode', 'nodeName');
 
 //display name, id & date of nodes
 function allNodesValues(arr) {
