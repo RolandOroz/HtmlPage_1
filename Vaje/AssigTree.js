@@ -3,9 +3,17 @@ function randNum(num) {
     return Math.ceil(Math.random() * num);
 }
 
+//TODO MAKE FUNCTION  (variables for name and date nodes)
+let allNodeNames = [];
+let allNodeDates = [];
+let allNodeDatesGetTime = [];
+let allNodeIds = [];
+
 //collection of all date and node names
 //const nameAndDateNodesMap = new Map();
+
 //collection of all date and node names with getTime()!!!---correct collection of data
+const nameAndDateNodesMapGetTime = new Map();
 
 
 //const nameAndIdNodesMap = new Map();
@@ -87,86 +95,63 @@ function build(n, lvl) {
 
 let output = build(randNum(1), -1);
 
-//TODO MAKE FUNCTION  (variables for name and date nodes)
-// let allNodeNames = [];
-// let allNodeDates = [];
-// let allNodeDatesGetTime = [];
-// let allNodeIds = [];
 
-const nameAndDateNodesMapGetTime = new Map();
+
 //display tree nodes visually
-function displayNodeNames(arrMap, arr, lvl) {
+function displayNodeNames(arr, lvl) {
 
     for (let i = 0; i < arr.length; i++) {
-
         let node = arr[i];
-        let xArr = arrMap;
         let spaces = " ";
 
         for (let j = 0; j < lvl; j++) {
             spaces += "-";
         }
+        console.log(spaces + node.nodeName);
 
-        // key/value setup for node Mapping with no getTime()
-        if (!xArr.has(node.dateValueNode.getTime()))
-            xArr.set(node.dateValueNode.getTime(), []);
-
-        xArr.get(node.dateValueNode.getTime()).push(node.nodeName);
-        // console.log(spaces + node.nodeName);   // for TESTING purpose
-        // console.log(node.dateValueNode);       // for TESTING purpose
-
-
-        // ---> does not set collection of node names for same date !!!!!!
-
-        //visual display of nodes in console with space indentations
-        function print() {
-         return spaces + node.nodeName;
-        };
-
-        displayNodeNames(arrMap, node.children, lvl + 1);
+        displayNodeNames(node.children, lvl + 1);
     }
 }
-console.log("before " + nameAndDateNodesMapGetTime) //output = [objectMap]
-//displayNodeNames(nameAndDateNodesMapGetTime, output, 0);
+displayNodeNames(output, 0);
 
-function checkDuplicateNodeDates(arrMap, arr, lvl, key, value) {
 
+//display one value of all nodes                        // TODO --------------------------------------------------DONE
+function arrOfValues( arrValue, arr) {
     for (let i = 0; i < arr.length; i++) {
 
         let node = arr[i];
+        //pass val with different children values to get different result
+        let val = node.nodeName;
+        arrValue.push(val);
+
+        arrOfValues(arrValue, node.children);
+    }
+}
+arrOfValues( allNodeNames, output);
+console.log(allNodeNames);
+
+
+// checking for node dates duplicates                   // TODO --------------------------------------------------DONE
+function checkDuplicateNodeValues(arrMap, arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let node = arr[i];
         let xArr = arrMap;
-        let spaces = " ";
+
         let keyPass = node.getNodeDatesGetTime;
         let valuePass = node.getAllNodeNames;
 
-        for (let j = 0; j < lvl; j++) {
-            spaces += "-";
-        }
-
-        // key/value setup for node Mapping with no getTime()
+        // key/value setup for node Mapping with getTime()
         if (!xArr.has(keyPass))
             xArr.set(keyPass, []);
         xArr.get(keyPass).push(valuePass);
 
-        checkDuplicateNodeDates(arrMap, node.children, lvl + 1);
+        checkDuplicateNodeValues( arrMap, node.children);
     }
 }
-console.log("before " + nameAndDateNodesMapGetTime) //output = [objectMap]
-checkDuplicateNodeDates(nameAndDateNodesMapGetTime, output, 0, 'dateValueNode', 'nodeName');
+checkDuplicateNodeValues(nameAndDateNodesMapGetTime, output);
 
-//display name, id & date of nodes
-function allNodesValues(arr) {
-    const lvl = 0;
-    for (let i = 0; i < arr.length; i++) {
-        let node = arr[i];
 
-        console.log("\t" + node.getAllNodeNames);
-        console.log("\t" + node.getAllNodeIds);
-        console.log("\t" + node.getAllNodeDates);
 
-        allNodesValues(node.children, lvl + 1);
-    }
-}
 
 // //show duplicate Ids
 // function showDuplicateId(arr) {
@@ -209,35 +194,29 @@ function showDuplicateId(arr) {
     }
 }
 // search function of date value
-// let obj = {}
-// function someMethod(someObject) {
-//     someObject.x = 5;
+
+
+// let nameAndDateNodesMap = new Map();
+// function mapArr(arrMap, arr, key, value) {
+//     const lvl = 0;
+//     arrMap.x = new Map;
+//     for (let i = 0; i < arr.length; i++) {
+//         let node = arr[i];
+//         if (!arrMap.has(node.dateValueNode))
+//             arrMap.set(node.dateValueNode, []);
+//         arrMap.get(node.dateValueNode).push(node.nodeName);
+//         // //key/value with getTime() ---> does set collection of node names for same date !!!!!!
+//         // if (!nameAndDateNodesMapGetTime.has(arr[key].getTime())) {
+//         //     nameAndDateNodesMapGetTime.set(arr[key].getTime(), []);
+//         // }
+//         // nameAndDateNodesMapGetTime.get(arr[key].getTime()).push(arr[value]);
+//         mapArr(node.children, lvl + 1);
+//     }
+//     // return (0);
 // }
-// console.log(obj);
-// in pokličeš metodo
-// someMethod(obj);
-// console.log(obj); (edited)
-let nameAndDateNodesMap = new Map();
-function mapArr(arrMap, arr, key, value) {
-    const lvl = 0;
-    arrMap.x = new Map;
-    for (let i = 0; i < arr.length; i++) {
-        let node = arr[i];
-        if (!arrMap.has(node.dateValueNode))
-            arrMap.set(node.dateValueNode, []);
-        arrMap.get(node.dateValueNode).push(node.nodeName);
-        // //key/value with getTime() ---> does set collection of node names for same date !!!!!!
-        // if (!nameAndDateNodesMapGetTime.has(arr[key].getTime())) {
-        //     nameAndDateNodesMapGetTime.set(arr[key].getTime(), []);
-        // }
-        // nameAndDateNodesMapGetTime.get(arr[key].getTime()).push(arr[value]);
-        mapArr(node.children, lvl + 1);
-    }
-    // return (0);
-}
-console.log(nameAndDateNodesMap)
-mapArr(nameAndDateNodesMap, output);
-console.log(nameAndDateNodesMap.size)
+//
+// mapArr(nameAndDateNodesMap, output);
+
 
 function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
