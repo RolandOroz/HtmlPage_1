@@ -89,7 +89,6 @@ function build(n, lvl) {
     return output;
 }
 
-
 let output = build(randNum(1), -1);
 
 
@@ -111,8 +110,7 @@ function displayNodeNames(arr, lvl) {
 }
 
 
-
-//display one value of all nodes                        // TODO --------------------------------------------------DONE
+//display one value of all nodes                        //  --------------------------------------------------DONE
 function arrOfValues( arrValue, arr) {
     for (let i = 0; i < arr.length; i++) {
 
@@ -126,7 +124,7 @@ function arrOfValues( arrValue, arr) {
 }
 arrOfValues(allNodeNames, output);
 
-// checking for node dates duplicates                   // TODO --------------------------------------------------DONE
+// checking for node dates duplicates                   //  --------------------------------------------------DONE
 let checkDuplicateNodeDates = function checkDuplicateNodeValues(arrMap, arr) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
@@ -146,7 +144,7 @@ let checkDuplicateNodeDates = function checkDuplicateNodeValues(arrMap, arr) {
 checkDuplicateNodeDates(nameAndDateNodesMapGetTime, output);
 
 
-// checking for node dates duplicates                   // TODO --------------------------------------------------DONE
+// checking for node dates duplicates                   //  --------------------------------------------------DONE
 let checkDuplicateIdDates = function checkDuplicateNodeValues(arrMap, arr) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
@@ -165,7 +163,7 @@ let checkDuplicateIdDates = function checkDuplicateNodeValues(arrMap, arr) {
 }
 checkDuplicateIdDates(nameAndIdNodesMap, output);
 
-
+// search by date                                        //  --------------------------------------------------DONE
 function searchByDateRecord(arr, lvl, year, month, day) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
