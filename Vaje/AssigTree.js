@@ -95,7 +95,7 @@ let output = build(randNum(1), -1);
 
 //display tree nodes visually
 function displayNodeNames(arr, lvl) {
-
+    let str = [];
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
         let spaces = " ";
@@ -103,7 +103,8 @@ function displayNodeNames(arr, lvl) {
         for (let j = 0; j < lvl; j++) {
             spaces += "-";
         }
-        console.log(spaces + node.nodeName);
+        console.log(spaces + node.nodeName);   //TODO dont use console.log---------------------------!!!!!!
+        str.push(spaces + node.nodeName);
 
         displayNodeNames(node.children, lvl + 1);
     }
