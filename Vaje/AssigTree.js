@@ -94,22 +94,35 @@ let output = build(randNum(1), -1);
 
 
 //display tree nodes visually
-function displayNodeNames(arr, lvl) {
-    let str = [];
+let str = [];
+
+console.log(str)
+//display tree nodes visually
+function displayNodeNames(arrValue, arr, lvl) {
     for (let i = 0; i < arr.length; i++) {
         let node = arr[i];
+        let tempArr = arrValue;
         let spaces = " ";
 
         for (let j = 0; j < lvl; j++) {
             spaces += "-";
         }
-        console.log(spaces + node.nodeName);   //TODO dont use console.log---------------------------!!!!!!
-        str.push(spaces + node.nodeName);
+        //console.log(spaces + node.nodeName);   //displays nodes using console.log
+        tempArr.push(spaces + node.nodeName);       //displays nodes using return
 
-        displayNodeNames(node.children, lvl + 1);
+        displayNodeNames(tempArr, node.children, lvl + 1);
     }
 }
+displayNodeNames(str, output, 0);
 
+//to display return value
+function itemLoop(arr) {
+    let txt = "";
+    arr.forEach((item) => {
+        txt += "\n" + item;
+    })
+    return txt;
+}
 
 //display one value of all nodes                        //  --------------------------------------------------DONE
 function arrOfValues( arrValue, arr) {
@@ -190,7 +203,8 @@ searchByDateRecord(output, 0, 2021, 0, 1);
 // SECTION: 1
 console.log('-------------------- NODES DISPLAY --------------------\n');
 console.log('My nodes:\n');
-displayNodeNames(output, 0);
+displayNodeNames(str, output, 0);
+console.log(itemLoop(str))
 
 
 // SECTION: 2
